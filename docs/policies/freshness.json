@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "ingestion_cadence": {
+    "LEGAL_ADDENDUM_OR_NOTICE": "daily",
+    "AMC_SCHEME_PAGE": "daily",
+    "FACTSHEET": "weekly_or_daily_near_release",
+    "SID_OR_KIM": "weekly"
+  },
+  "staleness_thresholds": {
+    "warning_months": 6,
+    "action": "flag_for_domain_review",
+    "auto_refuse": false
+  }
+}

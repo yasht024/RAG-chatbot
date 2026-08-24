@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "allowed_domains": [
+    "groww.in",
+    "sbimf.com"
+  ],
+  "allowed_url_prefixes": [
+    "https://groww.in/mutual-funds/",
+    "https://groww.in/nfo/",
+    "https://groww.in/help/",
+    "https://www.sbimf.com/"
+  ],
+  "prohibited_domains": [
+    "moneycontrol.com",
+    "valueresearchonline.com",
+    "etmoney.com"
+  ]
+}

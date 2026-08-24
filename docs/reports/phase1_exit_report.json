@@ -1,0 +1,15 @@
+{
+  "phase": "Phase 1: Corpus and Policy Foundation",
+  "status": "APPROVED",
+  "exit_gate_passed": true,
+  "evaluated_at": "2026-08-23T23:24:00Z",
+  "metrics": {
+    "canonical_schemes_count": 35,
+    "processed_corpus_count": 35,
+    "evaluation_cases_count": 11,
+    "classification_accuracy": 1.0,
+    "resolution_accuracy": 0.9090909090909091,
+    "privacy_accuracy": 1.0,
+    "false_factual_on_advisory": 0
+  }
+}

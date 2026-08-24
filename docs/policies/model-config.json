@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "provider": "OpenAI",
+  "generation_model": "openai/gpt-oss-120b",
+  "classification_model": "openai/gpt-oss-120b",
+  "embedding_model": "BAAI/bge-large-en-v1.5",
+  "data_retention_policy": "zero_data_retention"
+}

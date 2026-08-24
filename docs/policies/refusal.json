@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "mixed_intent_behavior": "FAIL_CLOSED",
+  "refusal_link": {
+    "url": "https://www.amfiindia.com/investor-corner",
+    "context": "For general mutual-fund education, please refer to the official AMFI investor resources."
+  }
+}

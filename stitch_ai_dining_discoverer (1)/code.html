@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HDFC Mutual Fund Assistant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Outfit:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#3c4a43",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#c0d9ff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-secondary-fixed-variant": "#2f4868",
+                      "surface": "#f8f9fa",
+                      "on-surface": "#191c1d",
+                      "tertiary-container": "#fda417",
+                      "on-primary-container": "#00533c",
+                      "on-tertiary-container": "#673f00",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-secondary-fixed": "#001c39",
+                      "surface-container-high": "#e7e8e9",
+                      "inverse-surface": "#2e3132",
+                      "primary-container": "#00d09c",
+                      "surface-tint": "#006c4f",
+                      "surface-container-highest": "#e1e3e4",
+                      "surface-variant": "#e1e3e4",
+                      "primary-fixed-dim": "#2fe0aa",
+                      "surface-dim": "#d9dadb",
+                      "tertiary-fixed": "#ffddb8",
+                      "tertiary": "#855300",
+                      "secondary-fixed-dim": "#afc8ee",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#2fe0aa",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f3f4f5",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-secondary-container": "#465f80",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1d",
+                      "primary": "#006c4f",
+                      "surface-container": "#edeeef",
+                      "secondary-fixed": "#d3e3ff",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#59fdc5",
+                      "outline": "#6b7b72",
+                      "surface-bright": "#f8f9fa",
+                      "background": "#f8f9fa",
+                      "secondary": "#486081",
+                      "outline-variant": "#bacac1",
+                      "on-primary-fixed-variant": "#00513b",
+                      "on-primary-fixed": "#002116"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "max-width": "1280px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "sm": "8px",
+                      "margin": "24px",
+                      "xl": "40px",
+                      "lg": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Outfit"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Outfit"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Outfit"],
+                      "display-lg": ["Outfit"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out;
+            fill: currentColor;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        /* Custom scrollbar for chat area */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #bacac1;
+            border-radius: 20px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #465f80;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm fixed top-0 w-full z-50 flex flex-col pt-2">
+<div class="max-w-[1280px] w-full mx-auto px-margin flex items-center justify-between h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim text-headline-md" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim truncate">
+                    HDFC Mutual Fund Assistant
+                </h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex items-center bg-surface-container text-on-surface-variant px-sm py-xs rounded-full border border-outline-variant/30 text-label-md font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[16px] mr-1 text-tertiary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+                    Facts-only. No investment advice.
+                </div>
+<button class="text-primary font-bold text-label-md font-label-md hover:bg-primary-container/20 transition-colors px-md py-sm rounded-full active:scale-95 duration-150">
+                    Reset
+                </button>
+</div>
+</div>
+<!-- Mobile Disclaimer -->
+<div class="md:hidden bg-surface-container text-on-surface-variant px-sm py-xs flex justify-center items-center text-label-md font-label-md border-t border-outline-variant/30">
+<span class="material-symbols-outlined text-[14px] mr-1 text-tertiary-container" style="font-variation-settings: 'FILL' 1;">security</span>
+            Facts-only. No investment advice.
+        </div>
+</header>
+<!-- Main Chat Area -->
+<main class="flex-1 flex flex-col w-full max-w-[800px] mx-auto mt-[100px] mb-[130px] md:mb-[100px] overflow-y-auto px-4 md:px-0 scroll-smooth" id="chat-container">
+<!-- Welcome State -->
+<div class="flex flex-col items-center justify-center py-xl animate-fade-in-up" style="animation-delay: 0.1s;">
+<div class="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-md shadow-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-primary-container text-headline-lg" style="font-variation-settings: 'FILL' 1;">query_stats</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface mb-sm text-center">Hello. I am the HDFC Mutual Fund Assistant.</h2>
+<p class="text-body-md font-body-md text-on-surface-variant text-center max-w-lg mb-lg">
+                I provide factual information directly from official scheme documents. How can I assist you today?
+            </p>
+<div class="flex flex-wrap justify-center gap-sm max-w-2xl w-full">
+<button class="bg-surface border border-outline-variant/50 text-secondary font-body-sm text-body-sm px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md">
+                    What is the minimum SIP for HDFC Mid Cap?
+                </button>
+<button class="bg-surface border border-outline-variant/50 text-secondary font-body-sm text-body-sm px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md">
+                    What is the lock-in period for ELSS?
+                </button>
+<button class="bg-surface border border-outline-variant/50 text-secondary font-body-sm text-body-sm px-4 py-2 rounded-full hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-md">
+                    HDFC Top 100 exit load
+                </button>
+</div>
+</div>
+<!-- Date Separator -->
+<div class="flex justify-center my-md animate-fade-in-up" style="animation-delay: 0.2s;">
+<span class="text-label-md font-label-md text-outline bg-surface-container px-3 py-1 rounded-full">Today, 10:24 AM</span>
+</div>
+<!-- User Bubble -->
+<div class="flex justify-end mb-lg animate-fade-in-up" style="animation-delay: 0.3s;">
+<div class="max-w-[85%] md:max-w-[70%]">
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm px-md py-sm shadow-sm">
+<p class="text-body-md font-body-md">What is the minimum SIP for HDFC Mid Cap Opportunities Fund?</p>
+</div>
+</div>
+</div>
+<!-- Assistant Bubble -->
+<div class="flex justify-start mb-lg animate-fade-in-up" style="animation-delay: 0.4s;">
+<div class="max-w-[85%] md:max-w-[75%]">
+<div class="bg-surface border border-outline-variant/30 rounded-2xl rounded-tl-sm px-md py-sm shadow-sm">
+<p class="text-body-md font-body-md text-on-surface mb-sm">
+                        The minimum Systematic Investment Plan (SIP) amount for the HDFC Mid-Cap Opportunities Fund is <strong>₹100</strong> per month.
+                    </p>
+<div class="bg-surface-container-low rounded-lg p-sm border border-outline-variant/20 mt-sm">
+<div class="flex items-center gap-xs text-outline mb-xs">
+<span class="material-symbols-outlined text-[14px]">info</span>
+<span class="text-label-md font-label-md">Factual Data</span>
+</div>
+<ul class="text-body-sm font-body-sm text-on-surface-variant list-disc pl-4 space-y-1">
+<li>Minimum Initial Investment: ₹100</li>
+<li>Minimum Additional Investment: ₹100</li>
+<li>SIP Frequency options available: Daily, Weekly, Monthly, Quarterly</li>
+</ul>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant/20 flex flex-wrap gap-x-4 gap-y-1 text-label-md font-label-md text-outline">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[12px]">description</span> Source: Scheme Information Document</span>
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[12px]">update</span> Last updated: 24 May 2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- User Bubble -->
+<div class="flex justify-end mb-lg animate-fade-in-up" style="animation-delay: 0.5s;">
+<div class="max-w-[85%] md:max-w-[70%]">
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm px-md py-sm shadow-sm">
+<p class="text-body-md font-body-md">Is this a good time to invest in it given the market highs?</p>
+</div>
+</div>
+</div>
+<!-- Refusal State Bubble -->
+<div class="flex justify-start mb-lg animate-fade-in-up" style="animation-delay: 0.6s;">
+<div class="max-w-[85%] md:max-w-[75%]">
+<div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900 rounded-2xl rounded-tl-sm px-md py-sm shadow-sm">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-amber-700 dark:text-amber-500 mt-1" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<p class="text-body-md font-body-md text-amber-900 dark:text-amber-200">
+                                I cannot provide investment advice or market timing recommendations.
+                            </p>
+<p class="text-body-sm font-body-sm text-amber-800 dark:text-amber-300/80 mt-1">
+                                My capabilities are limited to providing factual data from official scheme documents. Please consult a SEBI Registered Investment Advisor (RIA) or your financial advisor for personalized investment strategies.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- User Bubble -->
+<div class="flex justify-end mb-lg animate-fade-in-up" style="animation-delay: 0.7s;">
+<div class="max-w-[85%] md:max-w-[70%]">
+<div class="bg-primary text-on-primary rounded-2xl rounded-tr-sm px-md py-sm shadow-sm">
+<p class="text-body-md font-body-md">What is the exit load?</p>
+</div>
+</div>
+</div>
+<!-- Loading State -->
+<div class="flex justify-start mb-lg animate-fade-in-up" style="animation-delay: 0.8s;">
+<div class="max-w-[85%] md:max-w-[75%]">
+<div class="bg-surface border border-outline-variant/30 rounded-2xl rounded-tl-sm px-md py-sm shadow-sm flex items-center h-[52px]">
+<div class="flex items-center gap-1 text-primary">
+<svg height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<circle class="typing-dot" cx="4" cy="12" r="3"></circle>
+<circle class="typing-dot" cx="12" cy="12" r="3"></circle>
+<circle class="typing-dot" cx="20" cy="12" r="3"></circle>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Spacing for input -->
+<div class="h-4"></div>
+</main>
+<!-- Bottom Input Area (Fixed) -->
+<div class="fixed bottom-0 w-full z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe-bottom">
+<div class="max-w-[800px] mx-auto px-4 py-3 md:py-4">
+<div class="relative flex items-end gap-sm bg-surface-container-lowest border border-outline-variant/50 rounded-2xl shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all p-2">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none text-body-md font-body-md text-on-surface placeholder-on-surface-variant/50 py-2 pl-2 pr-12 min-h-[44px] max-h-[120px] overflow-y-auto" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" placeholder="Ask a factual question..." rows="1"></textarea>
+<button class="absolute right-3 bottom-3 w-10 h-10 flex items-center justify-center bg-primary text-on-primary rounded-xl hover:bg-surface-tint transition-colors shadow-sm active:scale-95">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+<div class="text-center mt-2">
+<p class="text-[10px] font-label-md text-outline">Responses are generated based on official fund documents. Always verify independently.</p>
+</div>
+</div>
+<!-- BottomNavBar (Mobile Only based on JSON rules for destinations, though chat is transactional, keeping it as requested by JSON structure if needed, but suppressing it here to focus on the canvas as per "Linear/Transactional" rule) -->
+<nav class="md:hidden hidden">
+<!-- Suppressed Nav Shell for Chat Interface -->
+</nav>
+</div>
+<!-- Ensure scrolled to bottom initially -->
+<script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const chatContainer = document.getElementById('chat-container');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+    </script>
+</body></html>

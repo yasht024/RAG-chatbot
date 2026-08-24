@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "raw_queries_and_answers_days": 7,
+  "traces_and_audit_events_days": 30,
+  "pii_handling": "redact_before_logging"
+}

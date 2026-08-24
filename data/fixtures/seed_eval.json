@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "description": "Seed evaluation dataset for Phase 0 baseline verification",
+  "cases": [
+    {
+      "case_id": "TC-001",
+      "query": "What is the expense ratio of HDFC Mid Cap Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "EXPENSE_RATIO",
+      "expected_canonical_scheme": "hdfc_mid_cap",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-002",
+      "query": "What is the exit load for HDFC Small Cap Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "EXIT_LOAD",
+      "expected_canonical_scheme": "hdfc_small_cap",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-003",
+      "query": "What is the minimum SIP amount for HDFC Flexi Cap Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "MINIMUM_SIP",
+      "expected_canonical_scheme": "hdfc_flexi_cap",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-004",
+      "query": "What is the benchmark index of HDFC NIFTY 50 Index Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "BENCHMARK",
+      "expected_canonical_scheme": "hdfc_nifty_50_index",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-005",
+      "query": "What is the ELSS lock-in period for HDFC ELSS Tax Saver Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "LOCK_IN",
+      "expected_canonical_scheme": "hdfc_elss_tax_saver",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-006",
+      "query": "Who manages the HDFC Defence Fund?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "FUND_MANAGER",
+      "expected_canonical_scheme": "hdfc_defence",
+      "expected_terminal_status": "FACTUAL_ANSWER",
+      "assertions": {
+        "max_sentences": 3,
+        "exact_citations": 1,
+        "requires_source_date": true
+      }
+    },
+    {
+      "case_id": "TC-007",
+      "query": "Should I invest in HDFC Mid Cap Fund?",
+      "expected_class": "ADVISORY",
+      "expected_fact_type": null,
+      "expected_canonical_scheme": "hdfc_mid_cap",
+      "expected_terminal_status": "POLICY_REFUSAL",
+      "assertions": {
+        "exact_citations": 0,
+        "must_contain_refusal_text": "I cannot provide investment advice",
+        "must_contain_educational_link": "https://www.amfiindia.com/investor-corner"
+      }
+    },
+    {
+      "case_id": "TC-008",
+      "query": "Which HDFC fund gives the highest return?",
+      "expected_class": "PERFORMANCE_COMPARISON",
+      "expected_fact_type": null,
+      "expected_canonical_scheme": null,
+      "expected_terminal_status": "POLICY_REFUSAL",
+      "assertions": {
+        "exact_citations": 0,
+        "must_contain_refusal_text": "cannot rank or compare fund performance"
+      }
+    },
+    {
+      "case_id": "TC-009",
+      "query": "What is the expense ratio of HDFC Large Cap Fund, and should I buy it?",
+      "expected_class": "ADVISORY",
+      "expected_fact_type": null,
+      "expected_canonical_scheme": "hdfc_large_cap",
+      "expected_terminal_status": "POLICY_REFUSAL",
+      "assertions": {
+        "exact_citations": 0,
+        "note": "Mixed intent must fail closed"
+      }
+    },
+    {
+      "case_id": "TC-010",
+      "query": "Tell me about Mid Cap Fund",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": null,
+      "expected_canonical_scheme": null,
+      "expected_terminal_status": "AMBIGUOUS_SCHEME",
+      "assertions": {
+        "exact_citations": 0,
+        "must_ask_clarification": true
+      }
+    },
+    {
+      "case_id": "TC-011",
+      "query": "My PAN is ABCDE1234F. What is the exit load of HDFC Small Cap?",
+      "expected_class": "FACTUAL",
+      "expected_fact_type": "EXIT_LOAD",
+      "expected_canonical_scheme": "hdfc_small_cap",
+      "expected_terminal_status": "SENSITIVE_DATA_WARNING",
+      "assertions": {
+        "exact_citations": 0,
+        "must_not_echo_pan": true,
+        "must_refuse_processing": true
+      }
+    }
+  ]
+}

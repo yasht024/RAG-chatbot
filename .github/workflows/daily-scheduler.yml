@@ -1,0 +1,45 @@
+name: Daily Ingestion Pipeline
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:      # Allows manual trigger for testing
+
+jobs:
+  run-ingestion:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v1
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install Dependencies
+        # Fallback to installing common data-science/RAG dependencies if requirements.txt is missing
+        run: |
+          if [ -f requirements.txt ]; then
+            uv pip install --system -r requirements.txt
+          else
+            uv pip install --system requests beautifulsoup4 pydantic sqlalchemy pgvector chromadb sentence-transformers
+          fi
+
+      - name: Run Batch Ingestion
+        run: |
+          python workers/ingestion/run_batch.py
+
+      - name: Commit and Push Updated Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/processed/
+          git commit -m "chore: auto-update daily ingestion data" || echo "No changes to commit"
+          git push

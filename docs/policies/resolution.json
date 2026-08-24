@@ -1,0 +1,7 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "default_plan": "Direct",
+  "default_option": "Growth",
+  "unsupported_plan_option_behavior": "REFUSE"
+}

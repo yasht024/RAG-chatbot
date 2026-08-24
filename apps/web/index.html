@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HDFC Mutual Fund Assistant</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@600;700&display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#3c4a43",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#c0d9ff",
+                      "on-tertiary-fixed-variant": "#653e00",
+                      "on-secondary-fixed-variant": "#2f4868",
+                      "surface": "#f8f9fa",
+                      "on-surface": "#191c1d",
+                      "tertiary-container": "#fda417",
+                      "on-primary-container": "#00533c",
+                      "on-tertiary-container": "#673f00",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#2a1700",
+                      "on-secondary-fixed": "#001c39",
+                      "surface-container-high": "#e7e8e9",
+                      "inverse-surface": "#2e3132",
+                      "primary-container": "#00d09c",
+                      "surface-tint": "#006c4f",
+                      "surface-container-highest": "#e1e3e4",
+                      "surface-variant": "#e1e3e4",
+                      "primary-fixed-dim": "#2fe0aa",
+                      "surface-dim": "#d9dadb",
+                      "tertiary-fixed": "#ffddb8",
+                      "tertiary": "#855300",
+                      "secondary-fixed-dim": "#afc8ee",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#2fe0aa",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f3f4f5",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-secondary-container": "#465f80",
+                      "tertiary-fixed-dim": "#ffb95f",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1d",
+                      "primary": "#006c4f",
+                      "surface-container": "#edeeef",
+                      "secondary-fixed": "#d3e3ff",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#59fdc5",
+                      "outline": "#6b7b72",
+                      "surface-bright": "#f8f9fa",
+                      "background": "#f8f9fa",
+                      "secondary": "#486081",
+                      "outline-variant": "#bacac1",
+                      "on-primary-fixed-variant": "#00513b",
+                      "on-primary-fixed": "#002116"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "max-width": "1280px",
+                      "unit": "4px",
+                      "gutter": "24px",
+                      "sm": "8px",
+                      "margin": "24px",
+                      "xl": "40px",
+                      "lg": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Outfit"],
+                      "body-sm": ["Inter"],
+                      "headline-lg-mobile": ["Outfit"],
+                      "body-lg": ["Inter"],
+                      "headline-md": ["Outfit"],
+                      "display-lg": ["Outfit"],
+                      "label-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        .animate-fade-in-up {
+            animation: fadeInUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out;
+            fill: currentColor;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.02);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #bacac1;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #8ca495;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background-color: #465f80;
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background-color: #5c7ca6;
+        }
+    </style>
+  </head>
+  <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+    <div id="root" class="min-h-screen w-full flex flex-col flex-1 relative"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

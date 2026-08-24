@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "status": "approved",
+  "precedence_rules": [
+    {
+      "rank": 1,
+      "source_type": "GROWW_SCHEME_PAGE",
+      "condition": "Primary authoritative source for scheme-level facts (Expense Ratio, Exit Load, SIP Min, Benchmark, Riskometer, Fund Manager, Inception Date, Lock-in)."
+    },
+    {
+      "rank": 2,
+      "source_type": "GROWW_PROCEDURE_PAGE",
+      "condition": "Applies to AMC-level processes (account statements, capital gains statements)."
+    },
+    {
+      "rank": 3,
+      "source_type": "GROWW_OFFICIAL_DISCLOSURE",
+      "condition": "Linked official scheme documents on the Groww portal."
+    }
+  ]
+}
