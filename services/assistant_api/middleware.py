@@ -35,7 +35,7 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
         # Simple sliding window (10 requests per 60 seconds)
         now = time.time()
         window = 60
-        limit = 10
+        limit = 100
         
         if client_ip not in RATE_LIMIT_STORE:
             RATE_LIMIT_STORE[client_ip] = []

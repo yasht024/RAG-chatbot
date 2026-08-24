@@ -40,7 +40,11 @@ export const MessageCard: React.FC<{ response: FactualResponse }> = ({ response 
         </span>
         <div>
           <p className="text-body-md font-body-md text-amber-900 dark:text-amber-200 font-bold">
-            {isRefusal ? "Policy Refusal" : (status === 'SOURCE_CONFLICT' ? "Source Conflict" : (status === 'INSUFFICIENT_EVIDENCE' ? "Insufficient Evidence" : "System Error"))}
+            {isRefusal ? "Policy Refusal" : 
+              (status === 'SOURCE_CONFLICT' ? "Source Conflict" : 
+              (status === 'INSUFFICIENT_EVIDENCE' ? "Insufficient Evidence" : 
+              (status === 'AMBIGUOUS_SCHEME' ? "Ambiguous Scheme" :
+              (status === 'TEMPORARILY_UNAVAILABLE' ? "Service Unavailable" : "System Error"))))}
           </p>
           <p className="text-body-sm font-body-sm text-amber-800 dark:text-amber-300/80 mt-1">
             {error?.reason || "I cannot provide an answer to this query based on the current factual constraints."}

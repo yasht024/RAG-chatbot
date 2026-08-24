@@ -14,6 +14,8 @@ rollout_manager = RolloutStageManager(initial_stage=RolloutStage.GENERAL_AVAILAB
 from fastapi.middleware.cors import CORSMiddleware
 
 # Register Middleware
+app.add_middleware(RateLimitMiddleware)
+app.add_middleware(CorrelationIdMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -21,8 +23,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.add_middleware(RateLimitMiddleware)
-app.add_middleware(CorrelationIdMiddleware)
 
 app.include_router(diagnostics_router, prefix="/v1/internal", tags=["Internal"])
 

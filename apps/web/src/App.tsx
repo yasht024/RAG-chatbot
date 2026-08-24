@@ -45,9 +45,9 @@ function App() {
         content: '', 
         response: {
           status: 'TEMPORARILY_UNAVAILABLE' as TerminalState,
-          refusal_reason: error.message || 'Service temporarily unavailable.',
+          error: { reason: error.message || 'Service temporarily unavailable.' },
           original_query: userQuery
-        }
+        } as any
       }]);
     } finally {
       setIsLoading(false);
