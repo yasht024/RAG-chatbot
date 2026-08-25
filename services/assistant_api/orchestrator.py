@@ -143,7 +143,7 @@ class Orchestrator:
         else:
             resp = FactualResponse(
                 status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="Question not supported in Phase 2B slice.",
+                refusal_reason="Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
