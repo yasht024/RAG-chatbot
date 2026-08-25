@@ -10,12 +10,17 @@ from packages.policy.compliance import enforce_compliance
 from packages.policy.privacy_guard import PrivacyGuard
 from packages.policy.injection_guard import PromptInjectionGuard
 from packages.policy.classifier import QueryClassifier
-from packages.resilience.circuit_breaker import CircuitBreaker, CircuitBreakerOpenException
-from packages.resilience.retry import retry_with_backoff
+from packages.resilience.circuit_breaker import (
+    CircuitBreaker,
+)
 from packages.cache.answer_cache import EvidenceAwareAnswerCache
-from services.assistant_api.generator import generate_scalar_answer, handle_recommendation_refusal
+from services.assistant_api.generator import (
+    generate_scalar_answer,
+    handle_recommendation_refusal,
+)
 
 logger = logging.getLogger(__name__)
+
 
 class Orchestrator:
     def __init__(self):
@@ -28,16 +33,12 @@ class Orchestrator:
         self.corpus_version = "2.0.0"
         self.policy_version = "2026-08-23.1"
         self.vector_circuit_breaker = CircuitBreaker(
-            failure_threshold=3,
-            recovery_timeout_sec=5.0,
-            name="vector_search_service"
+            failure_threshold=3, recovery_timeout_sec=5.0, name="vector_search_service"
         )
         self.keyword_circuit_breaker = CircuitBreaker(
-            failure_threshold=3,
-            recovery_timeout_sec=5.0,
-            name="keyword_search_service"
+            failure_threshold=3, recovery_timeout_sec=5.0, name="keyword_search_service"
         )
-        
+
         # Load aliases for scheme resolution
         alias_path = os.path.join(os.path.dirname(__file__), "..", "..", "data", "catalog", "aliases.json")
         try:
@@ -57,13 +58,13 @@ class Orchestrator:
     def process_query(self, request: QueryRequest) -> FactualResponse:
         raw_query = request.query
         query_text = raw_query.lower()
-        
+
         # 0. Safety: PII & Financial Credential Redaction Guard (P3-SEC-05)
         pii_result = self.privacy_guard.scan_query(raw_query)
         if pii_result:
             return FactualResponse(
                 status=TerminalState.SENSITIVE_DATA_WARNING,
-                refusal_reason=pii_result["message"]
+                refusal_reason=pii_result["message"],
             )
 
         # 0b. Safety: Prompt Injection Guard on User Query (P3-SEC-01)
@@ -71,7 +72,7 @@ class Orchestrator:
         if inj_result:
             return FactualResponse(
                 status=TerminalState.POLICY_REFUSAL,
-                refusal_reason="Adversarial prompt injection pattern detected and rejected."
+                refusal_reason="Adversarial prompt injection pattern detected and rejected.",
             )
 
         # 1. Classification & AMC Path Router (P3-SEC-02 mixed-intent & advice defense)
@@ -81,10 +82,10 @@ class Orchestrator:
 
         scheme_id = self._resolve_scheme(query_text)
         amc_level = False
-        
-        if not scheme_id and getattr(request, 'history', None):
+
+        if not scheme_id and getattr(request, "history", None):
             for msg in reversed(request.history):
-                if msg.role == 'user':
+                if msg.role == "user":
                     hist_scheme = self._resolve_scheme(msg.content)
                     if hist_scheme:
                         scheme_id = hist_scheme
@@ -99,7 +100,7 @@ class Orchestrator:
         if cached_response:
             logger.info(f"Returning cached answer for query '{query_text}'")
             return cached_response
-        
+
         if "sip" in query_text:
             fact_type = "minimum_sip_amount"
         elif "expense" in query_text:
@@ -141,15 +142,15 @@ class Orchestrator:
         else:
             resp = FactualResponse(
                 status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="Question not supported in Phase 2B slice."
+                refusal_reason="Question not supported in Phase 2B slice.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
-            
+
         if not amc_level and not scheme_id:
             resp = FactualResponse(
                 status=TerminalState.AMBIGUOUS_SCHEME,
-                refusal_reason="Could not definitively identify a single scheme from the query."
+                refusal_reason="Could not definitively identify a single scheme from the query.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
@@ -162,13 +163,13 @@ class Orchestrator:
         try:
             kw_results = self.keyword_circuit_breaker.call(
                 lambda: self.keyword_search.search(
-                    query_text, 
+                    query_text,
                     scheme_id=scheme_id,
                     document_types=allowed_docs,
                     fact_type=fact_type,
-                    amc_level=amc_level
+                    amc_level=amc_level,
                 ),
-                fallback=lambda: None
+                fallback=lambda: None,
             )
         except Exception as e:
             logger.error(f"Keyword search failed: {e}")
@@ -178,29 +179,29 @@ class Orchestrator:
         try:
             vec_results = self.vector_circuit_breaker.call(
                 lambda: self.vector_search.search(
-                    query_text, 
+                    query_text,
                     scheme_id=scheme_id,
                     document_types=allowed_docs,
                     fact_type=fact_type,
-                    amc_level=amc_level
+                    amc_level=amc_level,
                 ),
-                fallback=lambda: None
+                fallback=lambda: None,
             )
         except Exception as e:
             logger.warning(f"Vector search degraded/failed: {e}. Falling back to lexical results.")
             vec_results = None
-        
+
         # 4. Fusion / Degradation to Lexical
         if kw_results is None and vec_results is None:
             # Complete retrieval failure -> fail-closed
             return FactualResponse(
                 status=TerminalState.TEMPORARILY_UNAVAILABLE,
-                refusal_reason="Search systems are temporarily unavailable."
+                refusal_reason="Search systems are temporarily unavailable.",
             )
-            
+
         kw_res = kw_results or []
         vec_res = vec_results or []
-            
+
         if kw_res and vec_res:
             fused_candidates = reciprocal_rank_fusion(kw_res, vec_res)
         elif kw_res:
@@ -213,31 +214,43 @@ class Orchestrator:
             # Search succeeded but found no documents
             resp = FactualResponse(
                 status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="No relevant documents found for the requested scheme and fact."
+                refusal_reason="No relevant documents found for the requested scheme and fact.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
-        
+
         # 5. Evidence Validation (skip scheme match if amc_level)
         expected_scheme = None if amc_level else scheme_id
         decision = validate_candidates(fused_candidates, expected_scheme=expected_scheme)
         if decision.status != "VALID":
             resp = FactualResponse(
                 status=TerminalState(decision.status),
-                refusal_reason="Validation rejected the retrieved candidates."
+                refusal_reason="Validation rejected the retrieved candidates.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
-            
+
         # 6. Generation & Repair Loop
         selected_passage_id = decision.selected_passage_ids[0]
-        selected_passage = next((p for p in fused_candidates if p["passage_id"] == selected_passage_id), fused_candidates[0])
+        selected_passage = next(
+            (p for p in fused_candidates if p["passage_id"] == selected_passage_id),
+            fused_candidates[0],
+        )
         passage_text = selected_passage["normalized_text"]
-        
-        if fact_type in ["investment_objective", "kyc_procedure", "capital_gains_procedure", "account_statement_procedure"]:
-            from services.assistant_api.generator import generate_descriptive_answer, llm
+
+        if fact_type in [
+            "investment_objective",
+            "kyc_procedure",
+            "capital_gains_procedure",
+            "account_statement_procedure",
+        ]:
+            from services.assistant_api.generator import (
+                generate_descriptive_answer,
+                llm,
+            )
+
             answer = generate_descriptive_answer(fact_type, passage_text)
-            
+
             is_valid, reason = llm.verify_semantic_claim(answer, passage_text)
             if not is_valid:
                 answer = generate_descriptive_answer(fact_type, passage_text)
@@ -245,24 +258,22 @@ class Orchestrator:
                 if not is_valid:
                     resp = FactualResponse(
                         status=TerminalState.INSUFFICIENT_EVIDENCE,
-                        refusal_reason="Semantic claim validation failed after repair attempt."
+                        refusal_reason="Semantic claim validation failed after repair attempt.",
                     )
                     self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
                     return resp
         else:
             answer = generate_scalar_answer(fact_type, passage_text)
-        
+
         draft = FactualResponse(
             status=TerminalState.FACTUAL_ANSWER,
             answer_sentences=[answer],
             citation_url=decision.citation_url,
             source_date=decision.source_date,
-            evidence_passage_ids=decision.selected_passage_ids
+            evidence_passage_ids=decision.selected_passage_ids,
         )
-        
+
         # 7. Compliance Validation
         final_response = enforce_compliance(draft)
         self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, final_response)
         return final_response
-
-

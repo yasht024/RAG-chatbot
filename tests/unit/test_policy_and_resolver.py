@@ -10,6 +10,7 @@ from packages.policy.classifier import QueryClassifier
 from packages.policy.refusal_renderer import RefusalRenderer
 from packages.policy.resolver import SchemeResolver
 
+
 class TestPolicyAndResolver(unittest.TestCase):
     def setUp(self):
         self.guard = PrivacyGuard()
@@ -92,6 +93,7 @@ class TestPolicyAndResolver(unittest.TestCase):
         res_hdfc = self.resolver.resolve_scheme("What is the exit load for HDFC small cap fund?")
         self.assertEqual(res_hdfc["status"], "RESOLVED")
         self.assertEqual(res_hdfc["scheme_id"], "hdfc_small_cap")
+
 
 if __name__ == "__main__":
     unittest.main()

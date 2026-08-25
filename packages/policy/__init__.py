@@ -15,5 +15,5 @@ __all__ = [
     "enforce_compliance",
     "validate_candidates",
     "RefusalRenderer",
-    "render_refusal"
+    "render_refusal",
 ]

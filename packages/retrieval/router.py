@@ -1,17 +1,18 @@
 from typing import List, Optional
 
+
 class DocumentRouter:
     """
     Routes fact types to their designated target document types.
     Enforces Phase 2B rules: Data from Factsheets/SID/KIM, processes from AMC pages.
     """
-    
+
     # Define document types
     DOC_FACTSHEET = "FACTSHEET"
     DOC_SID = "SID"
     DOC_KIM = "KIM"
     DOC_AMC_PROC = "AMC_PROCEDURE"
-    
+
     # Map fact classes to documents
     FACT_ROUTING_MAP = {
         "minimum_sip_amount": [DOC_FACTSHEET, DOC_KIM],
@@ -35,8 +36,5 @@ class DocumentRouter:
         """
         if not fact_type:
             return [cls.DOC_FACTSHEET, cls.DOC_SID, cls.DOC_KIM, cls.DOC_AMC_PROC]
-            
-        return cls.FACT_ROUTING_MAP.get(
-            fact_type, 
-            [cls.DOC_FACTSHEET, cls.DOC_SID, cls.DOC_KIM, cls.DOC_AMC_PROC]
-        )
+
+        return cls.FACT_ROUTING_MAP.get(fact_type, [cls.DOC_FACTSHEET, cls.DOC_SID, cls.DOC_KIM, cls.DOC_AMC_PROC])

@@ -5,21 +5,25 @@ from typing import Callable, Any, Optional
 
 logger = logging.getLogger(__name__)
 
+
 class CircuitState(Enum):
     CLOSED = "CLOSED"
     OPEN = "OPEN"
     HALF_OPEN = "HALF_OPEN"
 
+
 class CircuitBreakerOpenException(Exception):
     """Raised when an operation is attempted while the circuit breaker is open."""
+
     pass
+
 
 class CircuitBreaker:
     def __init__(
         self,
         failure_threshold: int = 3,
         recovery_timeout_sec: float = 10.0,
-        name: str = "default"
+        name: str = "default",
     ):
         self.failure_threshold = failure_threshold
         self.recovery_timeout_sec = recovery_timeout_sec

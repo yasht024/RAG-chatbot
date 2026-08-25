@@ -112,7 +112,7 @@ spacing:
 ---
 
 ## Brand & Style
-The design system is engineered to evoke trust, security, and forward-looking financial growth. It targets sophisticated investors who value clarity and precision in their financial data. 
+The design system is engineered to evoke trust, security, and forward-looking financial growth. It targets sophisticated investors who value clarity and precision in their financial data.
 
 The aesthetic is a hybrid of **Minimalism** and **Glassmorphism**, emphasizing high-contrast readability and structural order. By utilizing significant whitespace and a refined color palette, the UI feels breathable yet authoritative. Transparency and blur effects are reserved for interactive layers to suggest depth and digital sophistication without compromising the professional, secure nature of a mutual fund assistant.
 
@@ -121,14 +121,14 @@ The palette leverages high-contrast pairings to ensure WCAG accessibility.
 - **Primary (Growth Teal):** Used for primary actions, success states, and growth indicators.
 - **Secondary (Professional Navy):** Used for headers, prominent text, and brand grounding elements.
 - **Accent (Warning Amber):** Reserved for ambiguity, alerts, or financial cautions.
-- **Surface Strategy:** 
+- **Surface Strategy:**
   - **Light Mode:** Uses `white` for base surfaces and `zinc-50` for secondary containers to maintain a sterile, professional look.
   - **Dark Mode:** Utilizes `slate-950` as the foundation with slightly lighter slate tones for layered surfaces to provide depth.
 
 ## Typography
-The system uses a dual-font strategy to balance character with utility. 
+The system uses a dual-font strategy to balance character with utility.
 - **Outfit** provides a modern, geometric friendliness to headlines, making large financial figures and section headers feel approachable.
-- **Inter** is the workhorse for body text and data-heavy tables, chosen for its exceptional legibility and neutral tone. 
+- **Inter** is the workhorse for body text and data-heavy tables, chosen for its exceptional legibility and neutral tone.
 - **Hierarchy Note:** All labels and data captions use high-contrast Inter with increased letter spacing for immediate scanning.
 
 ## Layout & Spacing
@@ -152,7 +152,7 @@ A "Rounded" strategy is applied consistently to bridge the gap between technical
 
 ## Components
 - **Chat Bubbles:** Assistant responses use a glassmorphic Navy Blue background with White text (Dark Mode) or White background with Navy text (Light Mode). User bubbles use a subtle Zinc-100 fill.
-- **Pill-Shaped Chips:** High-contrast backgrounds for active states (Teal for growth, Navy for generic filters). 
+- **Pill-Shaped Chips:** High-contrast backgrounds for active states (Teal for growth, Navy for generic filters).
 - **Input Fields:** Sleek, low-profile inputs with a 1px border. On focus, the border transitions to a 2px Teal outline with a subtle outer glow.
 - **Buttons:**
     - *Primary:* Solid Teal background with White/Navy text, pill-shaped.

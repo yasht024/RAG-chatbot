@@ -11,5 +11,5 @@ __all__ = [
     "CorpusManifestManager",
     "CorpusManifest",
     "ManifestStatus",
-    "CorpusQualityChecker"
+    "CorpusQualityChecker",
 ]

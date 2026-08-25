@@ -4,6 +4,7 @@ from typing import Callable, Any, Tuple, Type
 
 logger = logging.getLogger(__name__)
 
+
 def retry_with_backoff(
     func: Callable,
     max_retries: int = 2,
@@ -11,7 +12,7 @@ def retry_with_backoff(
     backoff_factor: float = 2.0,
     retryable_exceptions: Tuple[Type[Exception], ...] = (Exception,),
     *args,
-    **kwargs
+    **kwargs,
 ) -> Any:
     """
     Executes a callable with exponential backoff retry for transient network/API failures.

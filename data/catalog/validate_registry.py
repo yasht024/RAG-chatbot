@@ -2,6 +2,7 @@ import json
 import sys
 from pathlib import Path
 
+
 def validate_registry():
     catalog_dir = Path(__file__).parent
     schemes_path = catalog_dir / "schemes.json"
@@ -17,7 +18,7 @@ def validate_registry():
     if len(schemes) != 35:
         print(f"FAILED: Expected exactly 35 schemes, but found {len(schemes)}")
         sys.exit(1)
-    
+
     scheme_ids = set()
     for s in schemes:
         sid = s["scheme_id"]
@@ -58,6 +59,7 @@ def validate_registry():
     print("SUCCESS: Domain allowlist verified.")
     print("-----------------------------------------------------")
     print("REGISTRY VALIDATION PASSED: 100% Coverage for 35 Schemes.")
+
 
 if __name__ == "__main__":
     validate_registry()

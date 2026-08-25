@@ -10,11 +10,11 @@ export const MessageCard: React.FC<{ response: FactualResponse }> = ({ response 
         <p className="text-body-md font-body-md text-on-surface mb-sm whitespace-pre-wrap">
           {answer}
         </p>
-        
+
         {citation?.url && (
           <div className="mt-sm pt-sm border-t border-outline-variant/20 flex flex-wrap gap-x-4 gap-y-1 text-label-md font-label-md text-outline">
             <a href={citation.url} target="_blank" rel="noreferrer" className="flex items-center gap-xs hover:text-primary transition-colors">
-              <span className="material-symbols-outlined text-[12px]">description</span> 
+              <span className="material-symbols-outlined text-[12px]">description</span>
               Source ({(() => {
                 try {
                   return new URL(citation.url).hostname.replace('www.', '');
@@ -40,9 +40,9 @@ export const MessageCard: React.FC<{ response: FactualResponse }> = ({ response 
         </span>
         <div>
           <p className="text-body-md font-body-md text-amber-900 dark:text-amber-200 font-bold">
-            {isRefusal ? "Policy Refusal" : 
-              (status === 'SOURCE_CONFLICT' ? "Source Conflict" : 
-              (status === 'INSUFFICIENT_EVIDENCE' ? "Insufficient Evidence" : 
+            {isRefusal ? "Policy Refusal" :
+              (status === 'SOURCE_CONFLICT' ? "Source Conflict" :
+              (status === 'INSUFFICIENT_EVIDENCE' ? "Insufficient Evidence" :
               (status === 'AMBIGUOUS_SCHEME' ? "Ambiguous Scheme" :
               (status === 'TEMPORARILY_UNAVAILABLE' ? "Service Unavailable" : "System Error"))))}
           </p>
@@ -50,7 +50,7 @@ export const MessageCard: React.FC<{ response: FactualResponse }> = ({ response 
             {error?.reason || "I cannot provide an answer to this query based on the current factual constraints."}
           </p>
           {(response as any).original_query && (
-            <button 
+            <button
               onClick={() => {
                 const form = document.getElementById('chat-form') as HTMLFormElement;
                 const input = form.querySelector('textarea');

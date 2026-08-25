@@ -3,10 +3,12 @@ from typing import List, Dict, Any, Set, Tuple
 
 logger = logging.getLogger(__name__)
 
+
 class CorpusQualityChecker:
     """
     Validates corpus consistency, source link availability, and detects parser/coverage regressions.
     """
+
     EXPECTED_FACT_TYPES = {
         "minimum_sip_amount",
         "expense_ratio",
@@ -16,7 +18,7 @@ class CorpusQualityChecker:
         "fund_manager",
         "investment_objective",
         "riskometer",
-        "inception_date"
+        "inception_date",
     }
 
     ALLOWED_DOMAINS = {"groww.in", "hdfcfund.com"}
@@ -46,7 +48,7 @@ class CorpusQualityChecker:
     def detect_coverage_regressions(
         passages: List[Dict[str, Any]],
         expected_schemes: Set[str],
-        baseline_scheme_count: int = 1
+        baseline_scheme_count: int = 1,
     ) -> Tuple[bool, List[str]]:
         """
         P3-COR-07: Checks that schemes and required fact types are not missing from parser output.

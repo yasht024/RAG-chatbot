@@ -8,14 +8,11 @@ payload = {
     "conversation_id": "test_conv",
     "history": [
         {"role": "user", "content": "How can I download my account statement?"},
-        {"role": "user", "content": "Who is the current fund manager?"}
-    ]
+        {"role": "user", "content": "Who is the current fund manager?"},
+    ],
 }
-data = json.dumps(payload).encode('utf-8')
-headers = {
-    "Content-Type": "application/json",
-    "Origin": "http://localhost:3000"
-}
+data = json.dumps(payload).encode("utf-8")
+headers = {"Content-Type": "application/json", "Origin": "http://localhost:3000"}
 req = urllib.request.Request(url, data=data, headers=headers, method="POST")
 
 try:

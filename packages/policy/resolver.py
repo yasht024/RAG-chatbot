@@ -1,7 +1,8 @@
 import json
 import re
 from pathlib import Path
-from typing import Dict, Any, Optional, List
+from typing import Dict, Any, Optional
+
 
 class SchemeResolver:
     """
@@ -12,6 +13,7 @@ class SchemeResolver:
     4. Ambiguity detection (AMBIGUOUS_SCHEME).
     5. Direct Growth defaults and unsupported plan refusal.
     """
+
     def __init__(self, schemes_path: Path = None, aliases_path: Path = None):
         if schemes_path is None:
             schemes_path = Path(__file__).parents[2] / "data" / "catalog" / "schemes.json"
@@ -39,13 +41,15 @@ class SchemeResolver:
                 "status": "UNSUPPORTED_PLAN",
                 "resolved_scheme_id": None,
                 "plan": "Bonus",
-                "option": "Growth"
+                "option": "Growth",
             }
 
         # 1. Exact Canonical Match
         for s in self.schemes:
             if s["canonical_name"].lower() in lower_query:
-                return self._build_resolved_response(s["scheme_id"], "EXACT_CANONICAL", extracted_plan, extracted_option)
+                return self._build_resolved_response(
+                    s["scheme_id"], "EXACT_CANONICAL", extracted_plan, extracted_option
+                )
 
         # 2. Curated Alias Match
         matched_schemes = set()
@@ -58,13 +62,18 @@ class SchemeResolver:
                     break
 
         if len(matched_schemes) == 1:
-            return self._build_resolved_response(list(matched_schemes)[0], "CURATED_ALIAS", extracted_plan, extracted_option)
+            return self._build_resolved_response(
+                list(matched_schemes)[0],
+                "CURATED_ALIAS",
+                extracted_plan,
+                extracted_option,
+            )
 
         if len(matched_schemes) > 1:
             return {
                 "status": "AMBIGUOUS_SCHEME",
                 "candidate_schemes": list(matched_schemes),
-                "message": "Multiple matching schemes found. Please clarify which fund you are referring to."
+                "message": "Multiple matching schemes found. Please clarify which fund you are referring to.",
             }
 
         # 3. Partial Token Match across all schemes
@@ -86,18 +95,24 @@ class SchemeResolver:
             return {
                 "status": "AMBIGUOUS_SCHEME",
                 "candidate_schemes": partial_matches,
-                "message": "Multiple matching schemes found. Please clarify which fund you are referring to."
+                "message": "Multiple matching schemes found. Please clarify which fund you are referring to.",
             }
 
         return {
             "status": "UNRESOLVED_SCHEME",
             "resolved_scheme_id": None,
-            "message": "No matching scheme found in the approved catalog."
+            "message": "No matching scheme found in the approved catalog.",
         }
 
-    def _build_resolved_response(self, scheme_id: str, match_type: str, extracted_plan: Optional[str] = None, extracted_option: Optional[str] = None) -> Dict[str, Any]:
+    def _build_resolved_response(
+        self,
+        scheme_id: str,
+        match_type: str,
+        extracted_plan: Optional[str] = None,
+        extracted_option: Optional[str] = None,
+    ) -> Dict[str, Any]:
         scheme_info = self.scheme_map[scheme_id]
-        
+
         plan = extracted_plan if extracted_plan else scheme_info["default_plan"]
         option = extracted_option if extracted_option else scheme_info["default_option"]
 
@@ -111,5 +126,5 @@ class SchemeResolver:
             "plan": plan,
             "option": option,
             "groww_url": scheme_info["groww_url"],
-            "match_type": match_type
+            "match_type": match_type,
         }

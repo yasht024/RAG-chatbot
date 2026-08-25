@@ -2,11 +2,13 @@ from typing import List, Dict, Any
 from packages.contracts.schemas import QueryRequest, FactualResponse
 from services.assistant_api.orchestrator import Orchestrator
 
+
 class ReplayEvaluator:
     """
     P3-EVAL-05: Replay comparison engine across models, prompts, policies,
     parsers, and index versions.
     """
+
     def __init__(self, baseline_orchestrator: Orchestrator, candidate_orchestrator: Orchestrator):
         self.baseline_orch = baseline_orchestrator
         self.candidate_orch = candidate_orchestrator
@@ -28,18 +30,22 @@ class ReplayEvaluator:
             if base_resp.status == cand_resp.status:
                 agreements += 1
             elif base_resp.status.value == "FACTUAL_ANSWER" and cand_resp.status.value != "FACTUAL_ANSWER":
-                regressions.append({
-                    "query": query,
-                    "baseline_status": base_resp.status.value,
-                    "candidate_status": cand_resp.status.value,
-                    "reason": cand_resp.refusal_reason
-                })
+                regressions.append(
+                    {
+                        "query": query,
+                        "baseline_status": base_resp.status.value,
+                        "candidate_status": cand_resp.status.value,
+                        "reason": cand_resp.refusal_reason,
+                    }
+                )
             elif base_resp.status.value != "FACTUAL_ANSWER" and cand_resp.status.value == "FACTUAL_ANSWER":
-                improvements.append({
-                    "query": query,
-                    "baseline_status": base_resp.status.value,
-                    "candidate_status": cand_resp.status.value
-                })
+                improvements.append(
+                    {
+                        "query": query,
+                        "baseline_status": base_resp.status.value,
+                        "candidate_status": cand_resp.status.value,
+                    }
+                )
 
         agreement_rate = (agreements / total_queries) if total_queries > 0 else 1.0
 
@@ -50,5 +56,5 @@ class ReplayEvaluator:
             "regressions_count": len(regressions),
             "improvements_count": len(improvements),
             "regressions": regressions,
-            "improvements": improvements
+            "improvements": improvements,
         }

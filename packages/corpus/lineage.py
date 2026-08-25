@@ -1,13 +1,15 @@
-from typing import Dict, List, Optional, Set, Any
+from typing import Dict, List, Set, Any
 import logging
 
 logger = logging.getLogger(__name__)
+
 
 class DocumentLineageManager:
     """
     Manages explicit supersedes and superseded-by relationships between documents and passages.
     Ensures that queries retrieve the latest effective evidence and filter out superseded content.
     """
+
     def __init__(self):
         # document_id -> set of document_ids it supersedes
         self._supersedes: Dict[str, Set[str]] = {}
@@ -49,7 +51,9 @@ class DocumentLineageManager:
             doc_id = cand.get("document_id")
             # If doc is superseded and a newer successor is available in the corpus, exclude old version
             if doc_id and self.is_superseded(doc_id):
-                logger.debug(f"Candidate {cand.get('passage_id')} filtered: superseded by {self._superseded_by[doc_id]}")
+                logger.debug(
+                    f"Candidate {cand.get('passage_id')} filtered: superseded by {self._superseded_by[doc_id]}"
+                )
                 continue
             active_candidates.append(cand)
         return active_candidates

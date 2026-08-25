@@ -2,19 +2,20 @@ import json
 import csv
 import os
 
+
 def generate_docs():
     workspace = "."
     data_dir = os.path.join(workspace, "data", "catalog")
     docs_dir = os.path.join(workspace, "docs")
-    
+
     os.makedirs(os.path.join(docs_dir, "reports"), exist_ok=True)
     os.makedirs(os.path.join(docs_dir, "policies"), exist_ok=True)
     os.makedirs(os.path.join(docs_dir, "architecture"), exist_ok=True)
     os.makedirs(os.path.join(docs_dir, "eval"), exist_ok=True)
-    
+
     with open(os.path.join(data_dir, "schemes.json"), "r") as f:
         schemes = json.load(f)
-        
+
     with open(os.path.join(data_dir, "sources.json"), "r") as f:
         sources = json.load(f)
 
@@ -94,7 +95,7 @@ Every incoming user query is classified through a constrained classifier.
 Categories include: `FACTUAL`, `ADVICE`, `RECOMMENDATION`, `PREDICTION`, `COMPARISON`.
 
 ## Refusal Behavior
-If the query falls under a prohibited intent (e.g. `RECOMMENDATION`), the orchestration immediately short-circuits and returns a `POLICY_REFUSAL` status with a fixed template. 
+If the query falls under a prohibited intent (e.g. `RECOMMENDATION`), the orchestration immediately short-circuits and returns a `POLICY_REFUSAL` status with a fixed template.
 
 ## Generation & Compliance
 - **Citation**: The renderer appends exactly *one* Groww URL.
@@ -116,7 +117,7 @@ The following persistent disclaimer must be displayed in the Chat UI at all time
         f.write(disclaim_md)
 
     # 7. P2B-DOC-07: Export Metadata (CSV)
-    with open(os.path.join(data_dir, "schemes_export.csv"), "w", newline='') as f:
+    with open(os.path.join(data_dir, "schemes_export.csv"), "w", newline="") as f:
         if schemes:
             writer = csv.DictWriter(f, fieldnames=schemes[0].keys())
             writer.writeheader()
@@ -158,6 +159,7 @@ Metrics tracked:
         f.write(limitations_md)
 
     print("Successfully generated all Workstream F documentation!")
+
 
 if __name__ == "__main__":
     generate_docs()

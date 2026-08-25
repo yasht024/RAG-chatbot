@@ -1,6 +1,6 @@
-from typing import Dict, Any
 from packages.contracts.schemas import FactualResponse, TerminalState
 import re
+
 
 def generate_scalar_answer(fact_type: str, passage: str) -> str:
     """
@@ -27,11 +27,18 @@ def generate_scalar_answer(fact_type: str, passage: str) -> str:
         return f"The exit load is: {passage.strip()}"
     elif fact_type == "riskometer":
         # Look for typical risk levels
-        risks = ["Low", "Low to Moderate", "Moderate", "Moderately High", "High", "Very High"]
+        risks = [
+            "Low",
+            "Low to Moderate",
+            "Moderate",
+            "Moderately High",
+            "High",
+            "Very High",
+        ]
         for risk in risks:
             if risk.lower() in passage.lower():
                 return f"The riskometer indicates this fund is {risk} Risk."
-        return f"The riskometer level is specified in the document."
+        return "The riskometer level is specified in the document."
     elif fact_type == "fund_manager":
         # Removing boilerplate
         clean_passage = passage.replace("Fund Manager:", "").strip()
@@ -44,17 +51,21 @@ def generate_scalar_answer(fact_type: str, passage: str) -> str:
         return passage.strip()
     elif fact_type == "performance_value":
         return f"The reported performance is: {passage.strip()}"
-    
+
     return passage
 
+
 from services.assistant_api.llm_client import MockLLMClient
+
 llm = MockLLMClient()
+
 
 def generate_descriptive_answer(fact_type: str, passage: str) -> str:
     """
     Descriptive text generation leveraging the LLM.
     """
     return llm.generate_descriptive_answer(fact_type, passage)
+
 
 def handle_recommendation_refusal() -> FactualResponse:
     """
@@ -63,5 +74,5 @@ def handle_recommendation_refusal() -> FactualResponse:
     return FactualResponse(
         status=TerminalState.POLICY_REFUSAL,
         answer_sentences=[],
-        refusal_reason="This assistant provides only factual information and cannot offer investment advice or recommendations."
+        refusal_reason="This assistant provides only factual information and cannot offer investment advice or recommendations.",
     )

@@ -2,29 +2,38 @@ import hashlib
 import datetime
 from typing import List, Dict, Any
 
+
 class Indexer:
     """
     Generates embeddings and persists Document, Passage, and Fact records
     into PostgreSQL with pgvector support.
     """
+
     def generate_embedding(self, text: str) -> List[float]:
         """
         Generates a 1024-dimensional float vector (mocking BGE Large).
         Uses deterministic hashing for fast offline testing/indexing.
         """
         # Create a 1024-dim normalized vector derived from sha256 hash
-        seed = int(hashlib.md5(text.encode('utf-8')).hexdigest(), 16)
+        seed = int(hashlib.md5(text.encode("utf-8")).hexdigest(), 16)
         vec = []
         for i in range(1024):
             val = ((seed + i * 31) % 1000) / 1000.0 - 0.5
             vec.append(val)
         return vec
 
-    def index_document(self, db: Any, fetch_meta: Dict[str, Any], parsed_doc: Dict[str, Any], passages: List[Dict[str, Any]]):
+    def index_document(
+        self,
+        db: Any,
+        fetch_meta: Dict[str, Any],
+        parsed_doc: Dict[str, Any],
+        passages: List[Dict[str, Any]],
+    ):
         from packages.contracts.models import DocumentModel, PassageModel, FactModel
+
         scheme_id = parsed_doc["scheme_id"]
         doc_id = f"doc_{scheme_id}_{fetch_meta['content_hash'][-8:]}"
-        
+
         # Check if document already indexed
         existing_doc = db.query(DocumentModel).filter_by(content_hash=fetch_meta["content_hash"]).first()
         if existing_doc:
@@ -42,7 +51,7 @@ class Indexer:
             publication_date=current_date_str,
             effective_from=current_date_str,
             content_hash=fetch_meta["content_hash"],
-            approval_status="APPROVED"
+            approval_status="APPROVED",
         )
         db.add(doc)
 
@@ -62,7 +71,7 @@ class Indexer:
                 fact_types=p["fact_types"],
                 extraction_confidence=p["extraction_confidence"],
                 embedding=embedding_vector,
-                index_version=p["index_version"]
+                index_version=p["index_version"],
             )
             db.add(passage_rec)
 
@@ -79,7 +88,7 @@ class Indexer:
                 option="Growth",
                 effective_from=current_date_str,
                 passage_id=passages[0]["passage_id"] if passages else f"passage_{scheme_id}_1",
-                validation_status="VALID"
+                validation_status="VALID",
             )
             db.add(fact_rec)
 

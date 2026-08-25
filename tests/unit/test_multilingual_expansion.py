@@ -8,10 +8,12 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 from packages.policy.classifier import QueryClassifier
 from packages.policy.refusal_renderer import RefusalRenderer
 
+
 class TestMultilingualExpansion(unittest.TestCase):
     """
     Validates Track C - Hindi language support across the classifier and refusal renderer.
     """
+
     def setUp(self):
         self.classifier = QueryClassifier()
         self.renderer = RefusalRenderer()
@@ -42,7 +44,7 @@ class TestMultilingualExpansion(unittest.TestCase):
     def test_hindi_refusal_rendering(self):
         query = "क्या मुझे निवेश करना चाहिए?"
         res = self.renderer.render_refusal("ADVISORY", query=query)
-        
+
         self.assertEqual(res["status"], "POLICY_REFUSAL")
         # Check that the Hindi response is returned
         self.assertIn("मैं निवेश सलाह या सिफारिशें नहीं दे सकता", res["answer_sentences"][0])
@@ -52,6 +54,7 @@ class TestMultilingualExpansion(unittest.TestCase):
         query = "रेगुलर प्लान"
         res = self.renderer.render_refusal("FACTUAL", reason_code="UNSUPPORTED_PLAN", query=query)
         self.assertIn("डायरेक्ट, रेगुलर, ग्रोथ और IDCW", res["answer_sentences"][0])
+
 
 if __name__ == "__main__":
     unittest.main()

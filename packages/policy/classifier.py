@@ -1,5 +1,6 @@
 import re
-from typing import Dict, Any, Optional
+from typing import Dict, Any
+
 
 class QueryClassifier:
     """
@@ -8,6 +9,7 @@ class QueryClassifier:
     2. Fact-type extractor.
     3. Conservative policy merger (prohibited/advisory classes always take precedence).
     """
+
     def __init__(self):
         # Advisory / Recommendation patterns
         self.advisory_patterns = [
@@ -28,10 +30,9 @@ class QueryClassifier:
             r"सलाह",
             r"सुझाव",
             r"खरीदना चाहिए",
-            r"निवेश करना चाहिए"
+            r"निवेश करना चाहिए",
         ]
 
-        
         # Performance / Comparison / Ranking patterns
         self.comparison_patterns = [
             r"\bwhich (?:[a-z0-9]+\s+)?(?:fund|scheme)s? (?:gives?|has|generates?|provides?|delivered) (?:the )?(?:highest|best|maximum|top) returns?\b",
@@ -48,9 +49,8 @@ class QueryClassifier:
             r"अधिक रिटर्न",
             r"बेहतर कौन",
             r"तुलना",
-            r"कौन सा बेहतर है"
+            r"कौन सा बेहतर है",
         ]
-
 
         # Fact type patterns
         self.fact_patterns = {
@@ -63,7 +63,7 @@ class QueryClassifier:
             "FUND_MANAGER": r"\b(?:fund manager|manager|who manages|managed by)\b|फंड मैनेजर|मैनेजर",
             "INCEPTION_DATE": r"\b(?:inception date|launch date|started on|start date)\b|शुरुआत की तारीख|लॉन्च डेट",
             "LOCK_IN": r"\b(?:lock[- ]?in|lock in period|elss lock in)\b|लॉक इन|लॉक-इन",
-            "OBJECTIVE": r"\b(?:investment objective|objective of the fund)\b|उद्देश्य|लक्ष्य"
+            "OBJECTIVE": r"\b(?:investment objective|objective of the fund)\b|उद्देश्य|लक्ष्य",
         }
 
     def classify_query(self, query: str) -> Dict[str, Any]:
@@ -80,7 +80,7 @@ class QueryClassifier:
                 "fact_type": None,
                 "confidence": 0.99,
                 "contains_advice": True,
-                "policy_version": "2026-08-23.1"
+                "policy_version": "2026-08-23.1",
             }
 
         if is_comparison:
@@ -89,7 +89,7 @@ class QueryClassifier:
                 "fact_type": None,
                 "confidence": 0.99,
                 "contains_comparison": True,
-                "policy_version": "2026-08-23.1"
+                "policy_version": "2026-08-23.1",
             }
 
         # 2. Check Factual Fact Types
@@ -105,7 +105,7 @@ class QueryClassifier:
                 "fact_type": extracted_fact,
                 "confidence": 0.98,
                 "contains_advice": False,
-                "policy_version": "2026-08-23.1"
+                "policy_version": "2026-08-23.1",
             }
 
         # 3. Default fallback
@@ -114,5 +114,5 @@ class QueryClassifier:
             "fact_type": None,
             "confidence": 0.85,
             "contains_advice": False,
-            "policy_version": "2026-08-23.1"
+            "policy_version": "2026-08-23.1",
         }

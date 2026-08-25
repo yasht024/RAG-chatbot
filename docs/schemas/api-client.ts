@@ -3,7 +3,7 @@
  * Generated for Phase 2B frontend integration.
  */
 
-export type TerminalState = 
+export type TerminalState =
   | "FACTUAL_ANSWER"
   | "POLICY_REFUSAL"
   | "INSUFFICIENT_EVIDENCE"
@@ -42,7 +42,7 @@ export class AssistantClient {
     const headers: Record<string, string> = {
       "Content-Type": "application/json"
     };
-    
+
     if (idempotencyKey) {
       headers["Idempotency-Key"] = idempotencyKey;
     }

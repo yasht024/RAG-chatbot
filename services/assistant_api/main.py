@@ -1,9 +1,14 @@
-from fastapi import FastAPI, HTTPException, Request, Header
+from fastapi import FastAPI, HTTPException, Header
 from packages.contracts.schemas import QueryRequest
 from services.assistant_api.orchestrator import Orchestrator
 from services.assistant_api.renderer import render_response
 from services.assistant_api.diagnostics import router as diagnostics_router
-from services.assistant_api.middleware import CorrelationIdMiddleware, RateLimitMiddleware, redact_pii, IDEMPOTENCY_CACHE
+from services.assistant_api.middleware import (
+    CorrelationIdMiddleware,
+    RateLimitMiddleware,
+    redact_pii,
+    IDEMPOTENCY_CACHE,
+)
 from packages.rollout.stage_manager import RolloutStageManager, RolloutStage
 from typing import Optional
 
@@ -26,11 +31,12 @@ app.add_middleware(
 
 app.include_router(diagnostics_router, prefix="/v1/internal", tags=["Internal"])
 
+
 @app.post("/v1/questions")
 async def ask_question(
     request: QueryRequest,
     idempotency_key: Optional[str] = Header(None, alias="Idempotency-Key"),
-    user_id: Optional[str] = Header(None, alias="X-User-Id")
+    user_id: Optional[str] = Header(None, alias="X-User-Id"),
 ):
     try:
         # Rollout stage access check (P3B-07, P3B-08)
@@ -41,22 +47,23 @@ async def ask_question(
         # Idempotency Check
         if idempotency_key and idempotency_key in IDEMPOTENCY_CACHE:
             return IDEMPOTENCY_CACHE[idempotency_key]
-            
+
         # PII Redaction
         request.query = redact_pii(request.query)
-        
+
         internal_response = orchestrator.process_query(request)
         final_payload = render_response(internal_response)
-        
+
         # Cache Response
         if idempotency_key:
             IDEMPOTENCY_CACHE[idempotency_key] = final_payload
-            
+
         return final_payload
     except HTTPException:
         raise
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500, detail="Internal server error")
+
 
 @app.get("/health")
 async def health_check():
@@ -67,30 +74,28 @@ async def health_check():
     from services.assistant_api.generator import llm
 
     return {
-        "status": "ok", 
+        "status": "ok",
         "version": "3.0.0-rc1",
         "policy_version": orchestrator.policy_version,
         "corpus": {
             "version": orchestrator.corpus_version,
             "is_connected": True,
-            "mock_corpus_size": len(orchestrator.keyword_search.search("a", limit=100))
+            "mock_corpus_size": len(orchestrator.keyword_search.search("a", limit=100)),
         },
         "rollout": {
             "stage": rollout_manager.stage.value,
-            "emergency_refusal_mode": rollout_manager.is_emergency_refusal_mode
+            "emergency_refusal_mode": rollout_manager.is_emergency_refusal_mode,
         },
         "resilience": {
             "vector_breaker_state": orchestrator.vector_circuit_breaker.state.value,
             "keyword_breaker_state": orchestrator.keyword_circuit_breaker.state.value,
             "cache_hits": orchestrator.answer_cache.hits,
-            "cache_misses": orchestrator.answer_cache.misses
+            "cache_misses": orchestrator.answer_cache.misses,
         },
         "llm_limits": {
             "max_rpm": llm.rate_limiter.max_rpm,
             "max_rpd": llm.rate_limiter.max_rpd,
             "max_tpm": llm.rate_limiter.max_tpm,
-            "max_tpd": llm.rate_limiter.max_tpd
-        }
+            "max_tpd": llm.rate_limiter.max_tpd,
+        },
     }
-
-

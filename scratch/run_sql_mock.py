@@ -1,8 +1,9 @@
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 from packages.retrieval.search import MOCK_CORPUS
+
 
 def main():
     counts = {}
@@ -20,6 +21,7 @@ def main():
     print("| :--- | :--- |")
     for s_id in sorted(counts.keys()):
         print(f"| {s_id} | {counts[s_id]} |")
+
 
 if __name__ == "__main__":
     main()

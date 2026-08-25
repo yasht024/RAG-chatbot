@@ -1,9 +1,10 @@
-from sqlalchemy import Column, String, Float, Integer, Boolean, DateTime, ForeignKey, Text, JSON
+from sqlalchemy import Column, String, Float, Integer, DateTime, ForeignKey, Text, JSON
 from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy.sql import func
 from pgvector.sqlalchemy import Vector
 
 Base = declarative_base()
+
 
 class SchemeModel(Base):
     __tablename__ = "schemes"
@@ -21,6 +22,7 @@ class SchemeModel(Base):
     aliases = relationship("AliasModel", back_populates="scheme", cascade="all, delete-orphan")
     facts = relationship("FactModel", back_populates="scheme", cascade="all, delete-orphan")
 
+
 class AliasModel(Base):
     __tablename__ = "aliases"
 
@@ -32,6 +34,7 @@ class AliasModel(Base):
     valid_to = Column(DateTime(timezone=True), nullable=True)
 
     scheme = relationship("SchemeModel", back_populates="aliases")
+
 
 class DocumentModel(Base):
     __tablename__ = "documents"
@@ -49,6 +52,7 @@ class DocumentModel(Base):
     approval_status = Column(String, nullable=False, default="APPROVED")
 
     passages = relationship("PassageModel", back_populates="document", cascade="all, delete-orphan")
+
 
 class PassageModel(Base):
     __tablename__ = "passages"
@@ -69,6 +73,7 @@ class PassageModel(Base):
 
     document = relationship("DocumentModel", back_populates="passages")
 
+
 class FactModel(Base):
     __tablename__ = "facts"
 
@@ -87,6 +92,7 @@ class FactModel(Base):
 
     scheme = relationship("SchemeModel", back_populates="facts")
 
+
 class ConflictModel(Base):
     __tablename__ = "conflicts"
 
@@ -97,6 +103,7 @@ class ConflictModel(Base):
     document_id_2 = Column(String, nullable=False)
     status = Column(String, nullable=False, default="OPEN")
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
 
 class ManifestModel(Base):
     __tablename__ = "manifests"

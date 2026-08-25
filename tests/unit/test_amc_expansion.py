@@ -7,11 +7,13 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 
 from packages.policy.resolver import SchemeResolver
 
+
 class TestAMCExpansion(unittest.TestCase):
     """
     Validates cross-AMC expansion logic and ensures zero regression
     on the original HDFC MVP (35 schemes) when adding SBI schemes.
     """
+
     def setUp(self):
         self.resolver = SchemeResolver()
 
@@ -51,6 +53,7 @@ class TestAMCExpansion(unittest.TestCase):
         self.assertEqual(res_ambig["status"], "AMBIGUOUS_SCHEME")
         self.assertIn("hdfc_small_cap", res_ambig["candidate_schemes"])
         self.assertIn("sbi_small_cap", res_ambig["candidate_schemes"])
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,10 +1,11 @@
 import time
 import hashlib
 import logging
-from typing import Optional, Dict, Any
+from typing import Optional, Dict
 from packages.contracts.schemas import FactualResponse, TerminalState
 
 logger = logging.getLogger(__name__)
+
 
 class CacheEntry:
     def __init__(self, response: FactualResponse, created_at: float, ttl_seconds: float):
@@ -15,12 +16,14 @@ class CacheEntry:
     def is_expired(self, now: float) -> bool:
         return (now - self.created_at) > self.ttl_seconds
 
+
 class EvidenceAwareAnswerCache:
     """
     P3-REL-05: Answer cache keyed by (normalized_query, corpus_version, policy_version).
     - Automatically invalidated when corpus or policy version changes.
     - Applies short TTL for refusal states (P3-REL-06).
     """
+
     def __init__(self, factual_ttl_sec: float = 3600.0, refusal_ttl_sec: float = 60.0):
         self._store: Dict[str, CacheEntry] = {}
         self.factual_ttl_sec = factual_ttl_sec
@@ -37,7 +40,7 @@ class EvidenceAwareAnswerCache:
         key = self._make_key(query, corpus_version, policy_version)
         now = time.time()
         entry = self._store.get(key)
-        
+
         if entry is None:
             self.misses += 1
             return None
@@ -57,7 +60,7 @@ class EvidenceAwareAnswerCache:
         query: str,
         corpus_version: str,
         policy_version: str,
-        response: FactualResponse
+        response: FactualResponse,
     ):
         # Do not cache temporary outage / error states
         if response.status == TerminalState.TEMPORARILY_UNAVAILABLE:

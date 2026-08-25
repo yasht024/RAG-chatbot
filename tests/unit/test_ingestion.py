@@ -23,13 +23,14 @@ SAMPLE_GROWW_HTML = """
 </html>
 """
 
+
 class TestIngestion(unittest.TestCase):
     def test_fetcher_allowlist_enforcement(self):
         fetcher = Fetcher()
-        
+
         # Valid allowlisted domain
         self.assertTrue(fetcher.validate_url("https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"))
-        
+
         # Invalid domain should raise AllowlistViolationError
         with self.assertRaises(AllowlistViolationError):
             fetcher.validate_url("https://unapproved-aggregator.com/scheme")
@@ -37,9 +38,9 @@ class TestIngestion(unittest.TestCase):
     def test_fetcher_snapshot_and_hashing(self):
         fetcher = Fetcher()
         url = "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"
-        
+
         meta = fetcher.fetch_and_snapshot(url=url, raw_html_content=SAMPLE_GROWW_HTML)
-        
+
         self.assertEqual(meta["canonical_url"], url)
         self.assertEqual(meta["source_domain"], "groww.in")
         self.assertTrue(meta["content_hash"].startswith("sha256:"))
@@ -50,12 +51,12 @@ class TestIngestion(unittest.TestCase):
         doc = parser.parse_scheme_page(
             raw_html=SAMPLE_GROWW_HTML,
             scheme_id="hdfc_mid_cap",
-            canonical_url="https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"
+            canonical_url="https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth",
         )
-        
+
         self.assertEqual(doc["scheme_id"], "hdfc_mid_cap")
         facts = {f["fact_type"]: f["value_display"] for f in doc["extracted_facts"]}
-        
+
         self.assertIn("0.85%", facts["EXPENSE_RATIO"])
         self.assertIn("1%", facts["EXIT_LOAD"])
         self.assertIn("100", facts["MINIMUM_SIP"])
@@ -66,33 +67,35 @@ class TestIngestion(unittest.TestCase):
     def test_chunker_structure_and_tagging(self):
         parser = SchemeParser()
         chunker = Chunker()
-        
+
         parsed = parser.parse_scheme_page(
             raw_html=SAMPLE_GROWW_HTML,
             scheme_id="hdfc_mid_cap",
-            canonical_url="https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"
+            canonical_url="https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth",
         )
-        
+
         passages = chunker.chunk_document(parsed)
-        self.assertGreaterThan(len(passages), 0) if hasattr(self, 'assertGreaterThan') else self.assertTrue(len(passages) > 0)
+        self.assertGreaterThan(len(passages), 0) if hasattr(self, "assertGreaterThan") else self.assertTrue(
+            len(passages) > 0
+        )
         self.assertEqual(passages[0]["scheme_ids"], ["hdfc_mid_cap"])
         self.assertIn("EXPENSE_RATIO", passages[0]["fact_types"])
 
     def test_pipeline_end_to_end(self):
         pipeline = IngestionPipeline()
-        
+
         res = pipeline.process_scheme_url(
             db=None,  # Test without active DB connection
             scheme_id="hdfc_mid_cap",
             url="https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth",
-            raw_html=SAMPLE_GROWW_HTML
+            raw_html=SAMPLE_GROWW_HTML,
         )
-        
+
         self.assertEqual(res["status"], "SUCCESS")
         self.assertEqual(res["scheme_id"], "hdfc_mid_cap")
         self.assertTrue(res["passages_count"] > 0)
         self.assertEqual(res["facts_count"], 6)
 
+
 if __name__ == "__main__":
     unittest.main()
-

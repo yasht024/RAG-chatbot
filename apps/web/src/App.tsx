@@ -36,13 +36,13 @@ function App() {
         conversation_id: 'conv_frontend_1',
         history: messages.map(m => ({ role: m.role, content: m.content }))
       };
-      
+
       const res = await apiClient.askQuestion(req, idempotencyKey);
       setMessages(prev => [...prev, { role: 'system', content: '', response: res }]);
     } catch (error: any) {
-      setMessages(prev => [...prev, { 
-        role: 'system', 
-        content: '', 
+      setMessages(prev => [...prev, {
+        role: 'system',
+        content: '',
         response: {
           status: 'TEMPORARILY_UNAVAILABLE' as TerminalState,
           error: { reason: error.message || 'Service temporarily unavailable.' },
@@ -75,7 +75,7 @@ function App() {
       <header className="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm fixed top-0 w-full z-50 flex flex-col pt-2">
         <div className="max-w-[1280px] w-full mx-auto px-margin flex items-center justify-between h-16 px-4 md:px-0">
           <div className="flex items-center gap-sm">
-            <button 
+            <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-2 -ml-2 rounded-full hover:bg-surface-variant/50 transition-colors text-on-surface-variant flex items-center justify-center"
               aria-label="Open history sidebar"
@@ -92,8 +92,8 @@ function App() {
               <span className="material-symbols-outlined text-[16px] mr-1 text-tertiary-container" style={{fontVariationSettings: "'FILL' 1"}}>security</span>
               Facts-only. No investment advice.
             </div>
-            <button 
-              onClick={() => setMessages([])} 
+            <button
+              onClick={() => setMessages([])}
               className="text-primary font-bold text-label-md font-label-md hover:bg-primary-container/20 transition-colors px-md py-sm rounded-full active:scale-95 duration-150"
             >
               Reset
@@ -108,14 +108,14 @@ function App() {
 
       {/* Overlay */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-on-background/20 backdrop-blur-sm z-[60] transition-opacity"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar Panel */}
-      <div 
+      <div
         className={`fixed top-0 left-0 h-full w-[300px] max-w-[80vw] bg-surface border-r border-outline-variant/30 shadow-xl z-[70] transform transition-transform duration-300 ease-in-out flex flex-col ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
@@ -125,14 +125,14 @@ function App() {
             <span className="material-symbols-outlined text-primary" style={{fontVariationSettings: "'FILL' 1"}}>history</span>
             History
           </h2>
-          <button 
+          <button
             onClick={() => setIsSidebarOpen(false)}
             className="p-2 rounded-full hover:bg-surface-variant/50 transition-colors text-on-surface-variant"
           >
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>
         </div>
-        
+
         <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
           {messages.filter(m => m.role === 'user').length === 0 ? (
             <div className="text-center text-on-surface-variant mt-8 text-body-md">
@@ -140,8 +140,8 @@ function App() {
             </div>
           ) : (
             messages.filter(m => m.role === 'user').map((msg, idx) => (
-              <button 
-                key={idx} 
+              <button
+                key={idx}
                 onClick={() => {
                   const element = document.getElementById(`msg-${idx}`);
                   if (element) {
@@ -157,8 +157,8 @@ function App() {
           )}
         </div>
         <div className="p-4 border-t border-outline-variant/30">
-            <button 
-              onClick={() => { setMessages([]); setIsSidebarOpen(false); }} 
+            <button
+              onClick={() => { setMessages([]); setIsSidebarOpen(false); }}
               className="w-full text-error font-bold text-label-md font-label-md hover:bg-error-container/20 transition-colors px-md py-sm rounded-full flex justify-center items-center gap-2"
             >
               <span className="material-symbols-outlined text-[18px]">delete</span>
@@ -168,7 +168,7 @@ function App() {
       </div>
 
       <main className="flex flex-col w-full max-w-[800px] mx-auto mt-[100px] mb-[130px] md:mb-[100px] px-4 md:px-0 scroll-smooth" id="chat-container">
-        
+
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center py-xl animate-fade-in-up">
             <div className="w-16 h-16 rounded-full bg-primary-container flex items-center justify-center mb-md shadow-sm border border-outline-variant/30">
@@ -193,8 +193,8 @@ function App() {
         )}
 
         {messages.map((msg, idx) => (
-          <div 
-            key={idx} 
+          <div
+            key={idx}
             id={msg.role === 'user' ? `msg-${messages.filter((m, i) => i <= idx && m.role === 'user').length - 1}` : undefined}
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} mb-lg animate-fade-in-up`}
           >
@@ -213,7 +213,7 @@ function App() {
             </div>
           </div>
         ))}
-        
+
         {isLoading && (
           <div className="flex justify-start mb-lg animate-fade-in-up">
             <div className="max-w-[85%] md:max-w-[75%]">
@@ -236,7 +236,7 @@ function App() {
       <div className="fixed bottom-0 w-full z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe-bottom">
         <div className="max-w-[800px] mx-auto px-4 py-3 md:py-4">
           <form id="chat-form" onSubmit={handleSubmit} className="relative flex items-end gap-sm bg-surface-container-lowest border border-outline-variant/50 rounded-2xl shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all p-2">
-            <textarea 
+            <textarea
               className="w-full bg-transparent border-none focus:ring-0 focus:outline-none resize-none text-body-md font-body-md text-on-surface placeholder-on-surface-variant/50 py-2 pl-2 pr-12 min-h-[44px] max-h-[120px] overflow-y-auto"
               value={query}
               onChange={(e) => setQuery(e.target.value)}

@@ -4,6 +4,7 @@ from typing import Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
+
 class LLMRateLimiter:
     """
     Tracks and enforces strict Request and Token rate limits for LLM calls:
@@ -14,12 +15,13 @@ class LLMRateLimiter:
 
     If limits are exceeded, throttles or signals fallback to local deterministic template generation.
     """
+
     def __init__(
         self,
         max_rpm: int = 30,
         max_rpd: int = 1000,
         max_tpm: int = 8000,
-        max_tpd: int = 200000
+        max_tpd: int = 200000,
     ):
         self.max_rpm = max_rpm
         self.max_rpd = max_rpd
@@ -58,21 +60,33 @@ class LLMRateLimiter:
 
         # Check Requests per Minute (RPM)
         if len(self._minute_requests) >= self.max_rpm:
-            return False, f"RPM limit exceeded ({len(self._minute_requests)}/{self.max_rpm})"
+            return (
+                False,
+                f"RPM limit exceeded ({len(self._minute_requests)}/{self.max_rpm})",
+            )
 
         # Check Requests per Day (RPD)
         if len(self._day_requests) >= self.max_rpd:
-            return False, f"RPD limit exceeded ({len(self._day_requests)}/{self.max_rpd})"
+            return (
+                False,
+                f"RPD limit exceeded ({len(self._day_requests)}/{self.max_rpd})",
+            )
 
         # Check Tokens per Minute (TPM)
         current_tpm = sum(count for _, count in self._minute_tokens)
         if current_tpm + estimated_tokens > self.max_tpm:
-            return False, f"TPM limit exceeded ({current_tpm + estimated_tokens}/{self.max_tpm})"
+            return (
+                False,
+                f"TPM limit exceeded ({current_tpm + estimated_tokens}/{self.max_tpm})",
+            )
 
         # Check Tokens per Day (TPD)
         current_tpd = sum(count for _, count in self._day_tokens)
         if current_tpd + estimated_tokens > self.max_tpd:
-            return False, f"TPD limit exceeded ({current_tpd + estimated_tokens}/{self.max_tpd})"
+            return (
+                False,
+                f"TPD limit exceeded ({current_tpd + estimated_tokens}/{self.max_tpd})",
+            )
 
         return True, None
 
@@ -83,7 +97,9 @@ class LLMRateLimiter:
         self._day_requests.append(now)
         self._minute_tokens.append((now, token_count))
         self._day_tokens.append((now, token_count))
-        logger.debug(f"LLM usage recorded: {token_count} tokens. RPM={len(self._minute_requests)}, RPD={len(self._day_requests)}")
+        logger.debug(
+            f"LLM usage recorded: {token_count} tokens. RPM={len(self._minute_requests)}, RPD={len(self._day_requests)}"
+        )
 
     def reset(self):
         """Reset all tracking counters (primarily for testing)."""

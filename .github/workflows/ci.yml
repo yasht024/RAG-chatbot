@@ -11,20 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup uv
         uses: astral-sh/setup-uv@v5
         with:
           version: "latest"
-      
+
       - name: Set up Python
         run: uv python install 3.12
-          
+
       - name: Install pre-commit
         run: uv tool install pre-commit
-        
+
       - name: Run pre-commit hooks
         run: pre-commit run --all-files
-        
+
       - name: Run placeholder tests
         run: echo "Tests will go here when implemented."

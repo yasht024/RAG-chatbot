@@ -1,9 +1,7 @@
 import argparse
-import sys
-import json
 from packages.corpus.manifest import CorpusManifestManager
 from packages.corpus.conflicts import ConflictRegistry
-from packages.corpus.lineage import DocumentLineageManager
+
 
 def create_admin_cli(manifest_mgr: CorpusManifestManager, conflict_reg: ConflictRegistry):
     parser = argparse.ArgumentParser(description="Corpus & Conflict Administration CLI (P3-COR-08)")
@@ -37,8 +35,10 @@ def create_admin_cli(manifest_mgr: CorpusManifestManager, conflict_reg: Conflict
 
     return parser
 
+
 if __name__ == "__main__":
     from packages.policy.validation import default_conflict_registry
+
     manifest_manager = CorpusManifestManager()
     parser = create_admin_cli(manifest_manager, default_conflict_registry)
     args = parser.parse_args()

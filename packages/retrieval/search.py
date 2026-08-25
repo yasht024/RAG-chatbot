@@ -17,7 +17,7 @@ MOCK_CORPUS = [
         "fact_types": ["minimum_sip_amount"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_2",
@@ -30,7 +30,7 @@ MOCK_CORPUS = [
         "fact_types": ["expense_ratio"],
         "is_table": True,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_3",
@@ -43,7 +43,7 @@ MOCK_CORPUS = [
         "fact_types": ["kyc_procedure"],
         "is_table": False,
         "publication_date": "2026-07-01",
-        "source_url": "https://groww.in/mutual-funds/default"
+        "source_url": "https://groww.in/mutual-funds/default",
     },
     {
         "passage_id": "passage_mock_conflict_1",
@@ -56,7 +56,7 @@ MOCK_CORPUS = [
         "fact_types": ["exit_load"],
         "is_table": False,
         "publication_date": "2026-08-20",
-        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap"
+        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap",
     },
     {
         "passage_id": "passage_mock_conflict_2",
@@ -69,7 +69,7 @@ MOCK_CORPUS = [
         "fact_types": ["exit_load"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap"
+        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap",
     },
     {
         "passage_id": "passage_mock_unresolved_1",
@@ -82,7 +82,7 @@ MOCK_CORPUS = [
         "fact_types": ["fund_manager"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-a"
+        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-a",
     },
     {
         "passage_id": "passage_mock_unresolved_2",
@@ -95,7 +95,7 @@ MOCK_CORPUS = [
         "fact_types": ["fund_manager"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap-b"
+        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap-b",
     },
     {
         "passage_id": "passage_mock_objective",
@@ -108,7 +108,7 @@ MOCK_CORPUS = [
         "fact_types": ["investment_objective"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-objective"
+        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-objective",
     },
     {
         "passage_id": "passage_mock_benchmark",
@@ -121,7 +121,7 @@ MOCK_CORPUS = [
         "fact_types": ["benchmark_index"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_riskometer",
@@ -134,7 +134,7 @@ MOCK_CORPUS = [
         "fact_types": ["riskometer"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_inception",
@@ -147,7 +147,7 @@ MOCK_CORPUS = [
         "fact_types": ["inception_date"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_elss_lockin",
@@ -160,7 +160,7 @@ MOCK_CORPUS = [
         "fact_types": ["elss_lock_in"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth"
+        "source_url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth",
     },
     {
         "passage_id": "passage_mock_lumpsum",
@@ -173,7 +173,7 @@ MOCK_CORPUS = [
         "fact_types": ["minimum_lumpsum"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_plans",
@@ -186,7 +186,7 @@ MOCK_CORPUS = [
         "fact_types": ["plans_options"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_factsheet_loc",
@@ -199,7 +199,7 @@ MOCK_CORPUS = [
         "fact_types": ["factsheet_location"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/investor-desk/downloads/factsheets"
+        "source_url": "https://www.hdfcfund.com/investor-desk/downloads/factsheets",
     },
     {
         "passage_id": "passage_mock_account_stmt",
@@ -212,7 +212,7 @@ MOCK_CORPUS = [
         "fact_types": ["account_statement_procedure"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/investor-desk/account-statement"
+        "source_url": "https://www.hdfcfund.com/investor-desk/account-statement",
     },
     {
         "passage_id": "passage_mock_capital_gains",
@@ -225,7 +225,7 @@ MOCK_CORPUS = [
         "fact_types": ["capital_gains_procedure"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/investor-desk/capital-gains"
+        "source_url": "https://www.hdfcfund.com/investor-desk/capital-gains",
     },
     {
         "passage_id": "passage_mock_performance",
@@ -238,7 +238,7 @@ MOCK_CORPUS = [
         "fact_types": ["performance_value"],
         "is_table": True,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
     },
     {
         "passage_id": "passage_mock_largecap_expense",
@@ -251,7 +251,7 @@ MOCK_CORPUS = [
         "fact_types": ["expense_ratio"],
         "is_table": True,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund"
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund",
     },
     {
         "passage_id": "passage_mock_largecap_exitload",
@@ -264,31 +264,33 @@ MOCK_CORPUS = [
         "fact_types": ["exit_load"],
         "is_table": False,
         "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund"
-    }
+        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund",
+    },
 ]
+
 
 class InMemoryKeywordSearch(RetrievalClient):
     """InMemory Search simulating database retrieval for Phase 2B."""
+
     def search(
-        self, 
-        query: str, 
-        scheme_id: Optional[str] = None, 
-        plan: str = "Direct", 
-        option: str = "Growth", 
+        self,
+        query: str,
+        scheme_id: Optional[str] = None,
+        plan: str = "Direct",
+        option: str = "Growth",
         limit: int = 20,
         document_types: Optional[List[str]] = None,
         fact_type: Optional[str] = None,
-        amc_level: bool = False
+        amc_level: bool = False,
     ) -> List[Dict[str, Any]]:
         results = []
         q = query.lower()
-        
+
         for doc in MOCK_CORPUS:
             # 1. Scheme Hard Filter
             if not amc_level and scheme_id and scheme_id not in doc["scheme_ids"]:
                 continue
-                
+
             # 2. Document Type Routing Filter
             if document_types and doc["document_type"] not in document_types:
                 continue
@@ -296,7 +298,7 @@ class InMemoryKeywordSearch(RetrievalClient):
             # 3. Fact Type Filter
             if fact_type and fact_type not in doc["fact_types"]:
                 continue
-                
+
             # Keyword matching logic mock
             if "sip" in q and "minimum_sip_amount" in doc["fact_types"]:
                 doc_copy = doc.copy()
@@ -362,33 +364,35 @@ class InMemoryKeywordSearch(RetrievalClient):
                 doc_copy = doc.copy()
                 doc_copy["score"] = 0.88
                 results.append(doc_copy)
-                
+
         return results
+
 
 class InMemoryVectorSearch(RetrievalClient):
     """
     InMemory Vector Search for Phase 2B.
     Note: In production, this expects 1024-dimensional BGE Large vectors.
     """
+
     def search(
-        self, 
-        query: str, 
-        scheme_id: Optional[str] = None, 
-        plan: str = "Direct", 
-        option: str = "Growth", 
+        self,
+        query: str,
+        scheme_id: Optional[str] = None,
+        plan: str = "Direct",
+        option: str = "Growth",
         limit: int = 20,
         document_types: Optional[List[str]] = None,
         fact_type: Optional[str] = None,
-        amc_level: bool = False
+        amc_level: bool = False,
     ) -> List[Dict[str, Any]]:
         results = []
         q = query.lower()
-        
+
         for doc in MOCK_CORPUS:
             # 1. Scheme Hard Filter
             if not amc_level and scheme_id and scheme_id not in doc["scheme_ids"]:
                 continue
-                
+
             # 2. Document Type Routing Filter
             if document_types and doc["document_type"] not in document_types:
                 continue
@@ -396,7 +400,7 @@ class InMemoryVectorSearch(RetrievalClient):
             # 3. Fact Type Filter
             if fact_type and fact_type not in doc["fact_types"]:
                 continue
-                
+
             # Vector matching logic mock (similar for simplicity, slightly diff scores)
             if "sip" in q and "minimum_sip_amount" in doc["fact_types"]:
                 doc_copy = doc.copy()
@@ -462,5 +466,5 @@ class InMemoryVectorSearch(RetrievalClient):
                 doc_copy = doc.copy()
                 doc_copy["score"] = 0.90
                 results.append(doc_copy)
-                
+
         return results

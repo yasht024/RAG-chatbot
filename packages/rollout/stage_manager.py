@@ -1,10 +1,11 @@
 import time
 import logging
 from enum import Enum
-from typing import Set, Optional, Dict, Any, List
-from pydantic import BaseModel, Field
+from typing import Set, Optional, List
+from pydantic import BaseModel
 
 logger = logging.getLogger(__name__)
+
 
 class RolloutStage(str, Enum):
     INTERNAL_QA = "INTERNAL_QA"
@@ -13,16 +14,19 @@ class RolloutStage(str, Enum):
     EXPANDED_PROD = "EXPANDED_PROD"
     GENERAL_AVAILABILITY = "GENERAL_AVAILABILITY"
 
+
 class RolloutDecision(BaseModel):
     allowed: bool
     stage: RolloutStage
     reason: str
     canary_routed: bool = False
 
+
 class RolloutStageManager:
     """
     Manages rollout progression (P3B-07, P3B-08, P3B-09) and automated rollback triggers (Section 13.4).
     """
+
     def __init__(self, initial_stage: RolloutStage = RolloutStage.INTERNAL_QA):
         self.stage = initial_stage
         self.allowlist_users: Set[str] = set()
@@ -46,7 +50,7 @@ class RolloutStageManager:
             return RolloutDecision(
                 allowed=False,
                 stage=self.stage,
-                reason="System is in emergency refusal-only mode due to active incident."
+                reason="System is in emergency refusal-only mode due to active incident.",
             )
 
         if self.stage == RolloutStage.INTERNAL_QA:
@@ -56,11 +60,24 @@ class RolloutStageManager:
 
         elif self.stage == RolloutStage.INTERNAL_PILOT:
             if user_id and user_id in self.allowlist_users:
-                return RolloutDecision(allowed=True, stage=self.stage, reason="Internal Pilot user approved.")
+                return RolloutDecision(
+                    allowed=True,
+                    stage=self.stage,
+                    reason="Internal Pilot user approved.",
+                )
             return RolloutDecision(allowed=False, stage=self.stage, reason="Internal Pilot restricted.")
 
-        elif self.stage in [RolloutStage.LIMITED_PROD, RolloutStage.EXPANDED_PROD, RolloutStage.GENERAL_AVAILABILITY]:
-            return RolloutDecision(allowed=True, stage=self.stage, reason="Production traffic permitted.", canary_routed=True)
+        elif self.stage in [
+            RolloutStage.LIMITED_PROD,
+            RolloutStage.EXPANDED_PROD,
+            RolloutStage.GENERAL_AVAILABILITY,
+        ]:
+            return RolloutDecision(
+                allowed=True,
+                stage=self.stage,
+                reason="Production traffic permitted.",
+                canary_routed=True,
+            )
 
         return RolloutDecision(allowed=False, stage=self.stage, reason="Unauthorized stage.")
 

@@ -6,13 +6,10 @@ url = "http://localhost:8000/v1/questions"
 payload = {
     "query": "What is the riskometer classification?",
     "conversation_id": "test_conv",
-    "history": []
+    "history": [],
 }
-data = json.dumps(payload).encode('utf-8')
-headers = {
-    "Content-Type": "application/json",
-    "Origin": "http://localhost:3000"
-}
+data = json.dumps(payload).encode("utf-8")
+headers = {"Content-Type": "application/json", "Origin": "http://localhost:3000"}
 req = urllib.request.Request(url, data=data, headers=headers, method="POST")
 
 try:

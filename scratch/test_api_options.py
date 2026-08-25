@@ -1,8 +1,7 @@
 import sys
 import os
-sys.path.append(os.path.abspath('.'))
-from packages.retrieval.search import InMemoryKeywordSearch
-from packages.retrieval.router import DocumentRouter
+
+sys.path.append(os.path.abspath("."))
 from services.assistant_api.orchestrator import Orchestrator
 from packages.contracts.schemas import QueryRequest
 

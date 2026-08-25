@@ -6,10 +6,12 @@ from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
 
+
 class ConflictStatus(str, Enum):
     QUARANTINED = "QUARANTINED"
     RESOLVED = "RESOLVED"
     IGNORED = "IGNORED"
+
 
 class ConflictRecord(BaseModel):
     conflict_id: str
@@ -22,19 +24,18 @@ class ConflictRecord(BaseModel):
     resolution_reason: Optional[str] = None
     selected_passage_id: Optional[str] = None
 
+
 class ConflictRegistry:
     """
     Registry for tracking fact conflicts across documents, managing operator reviews,
     and enforcing quarantine to prevent serving conflicting or ambiguous data.
     """
+
     def __init__(self):
         self._conflicts: Dict[str, ConflictRecord] = {}
 
     def record_conflict(
-        self,
-        scheme_id: str,
-        fact_type: str,
-        conflicting_passages: List[Dict[str, Any]]
+        self, scheme_id: str, fact_type: str, conflicting_passages: List[Dict[str, Any]]
     ) -> ConflictRecord:
         conflict_key = f"{scheme_id}:{fact_type}"
         record = ConflictRecord(
@@ -42,7 +43,7 @@ class ConflictRegistry:
             scheme_id=scheme_id,
             fact_type=fact_type,
             conflicting_passages=conflicting_passages,
-            status=ConflictStatus.QUARANTINED
+            status=ConflictStatus.QUARANTINED,
         )
         self._conflicts[conflict_key] = record
         logger.warning(f"Recorded and quarantined conflict for [{conflict_key}]")
@@ -60,7 +61,7 @@ class ConflictRegistry:
         fact_type: str,
         selected_passage_id: str,
         operator_name: str,
-        reason: str
+        reason: str,
     ) -> ConflictRecord:
         conflict_key = f"{scheme_id}:{fact_type}"
         if conflict_key not in self._conflicts:
