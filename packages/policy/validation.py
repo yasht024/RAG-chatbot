@@ -1,3 +1,4 @@
+import datetime
 from typing import List, Dict, Any, Optional
 from packages.contracts.schemas import EvidenceDecision
 from packages.corpus.lineage import DocumentLineageManager
@@ -162,7 +163,7 @@ def validate_candidates(
         selected_document_id=selected.get("document_id", "doc_unknown"),
         selected_passage_ids=[selected.get("passage_id", "passage_unknown")],
         citation_url=selected.get("source_url", "https://www.hdfcfund.com/"),
-        source_date=selected.get("publication_date", "2026-08-23"),
+        source_date=selected.get("publication_date", datetime.date.today().strftime("%Y-%m-%d")),
         fact_type=selected.get("fact_types", ["unknown"])[0],
         conflict_detected=conflict_detected,
         validation_ruleset="v1.1"

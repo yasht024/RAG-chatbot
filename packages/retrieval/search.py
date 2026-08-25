@@ -1,4 +1,7 @@
+import datetime
 from typing import List, Dict, Any, Optional
+
+TODAY_STR = datetime.date.today().strftime("%Y-%m-%d")
 from packages.retrieval.interfaces import RetrievalClient
 
 # In-memory mock corpus representing Phase 2B expanded search space
@@ -13,7 +16,7 @@ MOCK_CORPUS = [
         "normalized_text": "The minimum SIP amount for HDFC Mid-Cap Opportunities Fund is ₹100.",
         "fact_types": ["minimum_sip_amount"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -26,7 +29,7 @@ MOCK_CORPUS = [
         "normalized_text": "Expense Ratio: 0.85%",
         "fact_types": ["expense_ratio"],
         "is_table": True,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -65,7 +68,7 @@ MOCK_CORPUS = [
         "normalized_text": "Exit Load: 1.5%",
         "fact_types": ["exit_load"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap"
     },
     {
@@ -78,7 +81,7 @@ MOCK_CORPUS = [
         "normalized_text": "Fund Manager: Rahul",
         "fact_types": ["fund_manager"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-a"
     },
     {
@@ -91,7 +94,7 @@ MOCK_CORPUS = [
         "normalized_text": "Fund Manager: Gopal",
         "fact_types": ["fund_manager"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap-b"
     },
     {
@@ -104,7 +107,7 @@ MOCK_CORPUS = [
         "normalized_text": "The investment objective of the scheme is to provide long-term capital appreciation.",
         "fact_types": ["investment_objective"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-objective"
     },
     {
@@ -117,7 +120,7 @@ MOCK_CORPUS = [
         "normalized_text": "Benchmark: NIFTY Midcap 150 TRI",
         "fact_types": ["benchmark_index"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -130,7 +133,7 @@ MOCK_CORPUS = [
         "normalized_text": "Riskometer: Very High",
         "fact_types": ["riskometer"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -143,7 +146,7 @@ MOCK_CORPUS = [
         "normalized_text": "Inception Date: 25 June 2007",
         "fact_types": ["inception_date"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -156,7 +159,7 @@ MOCK_CORPUS = [
         "normalized_text": "Lock-in Period: 3 Years",
         "fact_types": ["elss_lock_in"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth"
     },
     {
@@ -169,7 +172,7 @@ MOCK_CORPUS = [
         "normalized_text": "Min Lumpsum: ₹5,000",
         "fact_types": ["minimum_lumpsum"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -182,7 +185,7 @@ MOCK_CORPUS = [
         "normalized_text": "Available Plans: Direct and Regular. Options: Growth and IDCW.",
         "fact_types": ["plans_options"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -195,7 +198,7 @@ MOCK_CORPUS = [
         "normalized_text": "You can download the official factsheet from the 'Downloads' section on the HDFC AMC website.",
         "fact_types": ["factsheet_location"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/investor-desk/downloads/factsheets"
     },
     {
@@ -208,7 +211,7 @@ MOCK_CORPUS = [
         "normalized_text": "To download your account statement, log in to the HDFC Mutual Fund investor portal or request it via SMS.",
         "fact_types": ["account_statement_procedure"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/investor-desk/account-statement"
     },
     {
@@ -221,7 +224,7 @@ MOCK_CORPUS = [
         "normalized_text": "Capital-gains statements can be obtained by sending an email to our support desk from your registered email ID.",
         "fact_types": ["capital_gains_procedure"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/investor-desk/capital-gains"
     },
     {
@@ -234,7 +237,7 @@ MOCK_CORPUS = [
         "normalized_text": "1 Year Return: 15.4%",
         "fact_types": ["performance_value"],
         "is_table": True,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"
     },
     {
@@ -247,7 +250,7 @@ MOCK_CORPUS = [
         "normalized_text": "Expense Ratio: 0.95%",
         "fact_types": ["expense_ratio"],
         "is_table": True,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund"
     },
     {
@@ -260,7 +263,7 @@ MOCK_CORPUS = [
         "normalized_text": "Exit Load: 1% if redeemed within 1 year.",
         "fact_types": ["exit_load"],
         "is_table": False,
-        "publication_date": "2026-08-23",
+        "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund"
     }
 ]
