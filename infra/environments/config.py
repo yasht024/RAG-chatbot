@@ -29,6 +29,7 @@ class AppConfig(BaseSettings):
     @property
     def policy_version(self) -> str:
         import datetime
+
         return f"{datetime.date.today().strftime('%Y-%m-%d')}.1"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
