@@ -93,28 +93,4 @@ async def health_check():
         }
     }
 
-import os
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
 
-# Serve frontend in production
-dist_path = os.path.join(os.path.dirname(__file__), "..", "..", "apps", "web", "dist")
-assets_path = os.path.join(dist_path, "assets")
-
-if os.path.exists(assets_path):
-    app.mount("/assets", StaticFiles(directory=assets_path), name="assets")
-
-@app.get("/{full_path:path}")
-async def serve_frontend(full_path: str):
-    if not os.path.exists(dist_path):
-        return {"error": "Frontend build not found. Please build the frontend first."}
-        
-    file_path = os.path.join(dist_path, full_path)
-    if full_path and os.path.exists(file_path) and os.path.isfile(file_path):
-        return FileResponse(file_path)
-    
-    index_path = os.path.join(dist_path, "index.html")
-    if os.path.exists(index_path):
-        return FileResponse(index_path)
-        
-    return {"error": "Frontend build index.html not found."}
