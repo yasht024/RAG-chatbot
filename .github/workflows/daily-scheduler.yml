@@ -2,7 +2,7 @@ name: Daily Ingestion Pipeline
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+    - cron: '30 4 * * *'  # Runs daily at 10:00 AM IST (4:30 AM UTC)
   workflow_dispatch:      # Allows manual trigger for testing
 
 jobs:
