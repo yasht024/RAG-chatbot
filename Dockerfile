@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY packages/ ./packages/
 COPY data/ ./data/
 COPY services/ ./services/
+COPY infra/ ./infra/
 
 # Expose port (Railway automatically sets the PORT env var)
 ENV PORT=8000
