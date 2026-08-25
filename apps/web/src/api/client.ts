@@ -39,7 +39,7 @@ export interface FactualResponse {
 export class AssistantClient {
   private baseUrl: string;
 
-  constructor(baseUrl: string = import.meta.env.PROD ? "" : "http://localhost:8000") {
+  constructor(baseUrl: string = import.meta.env.VITE_API_URL || "http://localhost:8000") {
     this.baseUrl = baseUrl;
   }
 
