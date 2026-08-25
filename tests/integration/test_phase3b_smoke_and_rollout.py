@@ -1,5 +1,6 @@
 from fastapi.testclient import TestClient
 from services.assistant_api.main import app, rollout_manager
+from infra.environments.config import config
 from packages.rollout.stage_manager import RolloutStage
 
 client = TestClient(app)
@@ -12,7 +13,7 @@ def test_phase3b_production_health_endpoint():
 
     assert data["status"] == "ok"
     assert data["version"] == "3.0.0-rc1"
-    assert data["policy_version"] == "2026-08-23.1"
+    assert data["policy_version"] == config.policy_version
     assert data["corpus"]["version"] == "2.0.0"
     assert data["corpus"]["is_connected"] is True
 

@@ -1,5 +1,6 @@
 import re
 from typing import Dict, Any
+from infra.environments.config import config
 
 
 class QueryClassifier:
@@ -80,7 +81,7 @@ class QueryClassifier:
                 "fact_type": None,
                 "confidence": 0.99,
                 "contains_advice": True,
-                "policy_version": "2026-08-23.1",
+                "policy_version": config.policy_version,
             }
 
         if is_comparison:
@@ -89,7 +90,7 @@ class QueryClassifier:
                 "fact_type": None,
                 "confidence": 0.99,
                 "contains_comparison": True,
-                "policy_version": "2026-08-23.1",
+                "policy_version": config.policy_version,
             }
 
         # 2. Check Factual Fact Types
@@ -105,7 +106,7 @@ class QueryClassifier:
                 "fact_type": extracted_fact,
                 "confidence": 0.98,
                 "contains_advice": False,
-                "policy_version": "2026-08-23.1",
+                "policy_version": config.policy_version,
             }
 
         # 3. Default fallback

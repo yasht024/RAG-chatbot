@@ -3,6 +3,7 @@ from packages.cache.answer_cache import EvidenceAwareAnswerCache
 from packages.contracts.schemas import FactualResponse, TerminalState, QueryRequest
 from services.assistant_api.orchestrator import Orchestrator
 from services.assistant_api.llm_client import LLMClient
+from infra.environments.config import config
 
 
 def test_llm_rate_limiter_rpm_and_tpm():
@@ -50,19 +51,19 @@ def test_evidence_aware_answer_cache_version_invalidation():
     )
 
     query = "What is the expense ratio for HDFC Mid-Cap?"
-    cache.put(query, corpus_version="2.0.0", policy_version="2026-08-23.1", response=resp_v1)
+    cache.put(query, corpus_version="2.0.0", policy_version=config.policy_version, response=resp_v1)
 
     # Cache hit with matching versions
-    cached = cache.get(query, corpus_version="2.0.0", policy_version="2026-08-23.1")
+    cached = cache.get(query, corpus_version="2.0.0", policy_version=config.policy_version)
     assert cached is not None
     assert cached.answer_sentences == ["Expense ratio is 0.85%."]
     assert cache.hits == 1
 
     # Cache miss when corpus version updates to 2.1.0 (Automatic Invalidation)
-    assert cache.get(query, corpus_version="2.1.0", policy_version="2026-08-23.1") is None
+    assert cache.get(query, corpus_version="2.1.0", policy_version=config.policy_version) is None
 
-    # Cache miss when policy version updates to 2026-08-24.1
-    assert cache.get(query, corpus_version="2.0.0", policy_version="2026-08-24.1") is None
+    # Cache miss when policy version updates
+    assert cache.get(query, corpus_version="2.0.0", policy_version="9999-01-01.1") is None
 
 
 def test_orchestrator_cache_hit_avoids_recomputation():

@@ -1,6 +1,7 @@
 import json
 import os
 import logging
+from infra.environments.config import config
 from packages.contracts.schemas import QueryRequest, FactualResponse, TerminalState
 from packages.retrieval.search import InMemoryKeywordSearch, InMemoryVectorSearch
 from packages.retrieval.fusion import reciprocal_rank_fusion
@@ -31,7 +32,7 @@ class Orchestrator:
         self.classifier = QueryClassifier()
         self.answer_cache = EvidenceAwareAnswerCache()
         self.corpus_version = "2.0.0"
-        self.policy_version = "2026-08-23.1"
+        self.policy_version = config.policy_version
         self.vector_circuit_breaker = CircuitBreaker(
             failure_threshold=3, recovery_timeout_sec=5.0, name="vector_search_service"
         )

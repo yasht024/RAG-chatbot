@@ -1,6 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 from services.assistant_api.main import app
+import datetime
 from services.assistant_api.middleware import RATE_LIMIT_STORE
 
 client = TestClient(app)
@@ -122,7 +123,7 @@ def test_descriptive_generation_and_footer():
     data = response.json()
     assert data["status"] == "FACTUAL_ANSWER"
     assert "long-term capital appreciation" in data["answer"]
-    assert "(As of 2026-08-23)" in data["answer"]
+    assert f"(As of {datetime.date.today().strftime('%Y-%m-%d')})" in data["answer"]
 
 
 def test_semantic_repair_success():
