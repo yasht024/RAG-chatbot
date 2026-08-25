@@ -1,0 +1,55 @@
+{
+  "scheme_id": "sbi_equity_hybrid",
+  "canonical_url": "https://groww.in/mutual-funds/sbi-magnum-balanced-fund-direct-growth",
+  "document_title": "SBI Equity Hybrid Fund - Direct Growth | Groww",
+  "full_text": "SBI Equity Hybrid Fund - Direct Growth | Groww\nSBI Equity Hybrid Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Hybrid - Aggressive portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+  "sections": [
+    {
+      "heading": "Scheme Details",
+      "content": "SBI Equity Hybrid Fund - Direct Growth | Groww\nSBI Equity Hybrid Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Hybrid - Aggressive portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+      "is_table": false
+    }
+  ],
+  "extracted_facts": [
+    {
+      "fact_type": "EXPENSE_RATIO",
+      "value_display": "1.10%",
+      "unit": "%"
+    },
+    {
+      "fact_type": "EXIT_LOAD",
+      "value_display": "1% for redemption within 365 days",
+      "unit": "%"
+    },
+    {
+      "fact_type": "MINIMUM_SIP",
+      "value_display": "500",
+      "unit": "INR"
+    },
+    {
+      "fact_type": "MINIMUM_LUMP_SUM",
+      "value_display": "5,000",
+      "unit": null
+    },
+    {
+      "fact_type": "BENCHMARK",
+      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "unit": null
+    },
+    {
+      "fact_type": "RISKOMETER",
+      "value_display": "Very High",
+      "unit": null
+    },
+    {
+      "fact_type": "FUND_MANAGER",
+      "value_display": "Nirman Morakhia",
+      "unit": null
+    },
+    {
+      "fact_type": "LOCK_IN",
+      "value_display": "None",
+      "unit": null
+    }
+  ]
+}

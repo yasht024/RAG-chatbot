@@ -3,7 +3,7 @@ import { AssistantClient } from './api/client';
 import type { QueryRequest, FactualResponse, TerminalState } from './api/client';
 import { MessageCard } from './components/Message';
 
-const apiClient = new AssistantClient('http://localhost:8000');
+const apiClient = new AssistantClient();
 
 function App() {
   const [query, setQuery] = useState('');

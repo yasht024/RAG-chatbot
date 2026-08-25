@@ -18,7 +18,7 @@ class Chunker:
             heading = section.get("heading", "Details")
             content = section.get("content", "")
             
-            if not content.strip():
+            if not content or str(content).strip() in ["", "null", "None"]:
                 continue
                 
             # Tag passage with relevant fact types based on content keywords
