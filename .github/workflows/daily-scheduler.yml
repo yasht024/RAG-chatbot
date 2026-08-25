@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up uv
-        uses: astral-sh/setup-uv@v1
+        uses: astral-sh/setup-uv@v10
         with:
           version: "latest"
 
@@ -28,15 +28,16 @@ jobs:
       - name: Install Dependencies
         # Fallback to installing common data-science/RAG dependencies if requirements.txt is missing
         run: |
+          uv venv
           if [ -f requirements.txt ]; then
-            uv pip install --system -r requirements.txt
+            uv pip install -r requirements.txt
           else
-            uv pip install --system requests beautifulsoup4 pydantic sqlalchemy pgvector chromadb sentence-transformers
+            uv pip install requests beautifulsoup4 pydantic sqlalchemy pgvector chromadb sentence-transformers
           fi
 
       - name: Run Batch Ingestion
         run: |
-          python workers/ingestion/run_batch.py
+          uv run python workers/ingestion/run_batch.py
 
       - name: Commit and Push Updated Data
         run: |
