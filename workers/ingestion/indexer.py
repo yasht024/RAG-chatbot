@@ -1,4 +1,5 @@
 import hashlib
+import datetime
 from typing import List, Dict, Any
 
 class Indexer:
@@ -30,6 +31,7 @@ class Indexer:
             return existing_doc
 
         # 1. Create Document Record
+        current_date_str = datetime.date.today().strftime("%Y-%m-%d")
         doc = DocumentModel(
             document_id=doc_id,
             source_domain=fetch_meta["source_domain"],
@@ -37,8 +39,8 @@ class Indexer:
             document_title=parsed_doc.get("document_title", scheme_id),
             document_type="SCHEME_PAGE",
             scope="SCHEME",
-            publication_date="2026-08-23",
-            effective_from="2026-08-23",
+            publication_date=current_date_str,
+            effective_from=current_date_str,
             content_hash=fetch_meta["content_hash"],
             approval_status="APPROVED"
         )
@@ -75,7 +77,7 @@ class Indexer:
                 unit=f.get("unit"),
                 plan="Direct",
                 option="Growth",
-                effective_from="2026-08-23",
+                effective_from=current_date_str,
                 passage_id=passages[0]["passage_id"] if passages else f"passage_{scheme_id}_1",
                 validation_status="VALID"
             )

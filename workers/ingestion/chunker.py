@@ -1,3 +1,4 @@
+import datetime
 from typing import List, Dict, Any
 
 class Chunker:
@@ -8,7 +9,9 @@ class Chunker:
     def __init__(self, target_chunk_size: int = 400):
         self.target_chunk_size = target_chunk_size
 
-    def chunk_document(self, parsed_doc: Dict[str, Any], index_version: str = "corpus-2026-08-23.1") -> List[Dict[str, Any]]:
+    def chunk_document(self, parsed_doc: Dict[str, Any], index_version: str = None) -> List[Dict[str, Any]]:
+        if index_version is None:
+            index_version = f"corpus-{datetime.date.today().strftime('%Y-%m-%d')}.1"
         passages = []
         scheme_id = parsed_doc["scheme_id"]
         sections = parsed_doc.get("sections", [])
