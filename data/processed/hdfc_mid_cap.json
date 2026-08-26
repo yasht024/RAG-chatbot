@@ -1,12 +1,12 @@
 {
   "scheme_id": "hdfc_mid_cap",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth",
-  "document_title": "HDFC Mid Cap Fund - Direct Growth",
-  "full_text": "HDFC Mid Cap Fund - Direct Growth\nHDFC Mid Cap Fund Details\nExpense Ratio: 0.85%\nExit Load: 1% if redeemed within 1 year\nMin SIP amount: \u20b9 100\nBenchmark Index: NIFTY Midcap 150 TRI\nRiskometer: Very High\nFund Manager: Chirag Setalvad",
+  "document_title": "HDFC Mid Cap Fund - Direct Growth | Groww",
+  "full_text": "HDFC Mid Cap Fund - Direct Growth | Groww\nHDFC Mid Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 0.85%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Midcap 150 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Mid Cap Fund - Direct Growth\nHDFC Mid Cap Fund Details\nExpense Ratio: 0.85%\nExit Load: 1% if redeemed within 1 year\nMin SIP amount: \u20b9 100\nBenchmark Index: NIFTY Midcap 150 TRI\nRiskometer: Very High\nFund Manager: Chirag Setalvad",
+      "content": "HDFC Mid Cap Fund - Direct Growth | Groww\nHDFC Mid Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 0.85%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Midcap 150 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad",
       "is_table": false
     }
   ],
@@ -18,13 +18,18 @@
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% if redeemed within 1 year",
+      "value_display": "1% for redemption within 365 days",
       "unit": "%"
     },
     {
       "fact_type": "MINIMUM_SIP",
       "value_display": "100",
       "unit": "INR"
+    },
+    {
+      "fact_type": "MINIMUM_LUMP_SUM",
+      "value_display": "5,000",
+      "unit": null
     },
     {
       "fact_type": "BENCHMARK",
@@ -39,6 +44,11 @@
     {
       "fact_type": "FUND_MANAGER",
       "value_display": "Chirag Setalvad",
+      "unit": null
+    },
+    {
+      "fact_type": "LOCK_IN",
+      "value_display": "None",
       "unit": null
     }
   ]
