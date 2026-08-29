@@ -3,7 +3,7 @@ name: Daily Ingestion Pipeline
 on:
   schedule:
     - cron: '30 4 * * *'  # Runs daily at 10:00 AM IST (4:30 AM UTC)
-  workflow_dispatch:      # Allows manual trigger for testing
+  workflow_dispatch:       # Allows manual trigger from GitHub UI or API
 
 jobs:
   run-ingestion:
@@ -22,27 +22,39 @@ jobs:
         with:
           version: "latest"
 
-      - name: Set up Python
+      - name: Set up Python 3.12
         run: uv python install 3.12
 
       - name: Install Dependencies
-        # Fallback to installing common data-science/RAG dependencies if requirements.txt is missing
         run: |
           uv venv
           if [ -f requirements.txt ]; then
             uv pip install -r requirements.txt
           else
-            uv pip install requests beautifulsoup4 pydantic sqlalchemy pgvector chromadb sentence-transformers
+            uv pip install requests beautifulsoup4 pydantic sqlalchemy pgvector sentence-transformers
           fi
 
       - name: Run Batch Ingestion
         run: |
+          echo "=== Starting ingestion at $(date -u '+%Y-%m-%d %H:%M:%S UTC') ==="
           uv run python workers/ingestion/run_batch.py
+          echo "=== Ingestion finished at $(date -u '+%Y-%m-%d %H:%M:%S UTC') ==="
 
       - name: Commit and Push Updated Data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/processed/
-          git commit -m "chore: auto-update daily ingestion data" || echo "No changes to commit"
-          git push
+          git add data/processed/ data/fixtures/
+          git diff --cached --quiet && echo "No changes to commit, skipping push." || (
+            git commit -m "chore: auto-update daily ingestion data [$(date -u '+%Y-%m-%d')]"
+            git push
+          )
+
+      - name: Report Run Summary
+        if: always()
+        run: |
+          echo "### Daily Ingestion Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: $(date -u '+%Y-%m-%d')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Trigger**: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Processed files**: $(ls data/processed/*.json 2>/dev/null | wc -l) JSON files" >> $GITHUB_STEP_SUMMARY
