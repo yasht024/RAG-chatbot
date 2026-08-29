@@ -3,10 +3,12 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: ^data/
       - id: end-of-file-fixer
+        exclude: ^data/
       - id: check-yaml
       - id: check-json
-        exclude: tsconfig.*\.json$
+        exclude: tsconfig.*\.json$|^data/
       - id: check-added-large-files
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
@@ -15,5 +17,7 @@ repos:
       # Run the linter.
       - id: ruff
         args: [ --fix, --ignore=E402 ]
+        exclude: ^data/
       # Run the formatter.
       - id: ruff-format
+        exclude: ^data/
