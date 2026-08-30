@@ -2,11 +2,10 @@ import os
 import logging
 from typing import Tuple
 from dotenv import load_dotenv
-from packages.resilience.circuit_breaker import (
-    CircuitBreaker,
-)
+from packages.resilience.circuit_breaker import CircuitBreaker
 from packages.resilience.retry import retry_with_backoff
 from packages.resilience.token_limiter import LLMRateLimiter
+from services.assistant_api.system_prompt import SYSTEM_PROMPT
 
 # Load .env file
 load_dotenv()
@@ -18,6 +17,9 @@ class LLMClient:
     """
     LLM Client that integrates Groq/OpenAI API for generation and semantic claim validation
     with CircuitBreaker, retry backoff, Token/RPM/RPD/TPM/TPD RateLimiter, and fallback to local template extraction.
+
+    The production system prompt is sent as a Groq ``system`` message on every
+    API call so the model is always constrained to the HDFC FAQ Assistant role.
     """
 
     def __init__(self):
@@ -55,22 +57,32 @@ class LLMClient:
         self.force_network_error = force_network_error
         self.attempt = 0
 
-    def _call_groq_api(self, prompt: str) -> str:
+    def _call_groq_api(self, user_prompt: str) -> str:
+        """
+        Call the Groq API with the production system prompt as the ``system``
+        message and the generation request as the ``user`` message.
+        This ensures the model always operates inside the HDFC FAQ Assistant
+        constraints defined in system_prompt.py.
+        """
         if self.force_network_error:
             raise ConnectionError("Simulated LLM network outage / timeout")
 
         if not self._groq_client:
             raise RuntimeError("LLM client not initialized")
 
-        # Estimate tokens and check rate limits
-        estimated_prompt_tokens = self.rate_limiter.estimate_tokens(prompt) + 150
+        # Estimate tokens (system prompt + user prompt + expected output)
+        full_text = SYSTEM_PROMPT + user_prompt
+        estimated_prompt_tokens = self.rate_limiter.estimate_tokens(full_text) + 150
         has_capacity, limit_err = self.rate_limiter.check_capacity(estimated_prompt_tokens)
         if not has_capacity:
             logger.warning(f"LLM quota threshold reached: {limit_err}. Triggering fallback.")
             raise RuntimeError(f"RateLimitExceeded: {limit_err}")
 
         chat_completion = self._groq_client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
             model=self.model,
             temperature=0.0,
             max_tokens=150,
@@ -84,6 +96,9 @@ class LLMClient:
         """
         Generate a descriptive answer grounded strictly in the source passage,
         protected by circuit breaker, rate limiters, retries, and local fallback.
+
+        The Groq API call uses the HDFC FAQ Assistant system prompt so the model
+        answers within the defined source policy, refusal rules, and response format.
         """
         self.attempt += 1
 
@@ -94,12 +109,12 @@ class LLMClient:
         if getattr(self, "fail_first_try", False) and self.attempt == 1:
             return "This fund guarantees a 50% return."  # Intentional test hallucination
 
-        prompt = (
-            f"You are a strict, factual assistant for HDFC Mutual Funds.\n"
-            f"Answer the query based ONLY on the provided passage.\n"
-            f"Constraint: Maximum 2 sentences. No advice, no speculation, no guarantees.\n\n"
-            f"Fact Type: {fact_type}\n"
-            f"Passage: {passage}\n\n"
+        # Tightly-scoped user prompt — system prompt already sets the role/rules
+        user_prompt = (
+            f"Fact type: {fact_type}\n"
+            f"Official source passage: {passage}\n\n"
+            f"Using ONLY the passage above, provide a factual answer.\n"
+            f"Maximum 2 sentences. No advice. No speculation. No guarantees.\n"
             f"Answer:"
         )
 
@@ -119,7 +134,7 @@ class LLMClient:
             if self._groq_client or self.force_network_error:
                 return self.circuit_breaker.call(
                     lambda: retry_with_backoff(
-                        lambda: self._call_groq_api(prompt),
+                        lambda: self._call_groq_api(user_prompt),
                         max_retries=2,
                         initial_delay=0.05,
                     ),
@@ -132,13 +147,26 @@ class LLMClient:
 
     def verify_semantic_claim(self, generated_answer: str, source_passage: str) -> Tuple[bool, str]:
         """
-        Validate that generated answer contains no unsupported claims or guarantees.
+        Validate that the generated answer contains no unsupported claims or guarantees.
+        Rejects hallucinated guarantees and checks for prohibited source references.
         """
-        if "guarantees" in generated_answer.lower() or "guaranteed" in generated_answer.lower():
+        lower = generated_answer.lower()
+
+        if "guarantees" in lower or "guaranteed" in lower:
             return (
                 False,
                 "Generated text contains unauthorized guarantees (hallucination).",
             )
+
+        # Reject answers citing prohibited sources that slipped through
+        prohibited_domains = ["groww.in", "moneycontrol", "etmoney", "valueresearch",
+                               "morningstar", "zerodha", "blog"]
+        for domain in prohibited_domains:
+            if domain in lower:
+                return (
+                    False,
+                    f"Generated answer references a prohibited source ({domain}).",
+                )
 
         return True, "Semantic validation passed."
 
