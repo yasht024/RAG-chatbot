@@ -111,6 +111,10 @@ class Orchestrator:
         if any(f in amc_procedures for f in requested_facts):
             amc_level = True
             
+        # If the query mentions ELSS, implicitly set the scheme to the tax saver fund
+        if not scheme_id and "elss" in query_text:
+            scheme_id = "hdfc_elss_tax_saver"
+
         # Ambiguity / Unsupported check
         if not amc_level:
             if resolve_res.get("status") == "UNSUPPORTED_PLAN":
@@ -133,8 +137,7 @@ class Orchestrator:
 
         # If no facts requested but it's an ELSS query without explicit fact, default to lock-in
         if not requested_facts:
-            if "elss" in query_text and not scheme_id:
-                scheme_id = "hdfc_elss_tax_saver"
+            if "elss" in query_text:
                 requested_facts = ["elss_lock_in"]
             else:
                 return FactualResponse(
