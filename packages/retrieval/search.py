@@ -1,39 +1,18 @@
+import os
 import datetime
 from typing import List, Dict, Any, Optional
 
 TODAY_STR = datetime.date.today().strftime("%Y-%m-%d")
 from packages.retrieval.interfaces import RetrievalClient
+from packages.retrieval.corpus_loader import load_corpus_from_processed
 
-# In-memory mock corpus representing Phase 2B expanded search space
-MOCK_CORPUS = [
+# ---------------------------------------------------------------------------
+# AMC-level procedural passages (not in processed JSON files)
+# These cover investor-service questions that are not scheme-specific.
+# ---------------------------------------------------------------------------
+AMC_PROCEDURE_PASSAGES = [
     {
-        "passage_id": "passage_mock_1",
-        "document_id": "doc_hdfc_midcap_factsheet",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "The minimum SIP amount for HDFC Mid-Cap Opportunities Fund is ₹100.",
-        "fact_types": ["minimum_sip_amount"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_2",
-        "document_id": "doc_hdfc_midcap_factsheet",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Expense Ratio: 0.85%",
-        "fact_types": ["expense_ratio"],
-        "is_table": True,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_3",
+        "passage_id": "passage_amc_kyc",
         "document_id": "doc_hdfc_amc_proc",
         "document_type": "AMC_PROCEDURE",
         "scheme_ids": [],
@@ -46,150 +25,7 @@ MOCK_CORPUS = [
         "source_url": "https://groww.in/mutual-funds/default",
     },
     {
-        "passage_id": "passage_mock_conflict_1",
-        "document_id": "doc_hdfc_midcap_amc",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Exit Load: 1%",
-        "fact_types": ["exit_load"],
-        "is_table": False,
-        "publication_date": "2026-08-20",
-        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap",
-    },
-    {
-        "passage_id": "passage_mock_conflict_2",
-        "document_id": "doc_hdfc_midcap_groww",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Exit Load: 1.5%",
-        "fact_types": ["exit_load"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap",
-    },
-    {
-        "passage_id": "passage_mock_unresolved_1",
-        "document_id": "doc_unresolved_groww1",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Fund Manager: Rahul",
-        "fact_types": ["fund_manager"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-a",
-    },
-    {
-        "passage_id": "passage_mock_unresolved_2",
-        "document_id": "doc_unresolved_groww2",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Fund Manager: Gopal",
-        "fact_types": ["fund_manager"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://hdfcfund.com/scheme/hdfc-mid-cap-b",
-    },
-    {
-        "passage_id": "passage_mock_objective",
-        "document_id": "doc_hdfc_midcap_objective",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "The investment objective of the scheme is to provide long-term capital appreciation.",
-        "fact_types": ["investment_objective"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-mid-cap-objective",
-    },
-    {
-        "passage_id": "passage_mock_benchmark",
-        "document_id": "doc_hdfc_midcap_benchmark",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Benchmark: NIFTY Midcap 150 TRI",
-        "fact_types": ["benchmark_index"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_riskometer",
-        "document_id": "doc_hdfc_midcap_riskometer",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Riskometer: Very High",
-        "fact_types": ["riskometer"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_inception",
-        "document_id": "doc_hdfc_midcap_inception",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Inception Date: 25 June 2007",
-        "fact_types": ["inception_date"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_elss_lockin",
-        "document_id": "doc_hdfc_elss_lockin",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_elss_tax_saver"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Lock-in Period: 3 Years",
-        "fact_types": ["elss_lock_in"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth",
-    },
-    {
-        "passage_id": "passage_mock_lumpsum",
-        "document_id": "doc_hdfc_midcap_lumpsum",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Min Lumpsum: ₹5,000",
-        "fact_types": ["minimum_lumpsum"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_plans",
-        "document_id": "doc_hdfc_midcap_plans",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "ALL",
-        "option": "ALL",
-        "normalized_text": "Available Plans: Direct and Regular. Options: Growth and IDCW.",
-        "fact_types": ["plans_options"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_factsheet_loc",
+        "passage_id": "passage_amc_factsheet_loc",
         "document_id": "doc_amc_factsheet_loc",
         "document_type": "AMC_PROCEDURE",
         "scheme_ids": [],
@@ -202,7 +38,7 @@ MOCK_CORPUS = [
         "source_url": "https://www.hdfcfund.com/investor-desk/downloads/factsheets",
     },
     {
-        "passage_id": "passage_mock_account_stmt",
+        "passage_id": "passage_amc_account_stmt",
         "document_id": "doc_amc_account_stmt",
         "document_type": "AMC_PROCEDURE",
         "scheme_ids": [],
@@ -215,7 +51,7 @@ MOCK_CORPUS = [
         "source_url": "https://www.hdfcfund.com/investor-desk/account-statement",
     },
     {
-        "passage_id": "passage_mock_capital_gains",
+        "passage_id": "passage_amc_capital_gains",
         "document_id": "doc_amc_capital_gains",
         "document_type": "AMC_PROCEDURE",
         "scheme_ids": [],
@@ -227,50 +63,96 @@ MOCK_CORPUS = [
         "publication_date": TODAY_STR,
         "source_url": "https://www.hdfcfund.com/investor-desk/capital-gains",
     },
-    {
-        "passage_id": "passage_mock_performance",
-        "document_id": "doc_hdfc_midcap_performance",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_mid_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "1 Year Return: 15.4%",
-        "fact_types": ["performance_value"],
-        "is_table": True,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund",
-    },
-    {
-        "passage_id": "passage_mock_largecap_expense",
-        "document_id": "doc_hdfc_largecap_factsheet",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_large_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Expense Ratio: 0.95%",
-        "fact_types": ["expense_ratio"],
-        "is_table": True,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund",
-    },
-    {
-        "passage_id": "passage_mock_largecap_exitload",
-        "document_id": "doc_hdfc_largecap_factsheet",
-        "document_type": "FACTSHEET",
-        "scheme_ids": ["hdfc_large_cap"],
-        "plan": "Direct",
-        "option": "Growth",
-        "normalized_text": "Exit Load: 1% if redeemed within 1 year.",
-        "fact_types": ["exit_load"],
-        "is_table": False,
-        "publication_date": TODAY_STR,
-        "source_url": "https://www.hdfcfund.com/our-funds/equity-funds/hdfc-top-100-fund",
-    },
+]
+
+# ---------------------------------------------------------------------------
+# Build the live corpus: processed JSON data + AMC procedural passages
+# ---------------------------------------------------------------------------
+_PROCESSED_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "data", "processed")
+_PROCESSED_DIR = os.path.normpath(_PROCESSED_DIR)
+
+CORPUS: List[Dict[str, Any]] = load_corpus_from_processed(_PROCESSED_DIR) + AMC_PROCEDURE_PASSAGES
+
+
+# ---------------------------------------------------------------------------
+# Keyword → fact_type matching rules
+# Each entry: (list_of_query_keywords_any_must_match, fact_type_key, score)
+# ---------------------------------------------------------------------------
+KEYWORD_FACT_RULES = [
+    (["sip"],                                    "minimum_sip_amount",          0.80),
+    (["kyc"],                                    "kyc_procedure",               0.90),
+    (["expense"],                                "expense_ratio",               0.85),
+    (["exit"],                                   "exit_load",                   0.95),
+    (["manager"],                                "fund_manager",                0.95),
+    (["objective"],                              "investment_objective",        0.95),
+    (["benchmark"],                              "benchmark_index",             0.95),
+    (["risk", "riskometer"],                     "riskometer",                  0.95),
+    (["inception"],                              "inception_date",              0.95),
+    (["lock-in", "lock in", "lockin", "elss"],   "elss_lock_in",               0.95),
+    (["lump", "lumpsum", "lump sum"],            "minimum_lumpsum",             0.90),
+    (["plan", "option"],                         "plans_options",               0.85),
+    (["factsheet"],                              "factsheet_location",          0.90),
+    (["statement"],                              "account_statement_procedure", 0.92),
+    (["capital", "gains"],                       "capital_gains_procedure",     0.93),
+    (["performance", "return"],                  "performance_value",           0.88),
+]
+
+VECTOR_FACT_RULES = [
+    (["sip"],                                    "minimum_sip_amount",          0.85),
+    (["kyc"],                                    "kyc_procedure",               0.88),
+    (["expense"],                                "expense_ratio",               0.82),
+    (["exit"],                                   "exit_load",                   0.92),
+    (["manager"],                                "fund_manager",                0.91),
+    (["objective"],                              "investment_objective",        0.96),
+    (["benchmark"],                              "benchmark_index",             0.92),
+    (["risk", "riskometer"],                     "riskometer",                  0.93),
+    (["inception"],                              "inception_date",              0.94),
+    (["lock-in", "lock in", "lockin", "elss"],   "elss_lock_in",               0.95),
+    (["lump", "lumpsum", "lump sum"],            "minimum_lumpsum",             0.92),
+    (["plan", "option"],                         "plans_options",               0.89),
+    (["factsheet"],                              "factsheet_location",          0.91),
+    (["statement"],                              "account_statement_procedure", 0.94),
+    (["capital", "gains"],                       "capital_gains_procedure",     0.95),
+    (["performance", "return"],                  "performance_value",           0.90),
 ]
 
 
+def _match_score(q: str, rules: list) -> Optional[tuple]:
+    """Return (fact_type, score) for the first matching rule, or None."""
+    for keywords, fact_type, score in rules:
+        if any(kw in q for kw in keywords):
+            return fact_type, score
+    return None
+
+
+def _apply_filters(
+    doc: Dict[str, Any],
+    scheme_id: Optional[str],
+    document_types: Optional[List[str]],
+    fact_type: Optional[str],
+    amc_level: bool,
+) -> bool:
+    """Return True if the passage survives all hard filters."""
+    # 1. Scheme hard filter
+    if not amc_level and scheme_id and scheme_id not in doc["scheme_ids"]:
+        return False
+    # 2. Document type filter
+    if document_types and doc["document_type"] not in document_types:
+        return False
+    # 3. Fact type filter
+    if fact_type and fact_type not in doc["fact_types"]:
+        return False
+    return True
+
+
 class InMemoryKeywordSearch(RetrievalClient):
-    """InMemory Search simulating database retrieval for Phase 2B."""
+    """
+    Keyword-based in-memory search over the dynamically loaded corpus.
+
+    The corpus is built at import time from ``data/processed/*.json`` plus
+    the hardcoded AMC procedural passages, so every processed scheme is
+    automatically searchable without any code changes.
+    """
 
     def search(
         self,
@@ -285,93 +167,35 @@ class InMemoryKeywordSearch(RetrievalClient):
     ) -> List[Dict[str, Any]]:
         results = []
         q = query.lower()
+        match = _match_score(q, KEYWORD_FACT_RULES)
 
-        for doc in MOCK_CORPUS:
-            # 1. Scheme Hard Filter
-            if not amc_level and scheme_id and scheme_id not in doc["scheme_ids"]:
+        for doc in CORPUS:
+            if not _apply_filters(doc, scheme_id, document_types, fact_type, amc_level):
                 continue
 
-            # 2. Document Type Routing Filter
-            if document_types and doc["document_type"] not in document_types:
-                continue
+            if match:
+                matched_fact_type, score = match
+                if matched_fact_type in doc["fact_types"]:
+                    doc_copy = doc.copy()
+                    doc_copy["score"] = score
+                    results.append(doc_copy)
+            else:
+                # Fallback: include full-text passages for unmatched queries
+                if "full_text" in doc["fact_types"]:
+                    doc_copy = doc.copy()
+                    doc_copy["score"] = 0.50
+                    results.append(doc_copy)
 
-            # 3. Fact Type Filter
-            if fact_type and fact_type not in doc["fact_types"]:
-                continue
-
-            # Keyword matching logic mock
-            if "sip" in q and "minimum_sip_amount" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.8
-                results.append(doc_copy)
-            elif "kyc" in q and "kyc_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.9
-                results.append(doc_copy)
-            elif "expense" in q and "expense_ratio" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.85
-                results.append(doc_copy)
-            elif "exit" in q and "exit_load" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif "manager" in q and "fund_manager" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif "objective" in q and "investment_objective" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif "benchmark" in q and "benchmark_index" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif "risk" in q and "riskometer" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif "inception" in q and "inception_date" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif ("lock-in" in q or "elss" in q) and "elss_lock_in" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif ("lump" in q or "spend" in q or "amount" in q) and "minimum_lumpsum" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.90
-                results.append(doc_copy)
-            elif ("plan" in q or "option" in q) and "plans_options" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.85
-                results.append(doc_copy)
-            elif "factsheet" in q and "factsheet_location" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.90
-                results.append(doc_copy)
-            elif "statement" in q and "account_statement_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.92
-                results.append(doc_copy)
-            elif ("capital" in q or "gains" in q) and "capital_gains_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.93
-                results.append(doc_copy)
-            elif ("performance" in q or "return" in q) and "performance_value" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.88
-                results.append(doc_copy)
-
-        return results
+        return results[:limit]
 
 
 class InMemoryVectorSearch(RetrievalClient):
     """
-    InMemory Vector Search for Phase 2B.
-    Note: In production, this expects 1024-dimensional BGE Large vectors.
+    Vector-based in-memory search over the dynamically loaded corpus.
+
+    Note: In production this expects 1024-dimensional BGE Large vectors.
+    This mock uses the same keyword heuristics as the keyword search but
+    with slightly different (typically higher) confidence scores.
     """
 
     def search(
@@ -387,84 +211,23 @@ class InMemoryVectorSearch(RetrievalClient):
     ) -> List[Dict[str, Any]]:
         results = []
         q = query.lower()
+        match = _match_score(q, VECTOR_FACT_RULES)
 
-        for doc in MOCK_CORPUS:
-            # 1. Scheme Hard Filter
-            if not amc_level and scheme_id and scheme_id not in doc["scheme_ids"]:
+        for doc in CORPUS:
+            if not _apply_filters(doc, scheme_id, document_types, fact_type, amc_level):
                 continue
 
-            # 2. Document Type Routing Filter
-            if document_types and doc["document_type"] not in document_types:
-                continue
+            if match:
+                matched_fact_type, score = match
+                if matched_fact_type in doc["fact_types"]:
+                    doc_copy = doc.copy()
+                    doc_copy["score"] = score
+                    results.append(doc_copy)
+            else:
+                # Fallback: include full-text passages for unmatched queries
+                if "full_text" in doc["fact_types"]:
+                    doc_copy = doc.copy()
+                    doc_copy["score"] = 0.55
+                    results.append(doc_copy)
 
-            # 3. Fact Type Filter
-            if fact_type and fact_type not in doc["fact_types"]:
-                continue
-
-            # Vector matching logic mock (similar for simplicity, slightly diff scores)
-            if "sip" in q and "minimum_sip_amount" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.85
-                results.append(doc_copy)
-            elif "expense" in q and "expense_ratio" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.82
-                results.append(doc_copy)
-            elif "kyc" in q and "kyc_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.88
-                results.append(doc_copy)
-            elif "exit" in q and "exit_load" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.92
-                results.append(doc_copy)
-            elif "manager" in q and "fund_manager" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.91
-                results.append(doc_copy)
-            elif "objective" in q and "investment_objective" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.96
-                results.append(doc_copy)
-            elif "benchmark" in q and "benchmark_index" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.92
-                results.append(doc_copy)
-            elif "risk" in q and "riskometer" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.93
-                results.append(doc_copy)
-            elif "inception" in q and "inception_date" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.94
-                results.append(doc_copy)
-            elif ("lock-in" in q or "elss" in q) and "elss_lock_in" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif ("lump" in q or "spend" in q or "amount" in q) and "minimum_lumpsum" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.92
-                results.append(doc_copy)
-            elif ("plan" in q or "option" in q) and "plans_options" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.89
-                results.append(doc_copy)
-            elif "factsheet" in q and "factsheet_location" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.91
-                results.append(doc_copy)
-            elif "statement" in q and "account_statement_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.94
-                results.append(doc_copy)
-            elif ("capital" in q or "gains" in q) and "capital_gains_procedure" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.95
-                results.append(doc_copy)
-            elif ("performance" in q or "return" in q) and "performance_value" in doc["fact_types"]:
-                doc_copy = doc.copy()
-                doc_copy["score"] = 0.90
-                results.append(doc_copy)
-
-        return results
+        return results[:limit]
