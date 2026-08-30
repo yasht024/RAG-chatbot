@@ -3,6 +3,9 @@ from typing import Optional
 
 class EvidenceItem(BaseModel):
     scheme_id: str
+    scheme_name: Optional[str] = None
+    plan: Optional[str] = None
+    option: Optional[str] = None
     fact_type: str
     value: str
     source_org: str

@@ -3,7 +3,7 @@ import logging
 from typing import List, Dict, Any, Optional
 
 from infra.environments.config import config
-from packages.contracts.schemas import QueryRequest, FactualResponse, TerminalState
+from packages.contracts.schemas import QueryRequest, FactualResponse, TerminalState, Citation
 from packages.contracts.evidence import EvidenceItem
 from packages.retrieval.search import InMemoryKeywordSearch, InMemoryVectorSearch
 from packages.retrieval.fusion import reciprocal_rank_fusion
@@ -105,6 +105,9 @@ class Orchestrator:
         amc_procedures = ["kyc_procedure", "factsheet_location", "account_statement_procedure", "capital_gains_procedure"]
         requested_facts = self.decomposer.decompose(query_text)
         
+        requested_fact_count = len(requested_facts)
+        logger.info(f"requested_fact_count = {requested_fact_count}")
+        
         if any(f in amc_procedures for f in requested_facts):
             amc_level = True
             
@@ -150,6 +153,7 @@ class Orchestrator:
 
         # 4. Retrieval & Validation (Phase 4 & 5)
         evidence_items: List[EvidenceItem] = []
+        overall_citation = None
         overall_citation_url = None
         overall_source_date = None
         evidence_passage_ids = []
@@ -216,6 +220,9 @@ class Orchestrator:
                 
                 evidence = EvidenceItem(
                     scheme_id=scheme_id or "AMC",
+                    scheme_name=selected_passage.get("scheme_name"),
+                    plan=plan,
+                    option=option,
                     fact_type=fact_type,
                     value=selected_passage["normalized_text"],
                     source_org=selected_passage.get("source_org", "HDFC AMC"),
@@ -231,13 +238,25 @@ class Orchestrator:
                 evidence_items.append(evidence)
                 
                 # Capture URL/Date from the first valid evidence for the overall response
-                if not overall_citation_url:
+                if not overall_citation:
+                    overall_citation = Citation(
+                        organization=evidence.source_org,
+                        url=decision.citation_url,
+                        document_name=evidence.document_name,
+                        document_type=evidence.source_type,
+                        publication_date=evidence.publication_date,
+                        effective_date=evidence.effective_date,
+                        page_number=str(evidence.page) if evidence.page else None,
+                    )
                     overall_citation_url = decision.citation_url
                     overall_source_date = decision.source_date
                 
                 evidence_passage_ids.extend(decision.selected_passage_ids)
 
         # 5. Completeness Check & Response Formatting (Phase 6)
+        validated_fact_count = len(evidence_items)
+        logger.info(f"validated_fact_count = {validated_fact_count}")
+
         if not evidence_items:
             # Complete failure to retrieve/validate any requested facts
             resp = FactualResponse(
@@ -254,6 +273,7 @@ class Orchestrator:
         draft = FactualResponse(
             status=TerminalState.FACTUAL_ANSWER,
             answer_sentences=answer_sentences,
+            citation=overall_citation,
             citation_url=overall_citation_url,
             source_date=overall_source_date,
             evidence_passage_ids=evidence_passage_ids,

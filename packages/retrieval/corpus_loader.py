@@ -182,6 +182,7 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "document_id":     f"doc_{scheme_id}",
                 "document_type":   "FACTSHEET",
                 "scheme_ids":      [scheme_id],
+                "scheme_name":     doc_title,
                 "plan":            "ALL",
                 "option":          "ALL",
                 "normalized_text": normalized_text,
@@ -195,6 +196,9 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "source_type":     source_type,
                 "approved_source": approved_source,
                 "document_name":   doc_title,
+                "page_number":     fact.get("page_number"),
+                "supersedes":      doc.get("supersedes"),
+                "superseded_by":   doc.get("superseded_by"),
             }
             passages.append(passage)
 
@@ -205,6 +209,7 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "document_id":     f"doc_{scheme_id}",
                 "document_type":   "FACTSHEET",
                 "scheme_ids":      [scheme_id],
+                "scheme_name":     doc_title,
                 "plan":            "ALL",
                 "option":          "ALL",
                 "normalized_text": full_text,
@@ -218,6 +223,9 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "source_type":     source_type,
                 "approved_source": approved_source,
                 "document_name":   doc_title,
+                "page_number":     None,
+                "supersedes":      doc.get("supersedes"),
+                "superseded_by":   doc.get("superseded_by"),
             })
 
     logger.info(

@@ -50,9 +50,20 @@ class EvidenceDecision(BaseModel):
     validation_ruleset: str
 
 
+class Citation(BaseModel):
+    organization: str
+    url: str
+    document_name: str
+    document_type: str
+    publication_date: Optional[str] = None
+    effective_date: Optional[str] = None
+    page_number: Optional[str] = None
+
+
 class FactualResponse(BaseModel):
     status: TerminalState
-    answer_sentences: List[str] = Field(default_factory=list, max_length=3)
+    answer_sentences: List[str] = Field(default_factory=list, max_length=15)
+    citation: Optional[Citation] = None
     citation_url: Optional[str] = None
     source_date: Optional[str] = None
     refusal_reason: Optional[str] = None

@@ -266,7 +266,7 @@ def validate_candidates(
         selected_document_id=selected.get("document_id", "doc_unknown"),
         selected_passage_ids=[selected.get("passage_id", "passage_unknown")],
         citation_url=selected.get("source_url", "https://www.hdfcfund.com/"),
-        source_date=selected.get("publication_date") or "",
+        source_date=selected.get("effective_date") or selected.get("publication_date") or "",
         fact_type=selected.get("fact_types", ["unknown"])[0],
         conflict_detected=conflict_detected,
         validation_ruleset="v2.0",

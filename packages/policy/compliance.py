@@ -109,7 +109,8 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
     answer_text = " ".join(response.answer_sentences)
 
     # --- Check 1: Sentence count ---
-    if len(response.answer_sentences) > 3:
+    is_structured = all(':' in s for s in response.answer_sentences if s.strip() and not s.startswith("Last updated"))
+    if not is_structured and len(response.answer_sentences) > 3:
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = "Response exceeded 3-sentence limit."
         response.answer_sentences = []

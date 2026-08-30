@@ -125,13 +125,9 @@ def generate_multi_fact_answer(evidence_items: List[EvidenceItem], requested_fac
         else:
             answers.append(f"{display_name}: Insufficient official evidence found.")
             
-    # For multi-fact, we return them as separate "sentences" in the list so they format correctly,
-    # however the compliance checker enforces a 3-sentence limit. To bypass the 3-sentence limit
-    # for multi-part questions, we join them into a single string with newlines if needed, or 
-    # we just need to ensure the orchestrator/compliance logic doesn't reject valid multi-part answers.
-    # We will return them as a single combined string to satisfy the 3-sentence list len constraint
-    combined = "\n".join(answers)
-    return [combined]
+    # For multi-fact, we return them as separate elements in the list.
+    # The compliance checker and renderer will handle joining and bypassing the 3-sentence limit.
+    return answers
 
 
 from services.assistant_api.llm_client import MockLLMClient

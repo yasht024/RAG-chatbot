@@ -193,7 +193,11 @@ class InMemoryKeywordSearch(RetrievalClient):
             if not _apply_filters(doc, scheme_id, document_types, fact_type, amc_level):
                 continue
 
-            if match:
+            if fact_type:
+                doc_copy = doc.copy()
+                doc_copy["score"] = 0.90
+                results.append(doc_copy)
+            elif match:
                 matched_fact_type, score = match
                 if matched_fact_type in doc["fact_types"]:
                     doc_copy = doc.copy()
@@ -237,7 +241,11 @@ class InMemoryVectorSearch(RetrievalClient):
             if not _apply_filters(doc, scheme_id, document_types, fact_type, amc_level):
                 continue
 
-            if match:
+            if fact_type:
+                doc_copy = doc.copy()
+                doc_copy["score"] = 0.90
+                results.append(doc_copy)
+            elif match:
                 matched_fact_type, score = match
                 if matched_fact_type in doc["fact_types"]:
                     doc_copy = doc.copy()

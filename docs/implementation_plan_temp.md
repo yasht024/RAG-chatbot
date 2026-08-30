@@ -8,15 +8,6 @@ The existing system is a Python-based RAG pipeline that answers factual question
 
 ## Critical Failures Found
 
-### F1 — Groww in `sources.json` and `AMC_PROCEDURE_PASSAGES`
-[sources.json](file:///c:/Users/yash.tiwari/OneDrive/Desktop/Milestone%20-%20RAG/data/catalog/sources.json) still lists `groww.in` as an **allowed domain**. The KYC passage in [`search.py`](file:///c:/Users/yash.tiwari/OneDrive/Desktop/Milestone%20-%20RAG/packages/retrieval/search.py#L25) has `source_url: "https://groww.in/mutual-funds/default"`. `validation.py` has `SOURCE_PRECEDENCE = {"groww.in": 100, "hdfcfund.com": 50}` — Groww is rated **higher priority than HDFC AMC**.
-
-### F2 — compliance.py allows Groww in citation check
-[compliance.py](file:///c:/Users/yash.tiwari/OneDrive/Desktop/Milestone%20-%20RAG/packages/policy/compliance.py#L21) checks `"groww.in" or "hdfcfund.com"` as valid citation domains — Groww passes the final compliance gate.
-
-### F3 — Date bug: `publication_date = TODAY_STR`
-[corpus_loader.py](file:///c:/Users/yash.tiwari/OneDrive/Desktop/Milestone%20-%20RAG/packages/retrieval/corpus_loader.py#L184) stamps every passage with today's date. This causes the "As of 2026-08-30" fabrication. No actual source date is preserved.
-
 ### F4 — Processed JSONs are sourced from Groww
 Every file in `data/processed/` has `canonical_url: "https://groww.in/..."` and `document_title: "... | Groww"`. The corpus_loader overrides the citation URL to HDFC AMC but the underlying **fact values were scraped from Groww** with no official source date.
 
