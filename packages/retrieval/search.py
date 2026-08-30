@@ -10,6 +10,13 @@ from packages.retrieval.corpus_loader import load_corpus_from_processed
 # AMC-level procedural passages (not in processed JSON files)
 # These cover investor-service questions that are not scheme-specific.
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Publication dates for AMC procedural passages.
+# Use real reference dates — never TODAY_STR (that would fabricate the date).
+# Update these when the underlying HDFC AMC pages are revised.
+# ---------------------------------------------------------------------------
+_AMC_PROC_REFERENCE_DATE = "2025-01-01"  # Conservative known-good date for procedures
+
 AMC_PROCEDURE_PASSAGES = [
     {
         "passage_id": "passage_amc_kyc",
@@ -18,11 +25,15 @@ AMC_PROCEDURE_PASSAGES = [
         "scheme_ids": [],
         "plan": "ALL",
         "option": "ALL",
-        "normalized_text": "To update your KYC, visit the AMC portal and submit form 10.",
+        "normalized_text": "To update your KYC, visit the HDFC AMC investor portal at hdfcfund.com and follow the KYC update process.",
         "fact_types": ["kyc_procedure"],
         "is_table": False,
-        "publication_date": "2026-07-01",
-        "source_url": "https://groww.in/mutual-funds/default",
+        # source_org / approved_source: required by Phase 1 — source must be HDFC AMC
+        "source_org": "HDFC AMC",
+        "source_domain": "hdfcfund.com",
+        "approved_source": True,
+        "publication_date": _AMC_PROC_REFERENCE_DATE,
+        "source_url": "https://www.hdfcfund.com/investor-desk/kyc",
     },
     {
         "passage_id": "passage_amc_factsheet_loc",
@@ -31,10 +42,13 @@ AMC_PROCEDURE_PASSAGES = [
         "scheme_ids": [],
         "plan": "ALL",
         "option": "ALL",
-        "normalized_text": "You can download the official factsheet from the 'Downloads' section on the HDFC AMC website.",
+        "normalized_text": "You can download the official HDFC Mutual Fund factsheet from the 'Downloads' section on the HDFC AMC website at hdfcfund.com.",
         "fact_types": ["factsheet_location"],
         "is_table": False,
-        "publication_date": TODAY_STR,
+        "source_org": "HDFC AMC",
+        "source_domain": "hdfcfund.com",
+        "approved_source": True,
+        "publication_date": _AMC_PROC_REFERENCE_DATE,
         "source_url": "https://www.hdfcfund.com/investor-desk/downloads/factsheets",
     },
     {
@@ -44,10 +58,13 @@ AMC_PROCEDURE_PASSAGES = [
         "scheme_ids": [],
         "plan": "ALL",
         "option": "ALL",
-        "normalized_text": "To download your account statement, log in to the HDFC Mutual Fund investor portal or request it via SMS.",
+        "normalized_text": "To download your HDFC Mutual Fund account statement, log in to the HDFC AMC investor portal or request it via SMS/email.",
         "fact_types": ["account_statement_procedure"],
         "is_table": False,
-        "publication_date": TODAY_STR,
+        "source_org": "HDFC AMC",
+        "source_domain": "hdfcfund.com",
+        "approved_source": True,
+        "publication_date": _AMC_PROC_REFERENCE_DATE,
         "source_url": "https://www.hdfcfund.com/investor-desk/account-statement",
     },
     {
@@ -57,10 +74,13 @@ AMC_PROCEDURE_PASSAGES = [
         "scheme_ids": [],
         "plan": "ALL",
         "option": "ALL",
-        "normalized_text": "Capital-gains statements can be obtained by sending an email to our support desk from your registered email ID.",
+        "normalized_text": "Capital-gains statements for HDFC Mutual Fund investments can be obtained by contacting the HDFC AMC support desk from your registered email ID.",
         "fact_types": ["capital_gains_procedure"],
         "is_table": False,
-        "publication_date": TODAY_STR,
+        "source_org": "HDFC AMC",
+        "source_domain": "hdfcfund.com",
+        "approved_source": True,
+        "publication_date": _AMC_PROC_REFERENCE_DATE,
         "source_url": "https://www.hdfcfund.com/investor-desk/capital-gains",
     },
 ]

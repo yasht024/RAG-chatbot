@@ -1,8 +1,10 @@
-import json
 import os
 import logging
+from typing import List, Dict, Any, Optional
+
 from infra.environments.config import config
 from packages.contracts.schemas import QueryRequest, FactualResponse, TerminalState
+from packages.contracts.evidence import EvidenceItem
 from packages.retrieval.search import InMemoryKeywordSearch, InMemoryVectorSearch
 from packages.retrieval.fusion import reciprocal_rank_fusion
 from packages.retrieval.router import DocumentRouter
@@ -11,10 +13,10 @@ from packages.policy.compliance import enforce_compliance
 from packages.policy.privacy_guard import PrivacyGuard
 from packages.policy.injection_guard import PromptInjectionGuard
 from packages.policy.classifier import QueryClassifier
-from packages.resilience.circuit_breaker import (
-    CircuitBreaker,
-)
+from packages.policy.resolver import SchemeResolver
+from packages.resilience.circuit_breaker import CircuitBreaker
 from packages.cache.answer_cache import EvidenceAwareAnswerCache
+from services.assistant_api.query_decomposer import QueryDecomposer
 from services.assistant_api.generator import (
     generate_scalar_answer,
     handle_recommendation_refusal,
@@ -30,7 +32,10 @@ class Orchestrator:
         self.privacy_guard = PrivacyGuard()
         self.injection_guard = PromptInjectionGuard()
         self.classifier = QueryClassifier()
+        self.resolver = SchemeResolver()
+        self.decomposer = QueryDecomposer()
         self.answer_cache = EvidenceAwareAnswerCache()
+        
         self.corpus_version = "2.0.0"
         self.policy_version = config.policy_version
         self.vector_circuit_breaker = CircuitBreaker(
@@ -39,22 +44,6 @@ class Orchestrator:
         self.keyword_circuit_breaker = CircuitBreaker(
             failure_threshold=3, recovery_timeout_sec=5.0, name="keyword_search_service"
         )
-
-        # Load aliases for scheme resolution
-        alias_path = os.path.join(os.path.dirname(__file__), "..", "..", "data", "catalog", "aliases.json")
-        try:
-            with open(alias_path, "r") as f:
-                self.aliases = json.load(f)
-        except Exception:
-            self.aliases = {}
-
-    def _resolve_scheme(self, query: str) -> str:
-        q = query.lower()
-        for scheme_id, alias_list in self.aliases.items():
-            for alias in alias_list:
-                if alias.lower() in q:
-                    return scheme_id
-        return None
 
     def process_query(self, request: QueryRequest) -> FactualResponse:
         raw_query = request.query
@@ -76,205 +65,201 @@ class Orchestrator:
                 refusal_reason="Adversarial prompt injection pattern detected and rejected.",
             )
 
-        # 1. Classification & AMC Path Router (P3-SEC-02 mixed-intent & advice defense)
+        # 1. Classification & AMC Path Router
         classification = self.classifier.classify_query(raw_query)
-        if classification.get("query_class") in ["ADVISORY", "PERFORMANCE_COMPARISON"]:
+        query_class = classification.get("query_class")
+        
+        # Advisory / Recommendation refusal
+        if query_class == "ADVISORY":
             return handle_recommendation_refusal()
+            
+        # Phase 7: Performance Comparison refusal vs Single Fact allowance
+        if query_class == "PERFORMANCE_COMPARISON":
+            return FactualResponse(
+                status=TerminalState.POLICY_REFUSAL,
+                refusal_reason="I can provide verified facts about HDFC mutual fund schemes, but I cannot compare or rank fund performance."
+            )
 
-        scheme_id = self._resolve_scheme(query_text)
+        # 2. Scheme Resolution (Phase 3)
+        resolve_res = self.resolver.resolve_scheme(query_text)
+        
+        scheme_id = resolve_res.get("scheme_id")
+        plan = resolve_res.get("plan", "Direct")
+        option = resolve_res.get("option", "Growth")
         amc_level = False
 
         if not scheme_id and getattr(request, "history", None):
             for msg in reversed(request.history):
                 if msg.role == "user":
-                    hist_scheme = self._resolve_scheme(msg.content)
-                    if hist_scheme:
-                        scheme_id = hist_scheme
+                    hist_res = self.resolver.resolve_scheme(msg.content)
+                    if hist_res.get("scheme_id"):
+                        scheme_id = hist_res.get("scheme_id")
+                        plan = hist_res.get("plan", plan)
+                        option = hist_res.get("option", option)
                         break
                     elif "elss" in msg.content.lower():
                         scheme_id = "hdfc_elss_tax_saver"
                         break
 
-        # 1b. Cache Check (P3-REL-05: Conserves LLM RPM/RPD/TPM/TPD)
-        cache_key = f"{query_text}|{scheme_id or 'NONE'}"
+        # Check for AMC-level procedural queries before enforcing scheme
+        amc_procedures = ["kyc_procedure", "factsheet_location", "account_statement_procedure", "capital_gains_procedure"]
+        requested_facts = self.decomposer.decompose(query_text)
+        
+        if any(f in amc_procedures for f in requested_facts):
+            amc_level = True
+            
+        # Ambiguity / Unsupported check
+        if not amc_level:
+            if resolve_res.get("status") == "UNSUPPORTED_PLAN":
+                return FactualResponse(
+                    status=TerminalState.POLICY_REFUSAL,
+                    refusal_reason=f"Information for the {resolve_res.get('plan')} plan is not supported by this assistant."
+                )
+            if not scheme_id:
+                if resolve_res.get("status") == "AMBIGUOUS_SCHEME":
+                    return FactualResponse(
+                        status=TerminalState.AMBIGUOUS_SCHEME,
+                        refusal_reason=resolve_res.get("message", "Multiple matching schemes found. Please clarify.")
+                    )
+                else:
+                    # Could not identify scheme and not an AMC query
+                    return FactualResponse(
+                        status=TerminalState.AMBIGUOUS_SCHEME,
+                        refusal_reason="Could not definitively identify a single scheme from the query."
+                    )
+
+        # If no facts requested but it's an ELSS query without explicit fact, default to lock-in
+        if not requested_facts:
+            if "elss" in query_text and not scheme_id:
+                scheme_id = "hdfc_elss_tax_saver"
+                requested_facts = ["elss_lock_in"]
+            else:
+                return FactualResponse(
+                    status=TerminalState.INSUFFICIENT_EVIDENCE,
+                    refusal_reason="Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+                )
+
+        # 3. Cache Check
+        # Sort requested facts for deterministic cache key
+        fact_key = ",".join(sorted(requested_facts))
+        cache_key = f"{scheme_id or 'NONE'}|{plan}|{option}|{fact_key}"
         cached_response = self.answer_cache.get(cache_key, self.corpus_version, self.policy_version)
         if cached_response:
-            logger.info(f"Returning cached answer for query '{query_text}'")
+            logger.info(f"Returning cached answer for key '{cache_key}'")
             return cached_response
 
-        if "sip" in query_text:
-            fact_type = "minimum_sip_amount"
-        elif "expense" in query_text:
-            fact_type = "expense_ratio"
-        elif "benchmark" in query_text:
-            fact_type = "benchmark_index"
-        elif "lock-in" in query_text or "elss" in query_text:
-            fact_type = "elss_lock_in"
-            if not scheme_id:
-                scheme_id = "hdfc_elss_tax_saver"
-        elif "kyc" in query_text:
-            fact_type = "kyc_procedure"
-            amc_level = True
-        elif "exit" in query_text:
-            fact_type = "exit_load"
-        elif "manager" in query_text:
-            fact_type = "fund_manager"
-        elif "objective" in query_text:
-            fact_type = "investment_objective"
-        elif "risk" in query_text:
-            fact_type = "riskometer"
-        elif "inception" in query_text or "launch date" in query_text:
-            fact_type = "inception_date"
-        elif "lump" in query_text or "minimum amount" in query_text or "spend" in query_text:
-            fact_type = "minimum_lumpsum"
-        elif "plans" in query_text or "options" in query_text:
-            fact_type = "plans_options"
-        elif "factsheet" in query_text:
-            fact_type = "factsheet_location"
-            amc_level = True
-        elif "account statement" in query_text:
-            fact_type = "account_statement_procedure"
-            amc_level = True
-        elif "capital-gains" in query_text or "capital gains" in query_text:
-            fact_type = "capital_gains_procedure"
-            amc_level = True
-        elif "performance" in query_text or "return" in query_text:
-            fact_type = "performance_value"
-        else:
+        # 4. Retrieval & Validation (Phase 4 & 5)
+        evidence_items: List[EvidenceItem] = []
+        overall_citation_url = None
+        overall_source_date = None
+        evidence_passage_ids = []
+
+        for fact_type in requested_facts:
+            allowed_docs = DocumentRouter.get_document_types_for_fact(fact_type)
+            
+            # Keyword Search
+            try:
+                kw_results = self.keyword_circuit_breaker.call(
+                    lambda: self.keyword_search.search(
+                        query_text,
+                        scheme_id=scheme_id,
+                        plan=plan,
+                        option=option,
+                        document_types=allowed_docs,
+                        fact_type=fact_type,
+                        amc_level=amc_level,
+                    ),
+                    fallback=lambda: None,
+                )
+            except Exception as e:
+                logger.error(f"Keyword search failed for {fact_type}: {e}")
+                kw_results = None
+
+            # Vector Search
+            try:
+                vec_results = self.vector_circuit_breaker.call(
+                    lambda: self.vector_search.search(
+                        query_text,
+                        scheme_id=scheme_id,
+                        plan=plan,
+                        option=option,
+                        document_types=allowed_docs,
+                        fact_type=fact_type,
+                        amc_level=amc_level,
+                    ),
+                    fallback=lambda: None,
+                )
+            except Exception as e:
+                logger.warning(f"Vector search degraded/failed for {fact_type}: {e}")
+                vec_results = None
+
+            fused_candidates = []
+            if kw_results and vec_results:
+                fused_candidates = reciprocal_rank_fusion(kw_results, vec_results)
+            elif kw_results:
+                fused_candidates = kw_results
+            elif vec_results:
+                fused_candidates = vec_results
+
+            if not fused_candidates:
+                continue
+
+            expected_scheme = None if (amc_level and fact_type in amc_procedures) else scheme_id
+            decision = validate_candidates(fused_candidates, expected_scheme=expected_scheme)
+            
+            if decision.status == "VALID":
+                selected_passage_id = decision.selected_passage_ids[0]
+                selected_passage = next(
+                    (p for p in fused_candidates if p["passage_id"] == selected_passage_id),
+                    fused_candidates[0],
+                )
+                
+                evidence = EvidenceItem(
+                    scheme_id=scheme_id or "AMC",
+                    fact_type=fact_type,
+                    value=selected_passage["normalized_text"],
+                    source_org=selected_passage.get("source_org", "HDFC AMC"),
+                    source_type=selected_passage.get("source_type", "scheme_page"),
+                    source_url=decision.citation_url,
+                    document_name=selected_passage.get("document_name", "Unknown Document"),
+                    publication_date=decision.source_date,
+                    effective_date=selected_passage.get("effective_date"),
+                    page=selected_passage.get("page_number"),
+                    approved=True,
+                    confidence="verified"
+                )
+                evidence_items.append(evidence)
+                
+                # Capture URL/Date from the first valid evidence for the overall response
+                if not overall_citation_url:
+                    overall_citation_url = decision.citation_url
+                    overall_source_date = decision.source_date
+                
+                evidence_passage_ids.extend(decision.selected_passage_ids)
+
+        # 5. Completeness Check & Response Formatting (Phase 6)
+        if not evidence_items:
+            # Complete failure to retrieve/validate any requested facts
             resp = FactualResponse(
                 status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance.",
+                refusal_reason="Insufficient official evidence is available to verify this fact."
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
 
-        if not amc_level and not scheme_id:
-            resp = FactualResponse(
-                status=TerminalState.AMBIGUOUS_SCHEME,
-                refusal_reason="Could not definitively identify a single scheme from the query.",
-            )
-            self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
-            return resp
-
-        # 2. Document Type Routing
-        allowed_docs = DocumentRouter.get_document_types_for_fact(fact_type)
-
-        # 3. Retrieval with Circuit Breakers and Fallbacks
-        kw_results = None
-        try:
-            kw_results = self.keyword_circuit_breaker.call(
-                lambda: self.keyword_search.search(
-                    query_text,
-                    scheme_id=scheme_id,
-                    document_types=allowed_docs,
-                    fact_type=fact_type,
-                    amc_level=amc_level,
-                ),
-                fallback=lambda: None,
-            )
-        except Exception as e:
-            logger.error(f"Keyword search failed: {e}")
-            kw_results = None
-
-        vec_results = None
-        try:
-            vec_results = self.vector_circuit_breaker.call(
-                lambda: self.vector_search.search(
-                    query_text,
-                    scheme_id=scheme_id,
-                    document_types=allowed_docs,
-                    fact_type=fact_type,
-                    amc_level=amc_level,
-                ),
-                fallback=lambda: None,
-            )
-        except Exception as e:
-            logger.warning(f"Vector search degraded/failed: {e}. Falling back to lexical results.")
-            vec_results = None
-
-        # 4. Fusion / Degradation to Lexical
-        if kw_results is None and vec_results is None:
-            # Complete retrieval failure -> fail-closed
-            return FactualResponse(
-                status=TerminalState.TEMPORARILY_UNAVAILABLE,
-                refusal_reason="Search systems are temporarily unavailable.",
-            )
-
-        kw_res = kw_results or []
-        vec_res = vec_results or []
-
-        if kw_res and vec_res:
-            fused_candidates = reciprocal_rank_fusion(kw_res, vec_res)
-        elif kw_res:
-            logger.info("Degraded retrieval: Vector unavailable, proceeding with lexical-only candidates.")
-            fused_candidates = kw_res
-        elif vec_res:
-            logger.info("Degraded retrieval: Lexical unavailable, proceeding with vector-only candidates.")
-            fused_candidates = vec_res
-        else:
-            # Search succeeded but found no documents
-            resp = FactualResponse(
-                status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="No relevant documents found for the requested scheme and fact.",
-            )
-            self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
-            return resp
-
-        # 5. Evidence Validation (skip scheme match if amc_level)
-        expected_scheme = None if amc_level else scheme_id
-        decision = validate_candidates(fused_candidates, expected_scheme=expected_scheme)
-        if decision.status != "VALID":
-            resp = FactualResponse(
-                status=TerminalState(decision.status),
-                refusal_reason="Validation rejected the retrieved candidates.",
-            )
-            self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
-            return resp
-
-        # 6. Generation & Repair Loop
-        selected_passage_id = decision.selected_passage_ids[0]
-        selected_passage = next(
-            (p for p in fused_candidates if p["passage_id"] == selected_passage_id),
-            fused_candidates[0],
-        )
-        passage_text = selected_passage["normalized_text"]
-
-        if fact_type in [
-            "investment_objective",
-            "kyc_procedure",
-            "capital_gains_procedure",
-            "account_statement_procedure",
-        ]:
-            from services.assistant_api.generator import (
-                generate_descriptive_answer,
-                llm,
-            )
-
-            answer = generate_descriptive_answer(fact_type, passage_text)
-
-            is_valid, reason = llm.verify_semantic_claim(answer, passage_text)
-            if not is_valid:
-                answer = generate_descriptive_answer(fact_type, passage_text)
-                is_valid, reason = llm.verify_semantic_claim(answer, passage_text)
-                if not is_valid:
-                    resp = FactualResponse(
-                        status=TerminalState.INSUFFICIENT_EVIDENCE,
-                        refusal_reason="Semantic claim validation failed after repair attempt.",
-                    )
-                    self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
-                    return resp
-        else:
-            answer = generate_scalar_answer(fact_type, passage_text)
+        # Generate answers
+        from services.assistant_api.generator import generate_multi_fact_answer
+        answer_sentences = generate_multi_fact_answer(evidence_items, requested_facts)
 
         draft = FactualResponse(
             status=TerminalState.FACTUAL_ANSWER,
-            answer_sentences=[answer],
-            citation_url=decision.citation_url,
-            source_date=decision.source_date,
-            evidence_passage_ids=decision.selected_passage_ids,
+            answer_sentences=answer_sentences,
+            citation_url=overall_citation_url,
+            source_date=overall_source_date,
+            evidence_passage_ids=evidence_passage_ids,
         )
 
-        # 7. Compliance Validation
+        # 6. Final Compliance Validation (Phase 8)
         final_response = enforce_compliance(draft)
         self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, final_response)
         return final_response

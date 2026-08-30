@@ -22,8 +22,6 @@ from typing import List, Dict, Any
 
 logger = logging.getLogger(__name__)
 
-TODAY_STR = datetime.date.today().strftime("%Y-%m-%d")
-
 # ---------------------------------------------------------------------------
 # Mapping: processed-JSON fact_type  →  search-layer fact_type key
 # ---------------------------------------------------------------------------
@@ -148,6 +146,14 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
         # The system prompt prohibits citing Groww as a factual source.
         official_url: str = SCHEME_OFFICIAL_URL_MAP.get(scheme_id, _HDFC_FALLBACK_URL)
 
+        # Extract structured metadata from JSON
+        source_org: str = doc.get("source_org", "HDFC AMC")
+        source_domain: str = doc.get("source_domain", "hdfcfund.com")
+        source_type: str = doc.get("source_type", "scheme_page")
+        pub_date = doc.get("publication_date", None)
+        eff_date = doc.get("effective_date", None)
+        approved_source = True  # Hardcoded True for corpus passages, controlled by validation.py
+
         extracted_facts: List[Dict[str, Any]] = doc.get("extracted_facts", [])
 
         for fact in extracted_facts:
@@ -181,8 +187,14 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "normalized_text": normalized_text,
                 "fact_types":      [norm_type],
                 "is_table":        False,
-                "publication_date": TODAY_STR,
+                "publication_date": pub_date,
+                "effective_date":  eff_date,
                 "source_url":      official_url,
+                "source_org":      source_org,
+                "source_domain":   source_domain,
+                "source_type":     source_type,
+                "approved_source": approved_source,
+                "document_name":   doc_title,
             }
             passages.append(passage)
 
@@ -198,8 +210,14 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
                 "normalized_text": full_text,
                 "fact_types":      ["full_text"],
                 "is_table":        False,
-                "publication_date": TODAY_STR,
+                "publication_date": pub_date,
+                "effective_date":  eff_date,
                 "source_url":      official_url,
+                "source_org":      source_org,
+                "source_domain":   source_domain,
+                "source_type":     source_type,
+                "approved_source": approved_source,
+                "document_name":   doc_title,
             })
 
     logger.info(

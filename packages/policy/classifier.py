@@ -25,6 +25,8 @@ class QueryClassifier:
             r"\bshould buy\b",
             r"\bshould invest\b",
             r"\bgood to invest\b",
+            r"\b(?:which|what) (?:[a-z0-9]+\s+)?(?:fund|scheme) is (?:the )?(?:best|safest)\b",
+            r"\bhow much (?:money )?will i (?:make|get|receive)\b",
             # Hindi patterns
             r"क्या मुझे.*निवेश",
             r"कौन सा फंड",
@@ -58,7 +60,7 @@ class QueryClassifier:
             "EXPENSE_RATIO": r"\b(?:expense ratio|ter|fee|charges?)\b|एक्सपेंस रेशियो|खर्च",
             "EXIT_LOAD": r"\b(?:exit load|redemption fee|penalty)\b|एग्जिट लोड|निकासी शुल्क",
             "MINIMUM_SIP": r"\b(?:min(?:imum)? sip|sip amount|start sip)\b|न्यूनतम एसआईपी|कम से कम एसआईपी",
-            "MINIMUM_LUMP_SUM": r"\b(?:min(?:imum)? lump\s*sum|lumpsum amount)\b|न्यूनतम एकमुश्त|लम्पसम",
+            "MINIMUM_LUMP_SUM": r"\b(?:min(?:imum)? lump[- ]?sum|lumpsum amount)\b|न्यूनतम एकमुश्त|लम्पसम",
             "BENCHMARK": r"\b(?:benchmark|index tracking|benchmark index)\b|बेंचमार्क",
             "RISKOMETER": r"\b(?:riskometer|risk level|risk rating)\b|रिस्कोमीटर|जोखिम",
             "FUND_MANAGER": r"\b(?:fund manager|manager|who manages|managed by)\b|फंड मैनेजर|मैनेजर",
