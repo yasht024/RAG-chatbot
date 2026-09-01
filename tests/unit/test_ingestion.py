@@ -29,7 +29,7 @@ class TestIngestion(unittest.TestCase):
         fetcher = Fetcher()
 
         # Valid allowlisted domain
-        self.assertTrue(fetcher.validate_url("https://groww.in/mutual-funds/hdfc-mid-cap-fund-direct-growth"))
+        self.assertTrue(fetcher.validate_url("https://www.hdfcfund.com/our-funds/equity-funds/hdfc-mid-cap-opportunities-fund"))
 
         # Invalid domain should raise AllowlistViolationError
         with self.assertRaises(AllowlistViolationError):
