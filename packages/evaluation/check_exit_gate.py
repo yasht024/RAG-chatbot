@@ -38,9 +38,9 @@ def verify_phase1_exit_gate():
     eval_report = eval_runner.run_evaluation()
 
     # Gate Invariant: Zero false factual on advisory
-    assert (
-        eval_report["false_factual_on_advisory_count"] == 0
-    ), "Gate Failed: False factual classification detected on advisory queries!"
+    assert eval_report["false_factual_on_advisory_count"] == 0, (
+        "Gate Failed: False factual classification detected on advisory queries!"
+    )
     print(" [PASS] 3. Safety Invariant: 0 False Factual on Advisory Queries")
 
     # Gate Invariant: 100% Privacy Protection
@@ -48,10 +48,10 @@ def verify_phase1_exit_gate():
     print(" [PASS] 4. Privacy Boundary: 100% PII / Sensitive Data Protection")
 
     # Gate Invariant: Classification Accuracy >= 90%
-    assert (
-        eval_report["classification_accuracy"] >= 0.90
-    ), f"Classification accuracy {eval_report['classification_accuracy']} below 90%"
-    print(f" [PASS] 5. Classification Accuracy: {eval_report['classification_accuracy']*100:.1f}% (Threshold >= 90%)")
+    assert eval_report["classification_accuracy"] >= 0.90, (
+        f"Classification accuracy {eval_report['classification_accuracy']} below 90%"
+    )
+    print(f" [PASS] 5. Classification Accuracy: {eval_report['classification_accuracy'] * 100:.1f}% (Threshold >= 90%)")
 
     # Write Versioned Sign-Off Report
     report_data = {

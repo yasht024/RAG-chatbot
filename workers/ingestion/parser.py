@@ -42,8 +42,12 @@ class SchemeParser:
         document_title = title_match.group(1).strip() if title_match else scheme_id
 
         # Date extraction
-        pub_date_match = re.search(r"(?:As on|Data as of|Date)[:\s]*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", page_text, re.IGNORECASE)
-        publication_date = pub_date_match.group(1).strip() if pub_date_match else datetime.date.today().strftime('%Y-%m-%d')
+        pub_date_match = re.search(
+            r"(?:As on|Data as of|Date)[:\s]*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", page_text, re.IGNORECASE
+        )
+        publication_date = (
+            pub_date_match.group(1).strip() if pub_date_match else datetime.date.today().strftime("%Y-%m-%d")
+        )
 
         return {
             "scheme_id": scheme_id,

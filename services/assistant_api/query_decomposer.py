@@ -2,10 +2,12 @@ import re
 from typing import List
 from packages.policy.classifier import QueryClassifier
 
+
 class QueryDecomposer:
     """
     Decomposes a query into multiple requested fact types.
     """
+
     def __init__(self):
         self.classifier = QueryClassifier()
         # Additional patterns covering AMC and performance queries
@@ -17,7 +19,7 @@ class QueryDecomposer:
             "plans_options": r"\b(?:plans|options)\b",
             "performance_value": r"\b(?:performance|return)s?\b",
         }
-    
+
     def decompose(self, query: str) -> List[str]:
         lower_query = query.lower()
         requested_facts = []
@@ -28,13 +30,13 @@ class QueryDecomposer:
                 normalized = self._normalize_fact_type(ftype)
                 if normalized not in requested_facts:
                     requested_facts.append(normalized)
-        
+
         # 2. Extra patterns (AMC level + Performance + Plans)
         for ftype, pattern in self.extra_patterns.items():
             if re.search(pattern, lower_query):
                 if ftype not in requested_facts:
                     requested_facts.append(ftype)
-                    
+
         return requested_facts
 
     def _normalize_fact_type(self, raw_type: str) -> str:

@@ -15,6 +15,7 @@ prohibited domain is removed BEFORE conflict resolution. This means the LLM
 never receives prohibited factual evidence, regardless of what downstream
 logic does.
 """
+
 import datetime
 from typing import List, Dict, Any, Optional
 from packages.contracts.schemas import EvidenceDecision
@@ -27,25 +28,30 @@ from packages.policy.injection_guard import PromptInjectionGuard
 # Groww and other prohibited aggregators receive -1 (hard-rejected)
 # ---------------------------------------------------------------------------
 SOURCE_PRECEDENCE: Dict[str, int] = {
-    "hdfcfund.com":           100,
-    "amfiindia.com":           90,
-    "sebi.gov.in":             80,
+    "hdfcfund.com": 100,
+    "amfiindia.com": 90,
+    "sebi.gov.in": 80,
     # Prohibited domains — negative score triggers hard rejection
-    "groww.in":                -1,
-    "moneycontrol.com":        -1,
-    "etmoney.com":             -1,
+    "groww.in": -1,
+    "moneycontrol.com": -1,
+    "etmoney.com": -1,
     "valueresearchonline.com": -1,
-    "morningstar.in":          -1,
-    "zerodha.com":             -1,
-    "kuvera.in":               -1,
-    "scripbox.com":            -1,
+    "morningstar.in": -1,
+    "zerodha.com": -1,
+    "kuvera.in": -1,
+    "scripbox.com": -1,
 }
 
 # Prohibited domains as a set for O(1) lookup
 PROHIBITED_DOMAINS = {
-    "groww.in", "moneycontrol.com", "etmoney.com",
-    "valueresearchonline.com", "morningstar.in",
-    "zerodha.com", "kuvera.in", "scripbox.com",
+    "groww.in",
+    "moneycontrol.com",
+    "etmoney.com",
+    "valueresearchonline.com",
+    "morningstar.in",
+    "zerodha.com",
+    "kuvera.in",
+    "scripbox.com",
 }
 
 # Global instances for governance
@@ -82,8 +88,16 @@ def is_prohibited_source(candidate: Dict[str, Any]) -> bool:
             return True
 
     # Org-based check (belt-and-suspenders)
-    prohibited_orgs = {"groww", "moneycontrol", "etmoney", "valueresearch",
-                       "morningstar", "zerodha", "kuvera", "scripbox"}
+    prohibited_orgs = {
+        "groww",
+        "moneycontrol",
+        "etmoney",
+        "valueresearch",
+        "morningstar",
+        "zerodha",
+        "kuvera",
+        "scripbox",
+    }
     for prohibited_org in prohibited_orgs:
         if prohibited_org in org:
             return True
@@ -148,10 +162,7 @@ def validate_candidates(
     approved_candidates = lineage.filter_superseded_candidates(approved_candidates)
 
     # --- STEP 3: Filter prompt-injected passages ---
-    approved_candidates = [
-        c for c in approved_candidates
-        if inj_guard.is_safe(c.get("normalized_text", ""))
-    ]
+    approved_candidates = [c for c in approved_candidates if inj_guard.is_safe(c.get("normalized_text", ""))]
 
     if not approved_candidates:
         return EvidenceDecision(
@@ -167,10 +178,7 @@ def validate_candidates(
 
     # --- STEP 4: Scheme filter ---
     if expected_scheme:
-        valid_candidates = [
-            c for c in approved_candidates
-            if expected_scheme in c.get("scheme_ids", [])
-        ]
+        valid_candidates = [c for c in approved_candidates if expected_scheme in c.get("scheme_ids", [])]
     else:
         # AMC-level query: no scheme enforcement needed
         valid_candidates = approved_candidates
@@ -214,9 +222,7 @@ def validate_candidates(
         if val not in unique_values:
             unique_values[val] = cand
         else:
-            existing_domain = get_domain(
-                unique_values[val].get("source_url", "")
-            )
+            existing_domain = get_domain(unique_values[val].get("source_url", ""))
             existing_score = SOURCE_PRECEDENCE.get(existing_domain, 0)
             # Keep the higher-precedence (more authoritative) source
             if score > existing_score:
@@ -231,12 +237,12 @@ def validate_candidates(
         for val, cand in unique_values.items():
             domain = get_domain(cand.get("source_url", ""))
             score = SOURCE_PRECEDENCE.get(domain, 0)
-            
+
             cand_date_str = cand.get("effective_date") or cand.get("publication_date") or ""
             try:
                 import dateutil.parser
                 cand_date = dateutil.parser.parse(cand_date_str) if cand_date_str else datetime.datetime.min
-            except:
+            except Exception:
                 cand_date = datetime.datetime.min
 
             if score > best_score:
@@ -258,9 +264,7 @@ def validate_candidates(
 
         if conflict_unresolved:
             if expected_scheme:
-                conflicts.record_conflict(
-                    expected_scheme, fact_type, list(unique_values.values())
-                )
+                conflicts.record_conflict(expected_scheme, fact_type, list(unique_values.values()))
             return EvidenceDecision(
                 status="SOURCE_CONFLICT",
                 selected_document_id="",

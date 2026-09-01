@@ -4,6 +4,7 @@ generator.py
 Deterministic template extraction for scalar facts and LLM-based descriptive
 answer generation.  All outputs comply with the HDFC FAQ Assistant system prompt.
 """
+
 import re
 from typing import List
 from packages.contracts.schemas import FactualResponse, TerminalState
@@ -48,8 +49,12 @@ def generate_scalar_answer(evidence: EvidenceItem) -> str:
 
     elif fact_type == "riskometer":
         risk_levels = [
-            "Very High", "High", "Moderately High",
-            "Moderate", "Low to Moderate", "Low",
+            "Very High",
+            "High",
+            "Moderately High",
+            "Moderate",
+            "Low to Moderate",
+            "Low",
         ]
         for risk in risk_levels:
             if risk.lower() in passage.lower():
@@ -70,10 +75,14 @@ def generate_scalar_answer(evidence: EvidenceItem) -> str:
 
     elif fact_type == "factsheet_location":
         return passage
-        
-    elif fact_type == "kyc_procedure" or fact_type == "account_statement_procedure" or fact_type == "capital_gains_procedure":
+
+    elif (
+        fact_type == "kyc_procedure"
+        or fact_type == "account_statement_procedure"
+        or fact_type == "capital_gains_procedure"
+    ):
         return passage
-        
+
     elif fact_type == "investment_objective":
         return passage
 
@@ -92,14 +101,14 @@ def generate_multi_fact_answer(evidence_items: List[EvidenceItem], requested_fac
     if len(requested_facts) == 1:
         # It's guaranteed at least one evidence item exists if we made it here
         return [generate_scalar_answer(evidence_items[0])]
-        
+
     # Multi-fact formatting
     answers = []
-    
+
     for fact in requested_facts:
         # Find if we have evidence for this fact
         evidence = next((e for e in evidence_items if e.fact_type == fact), None)
-        
+
         # Display name logic
         display_names = {
             "minimum_sip_amount": "Minimum SIP",
@@ -113,18 +122,23 @@ def generate_multi_fact_answer(evidence_items: List[EvidenceItem], requested_fac
             "investment_objective": "Investment objective",
         }
         display_name = display_names.get(fact, fact.replace("_", " ").capitalize())
-        
+
         if evidence:
             val = generate_scalar_answer(evidence)
             # Remove generic prefixes if they exist so it fits nicely in a list
-            val = re.sub(r"^(The minimum SIP amount is|The minimum lumpsum amount is|The benchmark index for this scheme is|The lock-in period for this ELSS scheme is|The expense ratio is|The exit load is|The riskometer classifies this fund as|The riskometer classification is:|The fund is managed by|The scheme inception date is)\s*", "", val, flags=re.IGNORECASE).strip()
+            val = re.sub(
+                r"^(The minimum SIP amount is|The minimum lumpsum amount is|The benchmark index for this scheme is|The lock-in period for this ELSS scheme is|The expense ratio is|The exit load is|The riskometer classifies this fund as|The riskometer classification is:|The fund is managed by|The scheme inception date is)\s*",
+                "",
+                val,
+                flags=re.IGNORECASE,
+            ).strip()
             # Strip trailing period for list formatting
             if val.endswith("."):
                 val = val[:-1]
             answers.append(f"{display_name}: {val}.")
         else:
             answers.append(f"{display_name}: Insufficient official evidence found.")
-            
+
     # For multi-fact, we return them as separate elements in the list.
     # The compliance checker and renderer will handle joining and bypassing the 3-sentence limit.
     return answers

@@ -36,7 +36,9 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
             "NIFTY Midcap 150 TRI"
             if "Mid Cap" in name
             else (
-                "NIFTY 50 TRI" if "NIFTY 50" in name else ("BSE 500 TRI" if "Flexi" in name else "NIFTY Smallcap 250 TRI")
+                "NIFTY 50 TRI"
+                if "NIFTY 50" in name
+                else ("BSE 500 TRI" if "Flexi" in name else "NIFTY Smallcap 250 TRI")
             )
         )
         lock_in = "3 Years" if "ELSS" in name or "Tax Saver" in name else "None"
@@ -47,7 +49,7 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
             if "Mid Cap" in name or "Small Cap" in name
             else ("Roshi Jain" if "Flexi" in name else "Nirman Morakhia")
         )
-        
+
         inception_date = "25 June 2007" if "Mid Cap" in name else "1 January 2010"
         performance_1yr = "9.34%" if "Mid Cap" in name else "12.50%"
         objective = (

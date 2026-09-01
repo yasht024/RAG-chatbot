@@ -14,15 +14,16 @@ The ``citation.last_updated`` field MUST carry the official source's
 publication/effective date — NOT today's date — per the system prompt's
 freshness rule.
 """
+
 from packages.contracts.schemas import FactualResponse, TerminalState
 
 # Human-readable error codes for each terminal error state
 _ERROR_CODES = {
     TerminalState.INSUFFICIENT_EVIDENCE: "INSUFFICIENT_EVIDENCE",
-    TerminalState.AMBIGUOUS_SCHEME:      "AMBIGUOUS_SCHEME",
-    TerminalState.SOURCE_CONFLICT:       "SOURCE_CONFLICT",
-    TerminalState.POLICY_REFUSAL:        "POLICY_REFUSAL",
-    TerminalState.SENSITIVE_DATA_WARNING:"SENSITIVE_DATA_WARNING",
+    TerminalState.AMBIGUOUS_SCHEME: "AMBIGUOUS_SCHEME",
+    TerminalState.SOURCE_CONFLICT: "SOURCE_CONFLICT",
+    TerminalState.POLICY_REFUSAL: "POLICY_REFUSAL",
+    TerminalState.SENSITIVE_DATA_WARNING: "SENSITIVE_DATA_WARNING",
     TerminalState.TEMPORARILY_UNAVAILABLE: "TEMPORARILY_UNAVAILABLE",
 }
 
@@ -38,9 +39,7 @@ def render_response(internal_response: FactualResponse) -> dict:
     if internal_response.status == TerminalState.FACTUAL_ANSWER:
         payload: dict = {
             "status": internal_response.status.value,
-            "answer": "\n".join(internal_response.answer_sentences)
-            if internal_response.answer_sentences
-            else None,
+            "answer": "\n".join(internal_response.answer_sentences) if internal_response.answer_sentences else None,
         }
         if internal_response.citation:
             payload["citation"] = internal_response.citation.dict(exclude_none=True)

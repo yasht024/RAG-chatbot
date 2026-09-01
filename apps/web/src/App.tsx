@@ -118,7 +118,7 @@ function App() {
     if (e) e.preventDefault();
     let finalUserQuery = query.trim();
     if (!finalUserQuery) return;
-    
+
     // Automatically append the selected fund if not present in the query
     const fundKeyword = selectedFund.split(' ')[1] || 'hdfc';
     if (selectedFund !== 'All Funds' && !finalUserQuery.toLowerCase().includes(fundKeyword.toLowerCase())) {
@@ -135,7 +135,7 @@ function App() {
   };
 
   const handleTopicClick = (topic: string) => {
-    const q = selectedFund !== 'All Funds' 
+    const q = selectedFund !== 'All Funds'
         ? `What is the ${topic.toLowerCase()} for ${selectedFund}?`
         : `Tell me about ${topic.toLowerCase()}`;
     submitQuery(q);
@@ -271,7 +271,7 @@ function App() {
             <span className="material-symbols-outlined text-[20px]">close</span>
           </button>
         </div>
-        
+
         <div className="p-4 flex flex-col gap-6 overflow-y-auto pb-24 lg:pb-4">
           <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant/30">
             <label className="text-label-md font-bold text-on-surface-variant mb-2 block uppercase tracking-wider flex items-center gap-1">

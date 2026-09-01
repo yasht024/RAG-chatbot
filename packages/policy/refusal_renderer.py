@@ -13,7 +13,7 @@ class RefusalRenderer:
         if not query:
             return False
         # Simple heuristic: presence of Devnagari characters
-        return any("\u0900" <= c <= "\u097F" for c in query)
+        return any("\u0900" <= c <= "\u097f" for c in query)
 
     def render_refusal(self, query_class: str, reason_code: str = None, query: str = None) -> Dict[str, Any]:
         is_hindi = self._is_hindi(query)

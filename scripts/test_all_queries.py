@@ -7,11 +7,12 @@ sys.path.insert(0, str(Path(__file__).parents[1]))
 from packages.contracts.schemas import QueryRequest, TerminalState
 from services.assistant_api.orchestrator import Orchestrator
 
+
 def main():
     # Initialize the orchestrator
     print("Initializing Orchestrator...")
     orchestrator = Orchestrator()
-    
+
     # Test queries mapping to each supported category
     test_queries = {
         "SIP amounts": "what is the minimum sip amount for hdfc mid cap?",
@@ -31,21 +32,21 @@ def main():
         "Capital gains": "how do I download my capital gains statement?",
         "Fund performance": "what is the 1 year performance of hdfc mid cap?",
     }
-    
+
     print("\nStarting comprehensive query testing...")
     print("=" * 120)
     print(f"{'Category':<25} | {'Status':<30} | {'Result'}")
     print("-" * 120)
-    
+
     issues = 0
     failed_details = []
-    
+
     for category, query in test_queries.items():
         request = QueryRequest(query=query, conversation_id="test_session")
         try:
             response = orchestrator.process_query(request)
             status = response.status.value
-            
+
             if response.status == TerminalState.FACTUAL_ANSWER:
                 result = "SUCCESS"
             else:
@@ -57,14 +58,14 @@ def main():
             result = f"FAILED: Exception raised - {e}"
             issues += 1
             failed_details.append((category, query, status, str(e)))
-            
+
         print(f"{category:<25} | {status:<30} | {result}")
-        
+
     print("=" * 120)
     print(f"Total queries tested: {len(test_queries)}")
     print(f"Successful: {len(test_queries) - issues}")
     print(f"Failed: {issues}")
-    
+
     if issues > 0:
         print("\n--- Failure Details ---")
         for cat, q, st, msg in failed_details:
@@ -73,5 +74,6 @@ def main():
             print(f"Status:   {st}")
             print(f"Reason:   {msg}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

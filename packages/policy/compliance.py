@@ -14,8 +14,8 @@ reaches the caller:
 
 Any failure results in POLICY_REFUSAL with an explicit reason.
 """
+
 import re
-import datetime
 from packages.contracts.schemas import FactualResponse, TerminalState
 
 # ---------------------------------------------------------------------------
@@ -109,7 +109,7 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
     answer_text = " ".join(response.answer_sentences)
 
     # --- Check 1: Sentence count ---
-    is_structured = all(':' in s for s in response.answer_sentences if s.strip() and not s.startswith("Last updated"))
+    is_structured = all(":" in s for s in response.answer_sentences if s.strip() and not s.startswith("Last updated"))
     if not is_structured and len(response.answer_sentences) > 3:
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = "Response exceeded 3-sentence limit."
@@ -130,8 +130,7 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
     if _contains_advice(answer_text):
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = (
-            "Generated answer contains investment advice or guarantee language "
-            "which is not permitted."
+            "Generated answer contains investment advice or guarantee language which is not permitted."
         )
         response.answer_sentences = []
         return response
@@ -140,8 +139,7 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
     if _contains_comparison(answer_text):
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = (
-            "Generated answer contains fund comparison or ranking language "
-            "which is not permitted."
+            "Generated answer contains fund comparison or ranking language which is not permitted."
         )
         response.answer_sentences = []
         return response

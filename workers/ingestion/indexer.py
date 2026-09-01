@@ -79,7 +79,7 @@ class Indexer:
         facts = parsed_doc.get("extracted_facts", [])
         for idx, f in enumerate(facts):
             fact_rec = FactModel(
-                fact_id=f"fact_{scheme_id}_{idx+1}",
+                fact_id=f"fact_{scheme_id}_{idx + 1}",
                 scheme_id=scheme_id,
                 fact_type=f["fact_type"],
                 value_display=f["value_display"],

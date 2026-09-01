@@ -1,6 +1,5 @@
-import os
 import logging
-from typing import List, Dict, Any, Optional
+from typing import List
 
 from infra.environments.config import config
 from packages.contracts.schemas import QueryRequest, FactualResponse, TerminalState, Citation
@@ -18,7 +17,6 @@ from packages.resilience.circuit_breaker import CircuitBreaker
 from packages.cache.answer_cache import EvidenceAwareAnswerCache
 from services.assistant_api.query_decomposer import QueryDecomposer
 from services.assistant_api.generator import (
-    generate_scalar_answer,
     handle_recommendation_refusal,
 )
 
@@ -35,7 +33,7 @@ class Orchestrator:
         self.resolver = SchemeResolver()
         self.decomposer = QueryDecomposer()
         self.answer_cache = EvidenceAwareAnswerCache()
-        
+
         self.corpus_version = "2.0.0"
         self.policy_version = config.policy_version
         self.vector_circuit_breaker = CircuitBreaker(
@@ -68,21 +66,21 @@ class Orchestrator:
         # 1. Classification & AMC Path Router
         classification = self.classifier.classify_query(raw_query)
         query_class = classification.get("query_class")
-        
+
         # Advisory / Recommendation refusal
         if query_class == "ADVISORY":
             return handle_recommendation_refusal()
-            
+
         # Phase 7: Performance Comparison refusal vs Single Fact allowance
         if query_class == "PERFORMANCE_COMPARISON":
             return FactualResponse(
                 status=TerminalState.POLICY_REFUSAL,
-                refusal_reason="I can provide verified facts about HDFC mutual fund schemes, but I cannot compare or rank fund performance."
+                refusal_reason="I can provide verified facts about HDFC mutual fund schemes, but I cannot compare or rank fund performance.",
             )
 
         # 2. Scheme Resolution (Phase 3)
         resolve_res = self.resolver.resolve_scheme(query_text)
-        
+
         scheme_id = resolve_res.get("scheme_id")
         plan = resolve_res.get("plan", "Direct")
         option = resolve_res.get("option", "Growth")
@@ -102,15 +100,20 @@ class Orchestrator:
                         break
 
         # Check for AMC-level procedural queries before enforcing scheme
-        amc_procedures = ["kyc_procedure", "factsheet_location", "account_statement_procedure", "capital_gains_procedure"]
+        amc_procedures = [
+            "kyc_procedure",
+            "factsheet_location",
+            "account_statement_procedure",
+            "capital_gains_procedure",
+        ]
         requested_facts = self.decomposer.decompose(query_text)
-        
+
         requested_fact_count = len(requested_facts)
         logger.info(f"requested_fact_count = {requested_fact_count}")
-        
+
         if any(f in amc_procedures for f in requested_facts):
             amc_level = True
-            
+
         # If the query mentions ELSS, implicitly set the scheme to the tax saver fund
         if not scheme_id and "elss" in query_text:
             scheme_id = "hdfc_elss_tax_saver"
@@ -120,19 +123,19 @@ class Orchestrator:
             if resolve_res.get("status") == "UNSUPPORTED_PLAN":
                 return FactualResponse(
                     status=TerminalState.POLICY_REFUSAL,
-                    refusal_reason=f"Information for the {resolve_res.get('plan')} plan is not supported by this assistant."
+                    refusal_reason=f"Information for the {resolve_res.get('plan')} plan is not supported by this assistant.",
                 )
             if not scheme_id:
                 if resolve_res.get("status") == "AMBIGUOUS_SCHEME":
                     return FactualResponse(
                         status=TerminalState.AMBIGUOUS_SCHEME,
-                        refusal_reason=resolve_res.get("message", "Multiple matching schemes found. Please clarify.")
+                        refusal_reason=resolve_res.get("message", "Multiple matching schemes found. Please clarify."),
                     )
                 else:
                     # Could not identify scheme and not an AMC query
                     return FactualResponse(
                         status=TerminalState.AMBIGUOUS_SCHEME,
-                        refusal_reason="Could not definitively identify a single scheme from the query."
+                        refusal_reason="Could not definitively identify a single scheme from the query.",
                     )
 
         # If no facts requested but it's an ELSS query without explicit fact, default to lock-in
@@ -142,7 +145,7 @@ class Orchestrator:
             else:
                 return FactualResponse(
                     status=TerminalState.INSUFFICIENT_EVIDENCE,
-                    refusal_reason="Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+                    refusal_reason="Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance.",
                 )
 
         # 3. Cache Check
@@ -163,7 +166,7 @@ class Orchestrator:
 
         for fact_type in requested_facts:
             allowed_docs = DocumentRouter.get_document_types_for_fact(fact_type)
-            
+
             # Keyword Search
             try:
                 kw_results = self.keyword_circuit_breaker.call(
@@ -213,14 +216,14 @@ class Orchestrator:
 
             expected_scheme = None if (amc_level and fact_type in amc_procedures) else scheme_id
             decision = validate_candidates(fused_candidates, expected_scheme=expected_scheme)
-            
+
             if decision.status == "VALID":
                 selected_passage_id = decision.selected_passage_ids[0]
                 selected_passage = next(
                     (p for p in fused_candidates if p["passage_id"] == selected_passage_id),
                     fused_candidates[0],
                 )
-                
+
                 evidence = EvidenceItem(
                     scheme_id=scheme_id or "AMC",
                     scheme_name=selected_passage.get("scheme_name"),
@@ -236,10 +239,10 @@ class Orchestrator:
                     effective_date=selected_passage.get("effective_date"),
                     page=selected_passage.get("page_number"),
                     approved=True,
-                    confidence="verified"
+                    confidence="verified",
                 )
                 evidence_items.append(evidence)
-                
+
                 # Capture URL/Date from the first valid evidence for the overall response
                 if not overall_citation:
                     overall_citation = Citation(
@@ -253,7 +256,7 @@ class Orchestrator:
                     )
                     overall_citation_url = decision.citation_url
                     overall_source_date = decision.source_date
-                
+
                 evidence_passage_ids.extend(decision.selected_passage_ids)
 
         # 5. Completeness Check & Response Formatting (Phase 6)
@@ -264,13 +267,14 @@ class Orchestrator:
             # Complete failure to retrieve/validate any requested facts
             resp = FactualResponse(
                 status=TerminalState.INSUFFICIENT_EVIDENCE,
-                refusal_reason="Insufficient official evidence is available to verify this fact."
+                refusal_reason="Insufficient official evidence is available to verify this fact.",
             )
             self.answer_cache.put(cache_key, self.corpus_version, self.policy_version, resp)
             return resp
 
         # Generate answers
         from services.assistant_api.generator import generate_multi_fact_answer
+
         answer_sentences = generate_multi_fact_answer(evidence_items, requested_facts)
 
         draft = FactualResponse(

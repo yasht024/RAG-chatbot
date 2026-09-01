@@ -3,11 +3,12 @@ import json
 import os
 
 # Add the project root to sys.path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from packages.contracts.schemas import QueryRequest
 from services.assistant_api.orchestrator import Orchestrator
 from services.assistant_api.renderer import render_response
+
 
 def main():
     questions = [
@@ -22,20 +23,21 @@ def main():
         "What is the current expense ratio of HDFC Mid Cap Fund, and when was this information last updated according to the official source?",
         "What is the expense ratio of HDFC Mid Cap Fund – Direct Growth?",
         "What is the expense ratio of HDFC Balanced Advantage Fund?",
-        "What is the expense ratio of SBI Small Cap Fund?"
+        "What is the expense ratio of SBI Small Cap Fund?",
     ]
 
     orchestrator = Orchestrator()
-    
+
     print("Running tests...\n")
     for i, q in enumerate(questions, 1):
         print(f"[{i}] Question: {q}")
         req = QueryRequest(query=q, conversation_id="test-123", history=[])
         internal_resp = orchestrator.process_query(req)
         rendered = render_response(internal_resp)
-        print(f"    Answer:")
+        print("    Answer:")
         print(json.dumps(rendered, indent=2))
         print("-" * 80)
+
 
 if __name__ == "__main__":
     main()

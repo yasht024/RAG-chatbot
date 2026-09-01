@@ -159,8 +159,7 @@ class LLMClient:
             )
 
         # Reject answers citing prohibited sources that slipped through
-        prohibited_domains = ["groww.in", "moneycontrol", "etmoney", "valueresearch",
-                               "morningstar", "zerodha", "blog"]
+        prohibited_domains = ["groww.in", "moneycontrol", "etmoney", "valueresearch", "morningstar", "zerodha", "blog"]
         for domain in prohibited_domains:
             if domain in lower:
                 return (

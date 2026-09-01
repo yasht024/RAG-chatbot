@@ -6,10 +6,11 @@ from typing import Dict, Any
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).parents[2]))
 
-sys.stdout.reconfigure(encoding='utf-8')
+sys.stdout.reconfigure(encoding="utf-8")
 
 from packages.contracts.schemas import QueryRequest
 from services.assistant_api.orchestrator import Orchestrator
+
 
 class EvaluationRunner:
     def __init__(self, dataset_path: Path = None):
@@ -29,7 +30,7 @@ class EvaluationRunner:
         advisory_refusal = 0
         advisory_total = 0
         groww_violations = 0
-        
+
         results = []
 
         for case in cases:
@@ -39,7 +40,7 @@ class EvaluationRunner:
 
             req = QueryRequest(query=query, conversation_id="eval-conv-001")
             response = self.orchestrator.process_query(req)
-            
+
             actual_status = response.status.value
             is_status_match = actual_status == expected_status
 
@@ -50,7 +51,7 @@ class EvaluationRunner:
 
             if is_status_match:
                 terminal_status_correct += 1
-                
+
             # Groww citation violation check
             if "groww.in" in (response.citation_url or "").lower():
                 groww_violations += 1
@@ -79,19 +80,22 @@ class EvaluationRunner:
             "detailed_results": results,
         }
 
+
 if __name__ == "__main__":
     runner = EvaluationRunner()
     report = runner.run_evaluation()
     print("--- End-to-End Evaluation Report ---")
     print(f"Total Cases: {report['total_cases']}")
-    print(f"Terminal Status Accuracy: {report['status_accuracy']*100:.1f}%")
-    print(f"Advisory Refusal Compliance: {report['advisory_accuracy']*100:.1f}%")
+    print(f"Terminal Status Accuracy: {report['status_accuracy'] * 100:.1f}%")
+    print(f"Advisory Refusal Compliance: {report['advisory_accuracy'] * 100:.1f}%")
     print(f"Groww Citation Violations: {report['groww_violations']}")
-    
+
     print("\n--- Failed Cases ---")
-    for res in report['detailed_results']:
-        if not res['passed']:
+    for res in report["detailed_results"]:
+        if not res["passed"]:
             print(f"[{res['case_id']}] FAILED. Expected {res['expected_status']}, Got {res['actual_status']}")
             print(f"  Q: {res['query']}")
-            if res['refusal_reason']: print(f"  Reason: {res['refusal_reason']}")
-            if res['answers']: print(f"  Ans: {res['answers']}")
+            if res['refusal_reason']:
+                print(f"  Reason: {res['refusal_reason']}")
+            if res['answers']:
+                print(f"  Ans: {res['answers']}")

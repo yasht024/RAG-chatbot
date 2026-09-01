@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
+
 class EvidenceItem(BaseModel):
     scheme_id: str
     scheme_name: Optional[str] = None

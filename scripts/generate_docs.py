@@ -56,13 +56,13 @@ A production-ready facts-only AI assistant for HDFC Mutual Fund schemes. It answ
     sources_md = f"""# Approved Sources and Prohibited-Source Policy
 
 ## Approved Domains
-{chr(10).join(['- ' + d for d in sources['allowed_domains']])}
+{chr(10).join(["- " + d for d in sources["allowed_domains"]])}
 
 ## Allowed URL Prefixes
-{chr(10).join(['- ' + d for d in sources['allowed_url_prefixes']])}
+{chr(10).join(["- " + d for d in sources["allowed_url_prefixes"]])}
 
 ## Prohibited Domains
-{chr(10).join(['- ' + d for d in sources['prohibited_domains']])}
+{chr(10).join(["- " + d for d in sources["prohibited_domains"]])}
 
 ### Enforcement
 The fetcher automatically rejects any redirect or request to prohibited domains. Evidence validation ensures that citations come exclusively from allowed domains.
