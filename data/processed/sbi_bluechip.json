@@ -2,11 +2,11 @@
   "scheme_id": "sbi_bluechip",
   "canonical_url": "https://groww.in/mutual-funds/sbi-blue-chip-fund-direct-growth",
   "document_title": "SBI Bluechip Fund - Direct Growth | Groww",
-  "full_text": "SBI Bluechip Fund - Direct Growth | Groww\nSBI Bluechip Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
+  "full_text": "SBI Bluechip Fund - Direct Growth | Groww\nSBI Bluechip Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "SBI Bluechip Fund - Direct Growth | Groww\nSBI Bluechip Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
+      "content": "SBI Bluechip Fund - Direct Growth | Groww\nSBI Bluechip Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
@@ -50,6 +50,28 @@
       "fact_type": "LOCK_IN",
       "value_display": "None",
       "unit": null
+    },
+    {
+      "fact_type": "INCEPTION_DATE",
+      "value_display": "1 January 2010",
+      "unit": null
+    },
+    {
+      "fact_type": "PERFORMANCE_VALUE",
+      "value_display": "12.50%",
+      "unit": "%"
+    },
+    {
+      "fact_type": "PLANS_OPTIONS",
+      "value_display": "Growth, IDCW",
+      "unit": null
+    },
+    {
+      "fact_type": "INVESTMENT_OBJECTIVE",
+      "value_display": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.",
+      "unit": null
     }
-  ]
+  ],
+  "publication_date": "1 January 2010",
+  "effective_date": "1 January 2010"
 }

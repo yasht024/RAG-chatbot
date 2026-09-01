@@ -40,6 +40,10 @@ class SchemeParser:
         title_match = re.search(r"<title>(.*?)</title>", raw_html, re.IGNORECASE)
         document_title = title_match.group(1).strip() if title_match else scheme_id
 
+        # Date extraction
+        pub_date_match = re.search(r"(?:As on|Data as of|Date)[:\s]*([0-9]{1,2}\s+[A-Za-z]+\s+[0-9]{4})", page_text, re.IGNORECASE)
+        publication_date = pub_date_match.group(1).strip() if pub_date_match else "2026-08-23"  # Defaulting to project start date for mock data
+
         return {
             "scheme_id": scheme_id,
             "canonical_url": canonical_url,
@@ -47,6 +51,8 @@ class SchemeParser:
             "full_text": page_text,
             "sections": sections,
             "extracted_facts": extracted_facts,
+            "publication_date": publication_date,
+            "effective_date": publication_date,
         }
 
     def _extract_scalar_facts(self, text: str) -> List[Dict[str, Any]]:
@@ -64,7 +70,7 @@ class SchemeParser:
             "INCEPTION_DATE": r"(?:Inception Date|Date of Allotment)[:\s]*([^\n]+)",
             "PERFORMANCE_VALUE": r"(?:1-Year Returns?)[:\s]*([^\n]+)",
             "PLANS_OPTIONS": r"(?:Plans & Options)[:\s]*([^\n]+)",
-            "INVESTMENT_OBJECTIVE": r"Fund Overview & Investment Objective\n([^\n]+)",
+            "INVESTMENT_OBJECTIVE": r"(?:Fund Overview & Investment Objective|Investment Objective)[\n\s]*([^\n]+)",
         }
 
         for fact_type, pattern in patterns.items():

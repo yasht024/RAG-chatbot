@@ -231,13 +231,30 @@ def validate_candidates(
         for val, cand in unique_values.items():
             domain = get_domain(cand.get("source_url", ""))
             score = SOURCE_PRECEDENCE.get(domain, 0)
+            
+            cand_date_str = cand.get("effective_date") or cand.get("publication_date") or ""
+            try:
+                import dateutil.parser
+                cand_date = dateutil.parser.parse(cand_date_str) if cand_date_str else datetime.datetime.min
+            except:
+                cand_date = datetime.datetime.min
 
             if score > best_score:
                 best_score = score
                 best_val = val
                 conflict_unresolved = False
+                best_date = cand_date
             elif score == best_score:
-                conflict_unresolved = True
+                if cand_date > best_date:
+                    best_score = score
+                    best_val = val
+                    conflict_unresolved = False
+                    best_date = cand_date
+                elif cand_date < best_date:
+                    # The existing best_val is newer, so we keep it.
+                    pass
+                else:
+                    conflict_unresolved = True
 
         if conflict_unresolved:
             if expected_scheme:

@@ -84,4 +84,12 @@ class Chunker:
             tags.append("FUND_MANAGER")
         if "lock-in" in lower_text or "elss" in lower_text:
             tags.append("LOCK_IN")
+        if "inception" in lower_text or "allotment" in lower_text:
+            tags.append("INCEPTION_DATE")
+        if "return" in lower_text or "performance" in lower_text:
+            tags.append("PERFORMANCE_VALUE")
+        if "plan" in lower_text or "option" in lower_text:
+            tags.append("PLANS_OPTIONS")
+        if "objective" in lower_text or "overview" in lower_text:
+            tags.append("INVESTMENT_OBJECTIVE")
         return tags

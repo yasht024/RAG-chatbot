@@ -1,0 +1,2562 @@
+[
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc mid cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mid cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc flexi cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc flexi cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc flexi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc small cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc small cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc small cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc large and mid cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large and mid cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc large and mid cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc large cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc large cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc large cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc multi cap?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc multi cap",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc multi cap?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc focused?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc focused",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc focused?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc value?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc value",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc value?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc elss tax saver",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc elss tax saver?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc mnc?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc mnc",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc mnc?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc business cycle?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc business cycle",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc business cycle?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc defence?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc defence",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc defence?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc consumption?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc consumption",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc consumption?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc transportation and logistics?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc transportation and logistics",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc transportation and logistics?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc technology?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc technology",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc technology?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "SIP amounts",
+        "query": "what is the minimum sip amount for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Expense ratios",
+        "query": "what is the expense ratio of hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Benchmarks",
+        "query": "what is the benchmark for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Lock-in periods",
+        "query": "what is the lock-in period for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "KYC procedures",
+        "query": "what is the kyc procedure for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Exit loads",
+        "query": "what is the exit load for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Fund managers",
+        "query": "who are the fund managers of hdfc nifty 50 index?",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": "Question not supported. You can ask about: SIP amounts, expense ratios, benchmarks, lock-in periods (ELSS), KYC procedures, exit loads, fund managers, investment objectives, riskometers, inception dates, lump sum minimums, plans/options, factsheets, account statements, capital gains, and fund performance."
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Investment objectives",
+        "query": "what is the investment objective of hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Riskometers",
+        "query": "what is the riskometer rating for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Inception dates",
+        "query": "what is the inception date of hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Lump sum minimums",
+        "query": "what is the minimum lumpsum amount for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Plans/Options",
+        "query": "what plans and options are available for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Factsheets",
+        "query": "where can I find the factsheet for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Account statements",
+        "query": "how to get my account statement for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Capital gains",
+        "query": "how do I download my capital gains statement for hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    },
+    {
+        "scheme": "hdfc nifty 50 index",
+        "parameter": "Fund performance",
+        "query": "what is the 1 year performance of hdfc nifty 50 index?",
+        "status": "FACTUAL_ANSWER",
+        "answer": null,
+        "source_url": null,
+        "last_updated_date": null,
+        "refusal_reason": null
+    }
+]
