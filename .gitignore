@@ -2,3 +2,10 @@
 .env
 .env.*
 !.env.example
+
+# Unnecessary files
+data/
+scratch/
+stitch_ai_dining_discoverer (1)/
+__pycache__/
+*.pyc

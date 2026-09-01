@@ -15,34 +15,47 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
     category = scheme_info["category"]
 
     # Specific scheme defaults
-    expense_ratio = (
-        "0.74%"
-        if "Mid Cap" in name
-        else ("0.75%" if "Small Cap" in name else ("0.20%" if "Index" in name or "NIFTY" in name else "1.10%"))
-    )
-    benchmark = (
-        "NIFTY Midcap 150 TRI"
-        if "Mid Cap" in name
-        else (
-            "NIFTY 50 TRI" if "NIFTY 50" in name else ("BSE 500 TRI" if "Flexi" in name else "NIFTY Smallcap 250 TRI")
+    if "NIFTY200 Momentum 30" in name:
+        expense_ratio = "0.93%"
+        benchmark = "NIFTY200 Momentum 30 Total Returns Index (TRI)"
+        lock_in = "None / NA"
+        exit_load = "Nil / Not Applicable"
+        min_sip = "₹ 100"
+        fund_manager = "Nandita Menezes; Arun Agarwal"
+        inception_date = "28 February 2024"
+        performance_1yr = "1.05%, as of 31 July 2026"
+        objective = "Track/generate returns commensurate with NIFTY200 Momentum 30 TRI, subject to tracking error."
+        plans_and_options = "Regular Plan and Direct Plan; Growth Option only"
+    else:
+        expense_ratio = (
+            "0.74%"
+            if "Mid Cap" in name
+            else ("0.75%" if "Small Cap" in name else ("0.20%" if "Index" in name or "NIFTY" in name else "1.10%"))
         )
-    )
-    lock_in = "3 Years" if "ELSS" in name or "Tax Saver" in name else "None"
-    exit_load = "1% for redemption within 365 days" if lock_in == "None" else "Nil"
-    min_sip = "₹ 100" if "Index" in name or "Mid Cap" in name else "₹ 500"
-    fund_manager = (
-        "Chirag Setalvad"
-        if "Mid Cap" in name or "Small Cap" in name
-        else ("Roshi Jain" if "Flexi" in name else "Nirman Morakhia")
-    )
-    
-    inception_date = "25 June 2007" if "Mid Cap" in name else "1 January 2010"
-    performance_1yr = "9.34%" if "Mid Cap" in name else "12.50%"
-    objective = (
-        "To provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies."
-        if "Mid Cap" in name
-        else f"The investment objective of the scheme is to provide long-term capital appreciation by investing in {category} portfolio."
-    )
+        benchmark = (
+            "NIFTY Midcap 150 TRI"
+            if "Mid Cap" in name
+            else (
+                "NIFTY 50 TRI" if "NIFTY 50" in name else ("BSE 500 TRI" if "Flexi" in name else "NIFTY Smallcap 250 TRI")
+            )
+        )
+        lock_in = "3 Years" if "ELSS" in name or "Tax Saver" in name else "None"
+        exit_load = "1% for redemption within 365 days" if lock_in == "None" else "Nil"
+        min_sip = "₹ 100" if "Index" in name or "Mid Cap" in name else "₹ 500"
+        fund_manager = (
+            "Chirag Setalvad"
+            if "Mid Cap" in name or "Small Cap" in name
+            else ("Roshi Jain" if "Flexi" in name else "Nirman Morakhia")
+        )
+        
+        inception_date = "25 June 2007" if "Mid Cap" in name else "1 January 2010"
+        performance_1yr = "9.34%" if "Mid Cap" in name else "12.50%"
+        objective = (
+            "To provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies."
+            if "Mid Cap" in name
+            else f"The investment objective of the scheme is to provide long-term capital appreciation by investing in {category} portfolio."
+        )
+        plans_and_options = "Growth, IDCW"
 
     return f"""<!DOCTYPE html>
 <html>
@@ -65,7 +78,7 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
     <p>Fund Manager: {fund_manager}</p>
     <p>Inception Date: {inception_date}</p>
     <p>1-Year Returns: {performance_1yr}</p>
-    <p>Plans & Options: Growth, IDCW</p>
+    <p>Plans & Options: {plans_and_options}</p>
   </div>
 </body>
 </html>"""
