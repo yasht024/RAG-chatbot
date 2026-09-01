@@ -5,7 +5,6 @@
 
 # Unnecessary files
 data/fixtures/
-data/catalog/
 scratch/
 stitch_ai_dining_discoverer (1)/
 __pycache__/
