@@ -2,11 +2,11 @@
   "scheme_id": "hdfc_nifty100_quality_30_index",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-nifty100-quality-30-index-fund-direct-growth",
   "document_title": "HDFC Nifty100 Quality 30 Index Fund - Direct Growth | Groww",
-  "full_text": "HDFC Nifty100 Quality 30 Index Fund - Direct Growth | Groww\nHDFC Nifty100 Quality 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Index / Passive Funds portfolio.\nKey Scheme Facts\nExpense Ratio: 0.20%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+  "full_text": "HDFC Nifty100 Quality 30 Index Fund - Direct Growth | Groww\nHDFC Nifty100 Quality 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Index / Passive Funds portfolio.\nKey Scheme Facts\nExpense Ratio: 0.20%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Nifty100 Quality 30 Index Fund - Direct Growth | Groww\nHDFC Nifty100 Quality 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Index / Passive Funds portfolio.\nKey Scheme Facts\nExpense Ratio: 0.20%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+      "content": "HDFC Nifty100 Quality 30 Index Fund - Direct Growth | Groww\nHDFC Nifty100 Quality 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Index / Passive Funds portfolio.\nKey Scheme Facts\nExpense Ratio: 0.20%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
       "is_table": false
     }
   ],
@@ -28,8 +28,8 @@
     },
     {
       "fact_type": "MINIMUM_LUMP_SUM",
-      "value_display": "5,000",
-      "unit": null
+      "value_display": "100",
+      "unit": "INR"
     },
     {
       "fact_type": "BENCHMARK",

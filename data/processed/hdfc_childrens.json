@@ -2,11 +2,11 @@
   "scheme_id": "hdfc_childrens",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-childrens-fund-direct-plan-growth",
   "document_title": "HDFC Children's Fund - Direct Growth | Groww",
-  "full_text": "HDFC Children's Fund - Direct Growth | Groww\nHDFC Children's Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+  "full_text": "HDFC Children's Fund - Direct Growth | Groww\nHDFC Children's Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Children's Fund - Direct Growth | Groww\nHDFC Children's Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 5,000\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia",
+      "content": "HDFC Children's Fund - Direct Growth | Groww\nHDFC Children's Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%",
       "is_table": false
     }
   ],
@@ -28,8 +28,8 @@
     },
     {
       "fact_type": "MINIMUM_LUMP_SUM",
-      "value_display": "5,000",
-      "unit": null
+      "value_display": "100",
+      "unit": "INR"
     },
     {
       "fact_type": "BENCHMARK",
