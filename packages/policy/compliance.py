@@ -25,13 +25,13 @@ APPROVED_CITATION_DOMAINS = {
     "hdfcfund.com",
     "amfiindia.com",
     "sebi.gov.in",
+    "groww.in",
 }
 
 # ---------------------------------------------------------------------------
 # Prohibited source domains — if any appear in the citation URL, reject
 # ---------------------------------------------------------------------------
 PROHIBITED_CITATION_DOMAINS = {
-    "groww.in",
     "moneycontrol.com",
     "etmoney.com",
     "valueresearchonline.com",
@@ -121,7 +121,7 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = (
             "Citation URL is missing or belongs to a prohibited source. "
-            "Only hdfcfund.com, amfiindia.com, and sebi.gov.in are approved."
+            "Only hdfcfund.com, amfiindia.com, sebi.gov.in, and groww.in are approved."
         )
         response.answer_sentences = []
         return response

@@ -31,8 +31,9 @@ SOURCE_PRECEDENCE: Dict[str, int] = {
     "hdfcfund.com": 100,
     "amfiindia.com": 90,
     "sebi.gov.in": 80,
+    # Groww is allowed
+    "groww.in": 110,
     # Prohibited domains — negative score triggers hard rejection
-    "groww.in": -1,
     "moneycontrol.com": -1,
     "etmoney.com": -1,
     "valueresearchonline.com": -1,
@@ -44,7 +45,6 @@ SOURCE_PRECEDENCE: Dict[str, int] = {
 
 # Prohibited domains as a set for O(1) lookup
 PROHIBITED_DOMAINS = {
-    "groww.in",
     "moneycontrol.com",
     "etmoney.com",
     "valueresearchonline.com",
@@ -89,7 +89,6 @@ def is_prohibited_source(candidate: Dict[str, Any]) -> bool:
 
     # Org-based check (belt-and-suspenders)
     prohibited_orgs = {
-        "groww",
         "moneycontrol",
         "etmoney",
         "valueresearch",

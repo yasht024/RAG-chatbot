@@ -1,15 +1,17 @@
 {
   "version": "2.0",
-  "description": "Approved source registry for HDFC Mutual Fund FAQ Assistant. Only HDFC AMC, AMFI, and SEBI are approved factual sources.",
+  "description": "Approved source registry for HDFC Mutual Fund FAQ Assistant. HDFC AMC, AMFI, SEBI, and Groww are approved factual sources.",
   "allowed_orgs": [
     "HDFC AMC",
     "AMFI",
-    "SEBI"
+    "SEBI",
+    "Groww"
   ],
   "allowed_domains": [
     "hdfcfund.com",
     "amfiindia.com",
-    "sebi.gov.in"
+    "sebi.gov.in",
+    "groww.in"
   ],
   "allowed_url_prefixes": [
     "https://www.hdfcfund.com/",
@@ -17,10 +19,10 @@
     "https://www.amfiindia.com/",
     "https://amfiindia.com/",
     "https://www.sebi.gov.in/",
-    "https://sebi.gov.in/"
+    "https://sebi.gov.in/",
+    "https://groww.in/"
   ],
   "prohibited_domains": [
-    "groww.in",
     "moneycontrol.com",
     "valueresearchonline.com",
     "etmoney.com",
@@ -39,5 +41,5 @@
     "third_party_aggregator",
     "financial_influencer"
   ],
-  "notes": "Groww links may be used ONLY internally for scheme identification. Groww MUST NEVER appear as a citation URL or factual evidence source in any response."
+  "notes": "Groww is an approved factual source for easier accessibility."
 }
