@@ -1,0 +1,75 @@
+{
+  "scheme_id": "hdfc_nifty200_momentum_30_index",
+  "canonical_url": "https://groww.in/mutual-funds/hdfc-nifty200-momentum-30-index-fund-direct-growth",
+  "document_title": "HDFC NIFTY200 Momentum 30 Index Fund - Direct Growth | Groww",
+  "full_text": "HDFC NIFTY200 Momentum 30 Index Fund - Direct Growth | Groww\nHDFC NIFTY200 Momentum 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nTrack/generate returns commensurate with NIFTY200 Momentum 30 TRI, subject to tracking error.\nKey Scheme Facts\nExpense Ratio: 0.93%\nExit Load: Nil / Not Applicable\nMin SIP amount: ₹ 100\nMin Lumpsum: ₹ 100\nBenchmark Index: NIFTY200 Momentum 30 Total Returns Index (TRI)\nRiskometer: Very High\nLock-in Period: None / NA\nFund Manager: Nandita Menezes; Arun Agarwal\nInception Date: 28 February 2024\n1-Year Returns: 1.05%, as of 31 July 2026\nPlans: Regular Plan and Direct Plan\nOptions: Growth Option only",
+  "sections": [
+    {
+      "heading": "Scheme Details",
+      "content": "HDFC NIFTY200 Momentum 30 Index Fund - Direct Growth | Groww\nHDFC NIFTY200 Momentum 30 Index Fund - Direct Growth\nFund Overview & Investment Objective\nTrack/generate returns commensurate with NIFTY200 Momentum 30 TRI, subject to tracking error.\nKey Scheme Facts\nExpense Ratio: 0.93%\nExit Load: Nil / Not Applicable\nMin SIP amount: ₹ 100\nMin Lumpsum: ₹ 100\nBenchmark Index: NIFTY200 Momentum 30 Total Returns Index (TRI)\nRiskometer: Very High\nLock-in Period: None / NA\nFund Manager: Nandita Menezes; Arun Agarwal\nInception Date: 28 February 2024\n1-Year Returns: 1.05%, as of 31 July 2026\nPlans: Regular Plan and Direct Plan\nOptions: Growth Option only",
+      "is_table": false
+    }
+  ],
+  "extracted_facts": [
+    {
+      "fact_type": "EXPENSE_RATIO",
+      "value_display": "0.93%",
+      "unit": "%"
+    },
+    {
+      "fact_type": "EXIT_LOAD",
+      "value_display": "Nil / Not Applicable",
+      "unit": "%"
+    },
+    {
+      "fact_type": "MINIMUM_SIP",
+      "value_display": "100",
+      "unit": "INR"
+    },
+    {
+      "fact_type": "MINIMUM_LUMP_SUM",
+      "value_display": "100",
+      "unit": "INR"
+    },
+    {
+      "fact_type": "BENCHMARK",
+      "value_display": "NIFTY200 Momentum 30 Total Returns Index (TRI)",
+      "unit": null
+    },
+    {
+      "fact_type": "RISKOMETER",
+      "value_display": "Very High",
+      "unit": null
+    },
+    {
+      "fact_type": "FUND_MANAGER",
+      "value_display": "Nandita Menezes; Arun Agarwal",
+      "unit": null
+    },
+    {
+      "fact_type": "LOCK_IN",
+      "value_display": "None / NA",
+      "unit": null
+    },
+    {
+      "fact_type": "INCEPTION_DATE",
+      "value_display": "28 February 2024",
+      "unit": null
+    },
+    {
+      "fact_type": "PLANS",
+      "value_display": "Regular Plan and Direct Plan",
+      "unit": null
+    },
+    {
+      "fact_type": "OPTIONS",
+      "value_display": "Growth Option only",
+      "unit": null
+    },
+    {
+      "fact_type": "ONE_YEAR_RETURNS",
+      "value_display": "1.05%, as of 31 July 2026",
+      "unit": "%"
+    }
+  ]
+}
