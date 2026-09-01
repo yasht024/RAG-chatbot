@@ -83,14 +83,17 @@ def run_batch_ingestion():
             raw_html = generate_mock_groww_html(s)
             res = pipeline.process_scheme_url(db=None, scheme_id=scheme_id, url=url, raw_html=raw_html)
             print(
-                f"[{idx}/35] INGESTED: {scheme_id} -> {res['facts_count']} facts extracted, {res['passages_count']} passages chunked."
+                f"[{idx}/{len(schemes)}] INGESTED: {scheme_id} -> {res['facts_count']} facts extracted, {res['passages_count']} passages chunked."
             )
             success_count += 1
         except Exception as e:
-            print(f"[{idx}/35] FAILED: {scheme_id} - Error: {e}")
+            print(f"[{idx}/{len(schemes)}] FAILED: {scheme_id} - Error: {e}")
 
     print("---------------------------------------------------------------")
     print(f"BATCH INGESTION COMPLETED: {success_count}/{len(schemes)} schemes saved in 'data/processed/'")
+
+    if success_count < len(schemes):
+        sys.exit(1)
 
 
 if __name__ == "__main__":

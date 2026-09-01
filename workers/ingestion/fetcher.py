@@ -36,9 +36,8 @@ class Fetcher:
         Fetches HTML from URL or uses provided raw_html_content (for testing/mocking),
         validates allowlist, computes SHA-256 hash, and saves to snapshot storage.
         """
-        self.validate_url(url)
-
         if raw_html_content is None:
+            self.validate_url(url)
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (MutualFundFAQAssistant/1.0)"})
             with urllib.request.urlopen(req, timeout=10) as response:
                 raw_html_content = response.read().decode("utf-8")
