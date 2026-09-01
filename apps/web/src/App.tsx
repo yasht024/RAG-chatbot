@@ -5,11 +5,42 @@ import { MessageCard } from './components/Message';
 
 const apiClient = new AssistantClient();
 
+const TOPICS = [
+  "Expense Ratio",
+  "Exit Load",
+  "Minimum SIP",
+  "Minimum Lumpsum",
+  "Benchmark",
+  "Riskometer",
+  "Fund Manager",
+  "Inception Date",
+  "Lock-in Period",
+  "Investment Objective",
+  "Plans & Options",
+  "1-Year Performance",
+  "Factsheet",
+  "Account Statement",
+  "Capital Gains",
+  "KYC Procedure"
+];
+
+const FUNDS = [
+  "All Funds",
+  "HDFC Mid-Cap Opportunities",
+  "HDFC Small Cap",
+  "HDFC Flexi Cap",
+  "HDFC Top 100",
+  "HDFC Balanced Advantage",
+  "SBI Small Cap"
+];
+
 function App() {
   const [query, setQuery] = useState('');
+  const [selectedFund, setSelectedFund] = useState('All Funds');
   const [messages, setMessages] = useState<Array<{ role: 'user' | 'system', content: string, response?: FactualResponse }>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -20,19 +51,16 @@ function App() {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  const handleSubmit = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    if (!query.trim() || isLoading) return;
-
-    const userQuery = query.trim();
+  const submitQuery = async (text: string) => {
+    if (!text.trim() || isLoading) return;
     setQuery('');
-    setMessages(prev => [...prev, { role: 'user', content: userQuery }]);
+    setMessages(prev => [...prev, { role: 'user', content: text }]);
     setIsLoading(true);
 
     try {
       const idempotencyKey = `idem_${Date.now()}`;
       const req: QueryRequest = {
-        query: userQuery,
+        query: text,
         conversation_id: 'conv_frontend_1',
         history: messages.map(m => ({ role: m.role, content: m.content }))
       };
@@ -46,12 +74,25 @@ function App() {
         response: {
           status: 'TEMPORARILY_UNAVAILABLE' as TerminalState,
           error: { reason: error.message || 'Service temporarily unavailable.' },
-          original_query: userQuery
+          original_query: text
         } as any
       }]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    let finalUserQuery = query.trim();
+    if (!finalUserQuery) return;
+    
+    // Automatically append the selected fund if not present in the query
+    const fundKeyword = selectedFund.split(' ')[1] || 'hdfc';
+    if (selectedFund !== 'All Funds' && !finalUserQuery.toLowerCase().includes(fundKeyword.toLowerCase())) {
+        finalUserQuery = `${finalUserQuery} for ${selectedFund}`;
+    }
+    submitQuery(finalUserQuery);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -61,9 +102,18 @@ function App() {
     }
   };
 
+  const handleTopicClick = (topic: string) => {
+    const q = selectedFund !== 'All Funds' 
+        ? `What is the ${topic.toLowerCase()} for ${selectedFund}?`
+        : `Tell me about ${topic.toLowerCase()}`;
+    submitQuery(q);
+    if (window.innerWidth < 1024) {
+      setIsRightSidebarOpen(false);
+    }
+  };
+
   const handleExampleClick = (example: string) => {
     setQuery(example);
-    // Use timeout to allow state to update before submitting
     setTimeout(() => {
         const form = document.getElementById('chat-form') as HTMLFormElement;
         if (form) form.requestSubmit();
@@ -73,8 +123,8 @@ function App() {
   return (
     <>
       <header className="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm fixed top-0 w-full z-50 flex flex-col pt-2">
-        <div className="max-w-[1280px] w-full mx-auto px-margin flex items-center justify-between h-16 px-4 md:px-0">
-          <div className="flex items-center gap-sm">
+        <div className="w-full mx-auto px-margin flex items-center justify-between h-16 px-4 md:px-0 lg:pr-[300px]">
+          <div className="flex items-center gap-sm md:ml-4">
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-2 -ml-2 rounded-full hover:bg-surface-variant/50 transition-colors text-on-surface-variant flex items-center justify-center"
@@ -90,13 +140,20 @@ function App() {
           <div className="flex items-center gap-md">
             <div className="hidden md:flex items-center bg-surface-container text-on-surface-variant px-sm py-xs rounded-full border border-outline-variant/30 text-label-md font-label-md shadow-sm">
               <span className="material-symbols-outlined text-[16px] mr-1 text-tertiary-container" style={{fontVariationSettings: "'FILL' 1"}}>security</span>
-              Facts-only. No investment advice.
+              Facts-only. No advice.
             </div>
             <button
               onClick={() => setMessages([])}
               className="text-primary font-bold text-label-md font-label-md hover:bg-primary-container/20 transition-colors px-md py-sm rounded-full active:scale-95 duration-150"
             >
               Reset
+            </button>
+            <button
+              onClick={() => setIsRightSidebarOpen(true)}
+              className="lg:hidden p-2 rounded-full hover:bg-surface-variant/50 transition-colors text-on-surface-variant flex items-center justify-center"
+              aria-label="Open topics sidebar"
+            >
+              <span className="material-symbols-outlined text-[24px]">info</span>
             </button>
           </div>
         </div>
@@ -106,15 +163,15 @@ function App() {
         </div>
       </header>
 
-      {/* Overlay */}
-      {isSidebarOpen && (
+      {/* Overlays */}
+      {(isSidebarOpen || isRightSidebarOpen) && (
         <div
-          className="fixed inset-0 bg-on-background/20 backdrop-blur-sm z-[60] transition-opacity"
-          onClick={() => setIsSidebarOpen(false)}
+          className="fixed inset-0 bg-on-background/20 backdrop-blur-sm z-[60] lg:hidden transition-opacity"
+          onClick={() => { setIsSidebarOpen(false); setIsRightSidebarOpen(false); }}
         />
       )}
 
-      {/* Sidebar Panel */}
+      {/* Left Sidebar Panel (History) */}
       <div
         className={`fixed top-0 left-0 h-full w-[300px] max-w-[80vw] bg-surface border-r border-outline-variant/30 shadow-xl z-[70] transform transition-transform duration-300 ease-in-out flex flex-col ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
@@ -167,7 +224,59 @@ function App() {
         </div>
       </div>
 
-      <main className="flex flex-col w-full max-w-[800px] mx-auto mt-[100px] mb-[130px] md:mb-[100px] px-4 md:px-0 scroll-smooth" id="chat-container">
+      {/* Right Sidebar Panel (Context & Topics) */}
+      <div
+        className={`fixed top-0 lg:top-[72px] right-0 h-full lg:h-[calc(100vh-72px)] w-[300px] max-w-[80vw] bg-surface border-l border-outline-variant/30 shadow-xl lg:shadow-none z-[70] lg:z-[45] transform transition-transform duration-300 ease-in-out flex flex-col ${
+          isRightSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'
+        }`}
+      >
+        <div className="p-4 border-b border-outline-variant/30 flex justify-between items-center lg:hidden bg-surface">
+          <h3 className="font-headline-md font-bold text-on-surface flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary" style={{fontVariationSettings: "'FILL' 1"}}>info</span>
+            Ask About
+          </h3>
+          <button onClick={() => setIsRightSidebarOpen(false)} className="p-2 rounded-full hover:bg-surface-variant/50">
+            <span className="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+        
+        <div className="p-4 flex flex-col gap-6 overflow-y-auto pb-24 lg:pb-4">
+          <div className="bg-surface-container-low p-4 rounded-xl border border-outline-variant/30">
+            <label className="text-label-md font-bold text-on-surface-variant mb-2 block uppercase tracking-wider flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">account_balance</span>
+                Fund Context
+            </label>
+            <select
+              value={selectedFund}
+              onChange={(e) => setSelectedFund(e.target.value)}
+              className="w-full bg-surface border border-outline-variant/50 rounded-lg p-2 text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary shadow-sm"
+            >
+              {FUNDS.map(f => <option key={f} value={f}>{f}</option>)}
+            </select>
+            <p className="text-[11px] text-outline mt-2 leading-tight">Your questions will automatically apply to this fund.</p>
+          </div>
+
+          <div>
+            <label className="text-label-md font-bold text-on-surface-variant mb-3 block uppercase tracking-wider flex items-center gap-1">
+                <span className="material-symbols-outlined text-[16px]">explore</span>
+                Suggested Topics
+            </label>
+            <div className="flex flex-col gap-2">
+              {TOPICS.map(topic => (
+                <button
+                  key={topic}
+                  onClick={() => handleTopicClick(topic)}
+                  className="text-left px-3 py-2.5 rounded-lg bg-surface-container hover:bg-primary-container/20 hover:text-primary-fixed-variant transition-colors text-body-sm border border-transparent hover:border-primary/30 active:scale-95 shadow-sm"
+                >
+                  {topic}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <main className="flex flex-col w-full max-w-[800px] mx-auto mt-[100px] mb-[130px] md:mb-[100px] px-4 md:px-0 lg:pr-[300px] lg:max-w-[1100px] scroll-smooth" id="chat-container">
 
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center py-xl animate-fade-in-up">
@@ -233,8 +342,8 @@ function App() {
         <div className="h-4"></div>
       </main>
 
-      <div className="fixed bottom-0 w-full z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe-bottom">
-        <div className="max-w-[800px] mx-auto px-4 py-3 md:py-4">
+      <div className="fixed bottom-0 w-full lg:w-[calc(100%-300px)] z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe-bottom">
+        <div className="max-w-[800px] mx-auto px-4 py-3 md:py-4 lg:ml-[max(0px,calc(50vw-400px-150px))]">
           <form id="chat-form" onSubmit={handleSubmit} className="relative flex items-end gap-sm bg-surface-container-lowest border border-outline-variant/50 rounded-2xl shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all p-2">
             <textarea
               className="w-full bg-transparent border-none focus:ring-0 focus:outline-none resize-none text-body-md font-body-md text-on-surface placeholder-on-surface-variant/50 py-2 pl-2 pr-12 min-h-[44px] max-h-[120px] overflow-y-auto"
