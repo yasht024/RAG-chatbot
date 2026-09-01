@@ -3,6 +3,8 @@
 ## Overview
 A production-ready facts-only AI assistant for HDFC Mutual Fund schemes. It answers objective facts supported by current approved Groww evidence. It strictly refuses advice, recommendations, predictions, and prohibited performance requests.
 
+**Live Demo:** [https://rag-chatbot-5vi7dgcu2-yash-4f7a.vercel.app/](https://rag-chatbot-5vi7dgcu2-yash-4f7a.vercel.app/)
+
 ## Setup and Local Development
 1. Install dependencies:
    `pip install -r requirements.txt` (Backend)
