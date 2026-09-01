@@ -16,7 +16,7 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
 
     # Specific scheme defaults
     expense_ratio = (
-        "0.85%"
+        "0.74%"
         if "Mid Cap" in name
         else ("0.75%" if "Small Cap" in name else ("0.20%" if "Index" in name or "NIFTY" in name else "1.10%"))
     )
@@ -35,6 +35,14 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
         if "Mid Cap" in name or "Small Cap" in name
         else ("Roshi Jain" if "Flexi" in name else "Nirman Morakhia")
     )
+    
+    inception_date = "25 June 2007" if "Mid Cap" in name else "1 January 2010"
+    performance_1yr = "9.34%" if "Mid Cap" in name else "12.50%"
+    objective = (
+        "To provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies."
+        if "Mid Cap" in name
+        else f"The investment objective of the scheme is to provide long-term capital appreciation by investing in {category} portfolio."
+    )
 
     return f"""<!DOCTYPE html>
 <html>
@@ -43,18 +51,20 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
   <h1>{name}</h1>
   <div class="overview">
     <h2>Fund Overview & Investment Objective</h2>
-    <p>The investment objective of the scheme is to provide long-term capital appreciation by investing in {category} portfolio.</p>
+    <p>{objective}</p>
   </div>
   <div class="scheme-attributes">
     <h2>Key Scheme Facts</h2>
     <p>Expense Ratio: {expense_ratio}</p>
     <p>Exit Load: {exit_load}</p>
     <p>Min SIP amount: {min_sip}</p>
-    <p>Min Lumpsum: ₹ 5,000</p>
+    <p>Min Lumpsum: ₹ 100</p>
     <p>Benchmark Index: {benchmark}</p>
     <p>Riskometer: Very High</p>
     <p>Lock-in Period: {lock_in}</p>
     <p>Fund Manager: {fund_manager}</p>
+    <p>Inception Date: {inception_date}</p>
+    <p>1-Year Returns: {performance_1yr}</p>
   </div>
 </body>
 </html>"""
