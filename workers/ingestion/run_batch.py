@@ -65,6 +65,7 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
     <p>Fund Manager: {fund_manager}</p>
     <p>Inception Date: {inception_date}</p>
     <p>1-Year Returns: {performance_1yr}</p>
+    <p>Plans & Options: Growth, IDCW</p>
   </div>
 </body>
 </html>"""

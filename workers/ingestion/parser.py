@@ -61,6 +61,10 @@ class SchemeParser:
             "RISKOMETER": r"(?:Riskometer|Risk Level)[:\s]*([^\n]+)",
             "FUND_MANAGER": r"(?:Fund Manager|Managed by)[:\s]*([^\n]+)",
             "LOCK_IN": r"(?:Lock-in Period|Lock in)[:\s]*([^\n]+)",
+            "INCEPTION_DATE": r"(?:Inception Date|Date of Allotment)[:\s]*([^\n]+)",
+            "PERFORMANCE_VALUE": r"(?:1-Year Returns?)[:\s]*([^\n]+)",
+            "PLANS_OPTIONS": r"(?:Plans & Options)[:\s]*([^\n]+)",
+            "INVESTMENT_OBJECTIVE": r"Fund Overview & Investment Objective\n([^\n]+)",
         }
 
         for fact_type, pattern in patterns.items():
