@@ -7,5 +7,6 @@
 data/fixtures/
 scratch/
 stitch_ai_dining_discoverer (1)/
+docs/ai_pm_interview_script.md
 __pycache__/
 *.pyc
