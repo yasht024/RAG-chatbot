@@ -70,7 +70,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
+  const [showAutocomplete, setShowAutocomplete] = useState(false);
+  const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [originalQuery, setOriginalQuery] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const suggestionListRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -83,6 +88,7 @@ function App() {
   const submitQuery = async (text: string) => {
     if (!text.trim() || isLoading) return;
     setQuery('');
+    setShowAutocomplete(false);
     setMessages(prev => [...prev, { role: 'user', content: text }]);
     setIsLoading(true);
 
@@ -111,9 +117,9 @@ function App() {
     }
   };
 
-  const handleSubmit = async (e?: React.FormEvent) => {
+  const handleSubmit = async (e?: React.FormEvent, overrideQuery?: string) => {
     if (e) e.preventDefault();
-    let finalUserQuery = query.trim();
+    let finalUserQuery = (overrideQuery ?? query).trim();
     if (!finalUserQuery) return;
 
     // Automatically append the selected fund if not present in the query
@@ -125,9 +131,48 @@ function App() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit();
+    if (showAutocomplete && suggestions.length > 0) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const newIndex = focusedSuggestionIndex < suggestions.length - 1 ? focusedSuggestionIndex + 1 : focusedSuggestionIndex;
+        setFocusedSuggestionIndex(newIndex);
+        if (newIndex >= 0) {
+          setQuery(suggestions[newIndex]);
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const newIndex = focusedSuggestionIndex > -1 ? focusedSuggestionIndex - 1 : -1;
+        setFocusedSuggestionIndex(newIndex);
+        if (newIndex >= 0) {
+          setQuery(suggestions[newIndex]);
+        } else {
+          setQuery(originalQuery);
+        }
+      } else if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        if (focusedSuggestionIndex >= 0) {
+          const selected = suggestions[focusedSuggestionIndex];
+          setQuery(selected);
+          setOriginalQuery(selected);
+          setShowAutocomplete(false);
+          setFocusedSuggestionIndex(-1);
+          handleSubmit(undefined, selected);
+        } else if (suggestions.length > 0) {
+          const first = suggestions[0];
+          setQuery(first);
+          setOriginalQuery(first);
+          setShowAutocomplete(false);
+          setFocusedSuggestionIndex(-1);
+          handleSubmit(undefined, first);
+        } else {
+          handleSubmit();
+        }
+      }
+    } else {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleSubmit();
+      }
     }
   };
 
@@ -147,6 +192,23 @@ function App() {
         const form = document.getElementById('chat-form') as HTMLFormElement;
         if (form) form.requestSubmit();
     }, 0);
+  };
+
+  const handleChipClick = (chip: string) => {
+    // Determine the action based on the chip text
+    // E.g. "View Exit Load" -> "Exit Load for [Fund]"
+    const baseAction = chip.replace(/^View\s+/i, '');
+    const q = selectedFund !== 'All Funds'
+        ? `${baseAction} for ${selectedFund}`
+        : chip;
+    submitQuery(q);
+  };
+
+  const handleFeedback = (isPositive: boolean, msgIndex: number) => {
+    const originalMsg = messages[msgIndex - 1];
+    if (originalMsg && originalMsg.role === 'user') {
+      apiClient.sendFeedback(originalMsg.content, 'conv_frontend_1', isPositive).catch(console.error);
+    }
   };
 
   return (
@@ -342,7 +404,7 @@ function App() {
                   <p className="text-body-md font-body-md whitespace-pre-wrap">{msg.content}</p>
                 </div>
               ) : (
-                msg.response ? <MessageCard response={msg.response} /> : (
+                msg.response ? <MessageCard response={msg.response} onChipClick={handleChipClick} onFeedback={(isPos) => handleFeedback(isPos, idx)} /> : (
                   <div className="bg-surface border border-outline-variant/30 rounded-2xl rounded-tl-sm px-md py-sm shadow-sm">
                     <p className="text-body-md font-body-md text-on-surface mb-sm whitespace-pre-wrap">{msg.content}</p>
                   </div>
@@ -373,12 +435,55 @@ function App() {
 
       <div className="fixed bottom-0 w-full lg:w-[calc(100%-300px)] z-40 bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-xl border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe-bottom">
         <div className="max-w-[800px] mx-auto px-4 py-3 md:py-4 lg:ml-[max(0px,calc(50vw-400px-150px))]">
+          
+          {showAutocomplete && suggestions.length > 0 && (
+            <div ref={suggestionListRef} className="absolute bottom-full mb-1 max-w-xs bg-surface border border-outline-variant/50 rounded-lg shadow-lg overflow-hidden animate-fade-in-up z-50 left-4 md:left-4">
+              {suggestions.map((topic, i) => (
+                <button
+                  key={i}
+                  onMouseDown={(e) => {
+                    // Prevent blur on mouse down, handle action on click
+                    e.preventDefault(); 
+                  }}
+                  onClick={() => {
+                    setQuery(topic);
+                    setOriginalQuery(topic);
+                    setShowAutocomplete(false);
+                    setFocusedSuggestionIndex(-1);
+                    handleSubmit(undefined, topic);
+                  }}
+                  className={`w-full text-left px-3 py-1.5 transition-colors text-body-sm border-b border-outline-variant/20 last:border-0 flex items-center gap-2 ${
+                    focusedSuggestionIndex === i ? 'bg-primary-container text-on-primary-container' : 'text-on-surface hover:bg-surface-variant'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-outline text-[14px]">search</span>
+                  {topic}
+                </button>
+              ))}
+            </div>
+          )}
+
           <form id="chat-form" onSubmit={handleSubmit} className="relative flex items-end gap-sm bg-surface-container-lowest border border-outline-variant/50 rounded-2xl shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all p-2">
             <textarea
               className="w-full bg-transparent border-none focus:ring-0 focus:outline-none resize-none text-body-md font-body-md text-on-surface placeholder-on-surface-variant/50 py-2 pl-2 pr-12 min-h-[44px] max-h-[120px] overflow-y-auto"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setQuery(val);
+                setOriginalQuery(val);
+                const newSuggestions = val.trim() ? TOPICS.filter(t => t.toLowerCase().includes(val.toLowerCase())).slice(0, 5) : [];
+                setSuggestions(newSuggestions);
+                setShowAutocomplete(true);
+                setFocusedSuggestionIndex(-1);
+              }}
               onKeyDown={handleKeyDown}
+              onFocus={() => {
+                const val = query;
+                const newSuggestions = val.trim() ? TOPICS.filter(t => t.toLowerCase().includes(val.toLowerCase())).slice(0, 5) : [];
+                setSuggestions(newSuggestions);
+                setShowAutocomplete(true);
+              }}
+              onBlur={() => setTimeout(() => setShowAutocomplete(false), 200)}
               placeholder="Ask a factual question..."
               rows={1}
               disabled={isLoading}

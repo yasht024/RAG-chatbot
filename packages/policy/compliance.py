@@ -109,8 +109,15 @@ def enforce_compliance(response: FactualResponse) -> FactualResponse:
     answer_text = " ".join(response.answer_sentences)
 
     # --- Check 1: Sentence count ---
-    is_structured = all(":" in s for s in response.answer_sentences if s.strip() and not s.startswith("Last updated"))
+    is_structured = all(
+        (":" in s or s.strip().startswith("|")) 
+        for s in response.answer_sentences 
+        if s.strip() and not s.startswith("Last updated")
+    )
     if not is_structured and len(response.answer_sentences) > 3:
+        print("DEBUG COMPLIANCE FAILURE. is_structured=False, len=", len(response.answer_sentences))
+        for i, s in enumerate(response.answer_sentences):
+            print(f"DEBUG SENTENCE {i}: '{s}' -> starts_with_pipe: {s.strip().startswith('|')}")
         response.status = TerminalState.POLICY_REFUSAL
         response.refusal_reason = "Response exceeded 3-sentence limit."
         response.answer_sentences = []

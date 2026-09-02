@@ -72,7 +72,14 @@ class QueryClassifier:
     def classify_query(self, query: str) -> Dict[str, Any]:
         lower_query = query.lower()
 
-        # 1. Check Prohibited Classes
+        # 1. Extract Factual Fact Types
+        extracted_fact = None
+        for ftype, pattern in self.fact_patterns.items():
+            if re.search(pattern, lower_query):
+                extracted_fact = ftype
+                break
+
+        # 2. Check Prohibited / Comparison Classes
         is_advisory = any(re.search(p, lower_query) for p in self.advisory_patterns)
         is_comparison = any(re.search(p, lower_query) for p in self.comparison_patterns)
 
@@ -87,21 +94,26 @@ class QueryClassifier:
             }
 
         if is_comparison:
-            return {
-                "query_class": "PERFORMANCE_COMPARISON",
-                "fact_type": None,
-                "confidence": 0.99,
-                "contains_comparison": True,
-                "policy_version": config.policy_version,
-            }
+            if extracted_fact:
+                # Comparison of objective attributes
+                return {
+                    "query_class": "ATTRIBUTE_COMPARISON",
+                    "fact_type": extracted_fact,
+                    "confidence": 0.99,
+                    "contains_comparison": True,
+                    "policy_version": config.policy_version,
+                }
+            else:
+                # Performance or ranking comparison
+                return {
+                    "query_class": "PERFORMANCE_COMPARISON",
+                    "fact_type": None,
+                    "confidence": 0.99,
+                    "contains_comparison": True,
+                    "policy_version": config.policy_version,
+                }
 
-        # 2. Check Factual Fact Types
-        extracted_fact = None
-        for ftype, pattern in self.fact_patterns.items():
-            if re.search(pattern, lower_query):
-                extracted_fact = ftype
-                break
-
+        # 3. Handle Standard Factual Query
         if extracted_fact:
             return {
                 "query_class": "FACTUAL",

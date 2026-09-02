@@ -31,6 +31,12 @@ class QueryRequest(BaseModel):
     history: Optional[List[Message]] = Field(default_factory=list, description="Recent conversation history.")
 
 
+class FeedbackRequest(BaseModel):
+    query: str = Field(..., description="The original user query.")
+    conversation_id: str = Field(..., description="Opaque conversation identifier.")
+    is_positive: bool = Field(..., description="Whether the feedback was positive (thumbs up).")
+
+
 class QueryClassification(BaseModel):
     query_class: QueryClass
     fact_type: Optional[str] = None
@@ -68,3 +74,4 @@ class FactualResponse(BaseModel):
     source_date: Optional[str] = None
     refusal_reason: Optional[str] = None
     evidence_passage_ids: List[str] = Field(default_factory=list)
+    follow_up_chips: Optional[List[str]] = Field(default=None)

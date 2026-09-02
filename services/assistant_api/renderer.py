@@ -48,6 +48,14 @@ def render_response(internal_response: FactualResponse) -> dict:
                 "url": internal_response.citation_url,
                 "last_updated": internal_response.source_date,
             }
+            
+        # Add context-aware follow-up chips
+        payload["follow_up_chips"] = internal_response.follow_up_chips or [
+            "View Exit Load",
+            "View Expense Ratio",
+            "View Minimum SIP"
+        ]
+        
         return payload
 
     # --- Error / refusal states ---
@@ -65,10 +73,16 @@ def render_response(internal_response: FactualResponse) -> dict:
             "but I cannot recommend which fund you should invest in."
         )
 
-    return {
+    payload = {
         "status": status.value,
         "error": {
             "code": _ERROR_CODES.get(status, "UNKNOWN_ERROR"),
             "reason": reason,
         },
     }
+
+    # Graceful out-of-scope handoffs
+    if status in (TerminalState.POLICY_REFUSAL, TerminalState.INSUFFICIENT_EVIDENCE):
+        payload["follow_up_chips"] = ["View Investment Objective", "View Riskometer"]
+
+    return payload

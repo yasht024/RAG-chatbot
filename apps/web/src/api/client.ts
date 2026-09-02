@@ -34,6 +34,7 @@ export interface FactualResponse {
     reason?: string;
   };
   evidence_passage_ids?: string[];
+  follow_up_chips?: string[];
 }
 
 export class AssistantClient {
@@ -71,5 +72,16 @@ export class AssistantClient {
     }
 
     return await response.json() as FactualResponse;
+  }
+
+  /**
+   * Submits user feedback for a query.
+   */
+  async sendFeedback(query: string, conversation_id: string, is_positive: boolean): Promise<void> {
+    await fetch(`${this.baseUrl}/v1/feedback`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query, conversation_id, is_positive })
+    });
   }
 }

@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException, Header
-from packages.contracts.schemas import QueryRequest
+from packages.contracts.schemas import QueryRequest, FeedbackRequest
 from services.assistant_api.orchestrator import Orchestrator
 from services.assistant_api.renderer import render_response
 from services.assistant_api.diagnostics import router as diagnostics_router
@@ -63,6 +63,21 @@ async def ask_question(
         raise
     except Exception:
         raise HTTPException(status_code=500, detail="Internal server error")
+
+from services.assistant_api import feedback_store
+
+@app.post("/v1/feedback")
+async def receive_feedback(
+    request: FeedbackRequest,
+    user_id: Optional[str] = Header(None, alias="X-User-Id"),
+):
+    """
+    Receives user feedback (thumbs up/down) for a response and saves to SQLite.
+    """
+    action = "POSITIVE" if request.is_positive else "NEGATIVE"
+    print(f"[FEEDBACK] {action} feedback received for query: '{request.query}' in conversation {request.conversation_id}")
+    feedback_store.save_feedback(request)
+    return {"status": "ok"}
 
 
 @app.get("/health")
