@@ -418,41 +418,5 @@
         "performance_1yr": "10.00%",
         "objective": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Gold / Commodity portfolio.",
         "plans_and_options": "Growth, IDCW"
-    },
-    "sbi_small_cap": {
-        "expense_ratio": "0.75%",
-        "benchmark": "NIFTY 500 TRI",
-        "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
-        "min_sip": "\u20b9 100",
-        "fund_manager": "Chirag Setalvad",
-        "inception_date": "1 January 2013",
-        "performance_1yr": "10.00%",
-        "objective": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Small Cap portfolio.",
-        "plans_and_options": "Growth, IDCW"
-    },
-    "sbi_equity_hybrid": {
-        "expense_ratio": "0.73%",
-        "benchmark": "NIFTY 500 TRI",
-        "lock_in": "None",
-        "exit_load": ", stamp duty and tax",
-        "min_sip": "\u20b9 100",
-        "fund_manager": "Navneet Munot",
-        "inception_date": "1 January 2013",
-        "performance_1yr": "10.00%",
-        "objective": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Hybrid - Aggressive portfolio.",
-        "plans_and_options": "Growth, IDCW"
-    },
-    "sbi_bluechip": {
-        "expense_ratio": "0.85%",
-        "benchmark": "NIFTY 500 TRI",
-        "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
-        "min_sip": "\u20b9 100",
-        "fund_manager": "Navneet Munot",
-        "inception_date": "1 January 2013",
-        "performance_1yr": "10.00%",
-        "objective": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Large Cap portfolio.",
-        "plans_and_options": "Growth, IDCW"
     }
 }

@@ -60,10 +60,7 @@ const FUNDS = [
   "HDFC Nifty Top 20 Equal Weight Index Fund - Direct Growth",
   "HDFC Balanced Advantage Fund - Direct Growth",
   "HDFC Multi Asset Allocation Fund - Direct Growth",
-  "HDFC Gold ETF Fund of Fund - Direct Growth",
-  "SBI Small Cap Fund - Direct Growth",
-  "SBI Equity Hybrid Fund - Direct Growth",
-  "SBI Bluechip Fund - Direct Growth"
+  "HDFC Gold ETF Fund of Fund - Direct Growth"
 ];
 
 function App() {

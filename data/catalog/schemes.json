@@ -348,35 +348,5 @@
     "default_option": "Growth",
     "groww_url": "https://groww.in/mutual-funds/hdfc-gold-etf-fund-of-fund-direct-plan-growth",
     "coverage_status": "ACTIVE"
-  },
-  {
-    "scheme_id": "sbi_small_cap",
-    "canonical_name": "SBI Small Cap Fund - Direct Growth",
-    "amc": "SBI Mutual Fund",
-    "category": "Equity - Small Cap",
-    "default_plan": "Direct",
-    "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/sbi-small-cap-fund-direct-growth",
-    "coverage_status": "ACTIVE"
-  },
-  {
-    "scheme_id": "sbi_equity_hybrid",
-    "canonical_name": "SBI Equity Hybrid Fund - Direct Growth",
-    "amc": "SBI Mutual Fund",
-    "category": "Hybrid - Aggressive",
-    "default_plan": "Direct",
-    "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/sbi-magnum-balanced-fund-direct-growth",
-    "coverage_status": "ACTIVE"
-  },
-  {
-    "scheme_id": "sbi_bluechip",
-    "canonical_name": "SBI Bluechip Fund - Direct Growth",
-    "amc": "SBI Mutual Fund",
-    "category": "Equity - Large Cap",
-    "default_plan": "Direct",
-    "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/sbi-blue-chip-fund-direct-growth",
-    "coverage_status": "ACTIVE"
   }
 ]
