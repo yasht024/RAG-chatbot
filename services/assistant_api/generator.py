@@ -144,59 +144,7 @@ def generate_multi_fact_answer(evidence_items: List[EvidenceItem], requested_fac
     return answers
 
 
-def generate_comparison_table(evidence_items: List[EvidenceItem], requested_facts: List[str], candidate_schemes: List[str]) -> List[str]:
-    """
-    Generates a Markdown table for comparing attributes across multiple schemes.
-    """
-    display_names = {
-        "minimum_sip_amount": "Minimum SIP",
-        "minimum_lumpsum": "Minimum Lumpsum",
-        "benchmark_index": "Benchmark",
-        "expense_ratio": "Expense Ratio",
-        "exit_load": "Exit Load",
-        "fund_manager": "Fund Manager",
-        "riskometer": "Riskometer",
-        "inception_date": "Inception Date",
-        "investment_objective": "Investment Objective",
-    }
-    
-    header = "| Scheme | " + " | ".join([display_names.get(f, f.replace("_", " ").title()) for f in requested_facts]) + " |"
-    divider = "|---|" + "|".join(["---" for _ in requested_facts]) + "|"
-    
-    rows = []
-    
-    scheme_evidence = {}
-    for evidence in evidence_items:
-        if evidence.scheme_id not in scheme_evidence:
-            scheme_evidence[evidence.scheme_id] = {}
-        scheme_evidence[evidence.scheme_id][evidence.fact_type] = evidence
-        
-    for scheme_id in candidate_schemes:
-        scheme_name = scheme_id.replace("_", " ").title()
-        if scheme_id in scheme_evidence:
-            first_ev = next(iter(scheme_evidence[scheme_id].values()))
-            if first_ev.scheme_name:
-                scheme_name = first_ev.scheme_name
 
-        row = f"| {scheme_name} |"
-        for fact in requested_facts:
-            evidence = scheme_evidence.get(scheme_id, {}).get(fact)
-            if evidence:
-                val = generate_scalar_answer(evidence)
-                val = re.sub(
-                    r"^(The minimum SIP amount is|The minimum lumpsum amount is|The benchmark index for this scheme is|The lock-in period for this ELSS scheme is|The expense ratio is|The exit load is|The riskometer classifies this fund as|The riskometer classification is:|The fund is managed by|The scheme inception date is)\s*",
-                    "",
-                    val,
-                    flags=re.IGNORECASE,
-                ).strip()
-                if val.endswith("."):
-                    val = val[:-1]
-                row += f" {val} |"
-            else:
-                row += " N/A |"
-        rows.append(row)
-        
-    return [header, divider] + rows
 
 
 from services.assistant_api.llm_client import MockLLMClient

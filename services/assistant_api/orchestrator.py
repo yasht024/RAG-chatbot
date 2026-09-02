@@ -127,14 +127,10 @@ class Orchestrator:
                 )
             if not scheme_id:
                 if resolve_res.get("status") == "AMBIGUOUS_SCHEME":
-                    if query_class == "ATTRIBUTE_COMPARISON":
-                        # We want multiple schemes for comparison!
-                        pass
-                    else:
-                        return FactualResponse(
-                            status=TerminalState.AMBIGUOUS_SCHEME,
-                            refusal_reason=resolve_res.get("message", "Multiple matching schemes found. Please clarify."),
-                        )
+                    return FactualResponse(
+                        status=TerminalState.AMBIGUOUS_SCHEME,
+                        refusal_reason=resolve_res.get("message", "Multiple matching schemes found. Please clarify."),
+                    )
                 else:
                     # Could not identify scheme and not an AMC query
                     return FactualResponse(
@@ -153,19 +149,12 @@ class Orchestrator:
                 )
 
         # Determine schemes to query
-        if query_class == "ATTRIBUTE_COMPARISON" and resolve_res.get("status") == "AMBIGUOUS_SCHEME":
-            target_schemes = resolve_res.get("candidate_schemes", [])
-        else:
-            target_schemes = [scheme_id] if scheme_id else [None]
+        target_schemes = [scheme_id] if scheme_id else [None]
 
         # 3. Cache Check
         # Sort requested facts for deterministic cache key
         fact_key = ",".join(sorted(requested_facts))
-        
-        # Build a robust cache key that accounts for multiple schemes in a comparison
-        valid_targets = sorted([s for s in target_schemes if s])
-        target_schemes_key = ",".join(valid_targets) if valid_targets else "NONE"
-        cache_key = f"{target_schemes_key}|{plan}|{option}|{fact_key}"
+        cache_key = f"{scheme_id}|{plan}|{option}|{fact_key}"
         
         cached_response = self.answer_cache.get(cache_key, self.corpus_version, self.policy_version)
         if cached_response:
@@ -290,12 +279,8 @@ class Orchestrator:
             return resp
 
         # Generate answers
-        from services.assistant_api.generator import generate_multi_fact_answer, generate_comparison_table
-
-        if query_class == "ATTRIBUTE_COMPARISON" and len(target_schemes) > 1:
-            answer_sentences = generate_comparison_table(evidence_items, requested_facts, target_schemes)
-        else:
-            answer_sentences = generate_multi_fact_answer(evidence_items, requested_facts)
+        from services.assistant_api.generator import generate_multi_fact_answer
+        answer_sentences = generate_multi_fact_answer(evidence_items, requested_facts)
 
         draft = FactualResponse(
             status=TerminalState.FACTUAL_ANSWER,

@@ -18,7 +18,7 @@
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": ", stamp duty and tax",
+      "value_display": "1.00% if redeemed within 1 year",
       "unit": null
     },
     {

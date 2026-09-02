@@ -94,24 +94,13 @@ class QueryClassifier:
             }
 
         if is_comparison:
-            if extracted_fact:
-                # Comparison of objective attributes
-                return {
-                    "query_class": "ATTRIBUTE_COMPARISON",
-                    "fact_type": extracted_fact,
-                    "confidence": 0.99,
-                    "contains_comparison": True,
-                    "policy_version": config.policy_version,
-                }
-            else:
-                # Performance or ranking comparison
-                return {
-                    "query_class": "PERFORMANCE_COMPARISON",
-                    "fact_type": None,
-                    "confidence": 0.99,
-                    "contains_comparison": True,
-                    "policy_version": config.policy_version,
-                }
+            return {
+                "query_class": "PERFORMANCE_COMPARISON",
+                "fact_type": None,
+                "confidence": 0.99,
+                "contains_comparison": True,
+                "policy_version": config.policy_version,
+            }
 
         # 3. Handle Standard Factual Query
         if extracted_fact:

@@ -14,6 +14,7 @@ These decisions must be resolved to establish the engineering boundaries and pre
 | P0-06b | Embedding Model | `BAAI/bge-large-en-v1.5` (1024 dims). Replaces default 1536 dims. | Architecture | **Approved** | 2026-08-24 |
 | P0-07 | Retention Policy | Raw queries/answers: 7 days. Traces/Audit: 30 days. PII redacted before logging. | Security | **Approved** | 2026-08-23 |
 | P0-08 | Release Thresholds | Recall@5 >= 95%, Exact Fact Accuracy >= 95%, 100% adherence to rules, 0 false factual. | QA + Engineering | **Approved** | 2026-08-23 |
+| P0-09 | User Feedback Storage | Store user thumbs up/down feedback along with query and conversation ID in a local SQLite database for MVP manual review. | Product + Engineering | **Approved** | 2026-09-02 |
 
 ## 2. Decision and Escalation Rules
 During implementation, work must pause for product, domain, or security review when any of the following conditions are met:
