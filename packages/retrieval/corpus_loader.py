@@ -55,51 +55,9 @@ FACT_TYPE_LABEL: Dict[str, str] = {
 
 # ---------------------------------------------------------------------------
 # Official source URLs per scheme.
-# The system prompt prohibits citing Groww as a factual source.
-# Passages use these instead of the Groww canonical_url from the JSON files.
+# We now use the canonical_url from the JSON files, which is Groww.
 # ---------------------------------------------------------------------------
-_HDFC_BASE = "https://www.hdfcfund.com/our-funds"
-SCHEME_OFFICIAL_URL_MAP: Dict[str, str] = {
-    "hdfc_mid_cap": f"{_HDFC_BASE}/equity-funds/hdfc-mid-cap-opportunities-fund",
-    "hdfc_flexi_cap": f"{_HDFC_BASE}/equity-funds/hdfc-flexi-cap-fund",
-    "hdfc_small_cap": f"{_HDFC_BASE}/equity-funds/hdfc-small-cap-fund",
-    "hdfc_large_and_mid_cap": f"{_HDFC_BASE}/equity-funds/hdfc-large-and-mid-cap-fund",
-    "hdfc_large_cap": f"{_HDFC_BASE}/equity-funds/hdfc-top-100-fund",
-    "hdfc_multi_cap": f"{_HDFC_BASE}/equity-funds/hdfc-multi-cap-fund",
-    "hdfc_focused": f"{_HDFC_BASE}/equity-funds/hdfc-focused-30-fund",
-    "hdfc_value": f"{_HDFC_BASE}/equity-funds/hdfc-capital-builder-value-fund",
-    "hdfc_elss_tax_saver": f"{_HDFC_BASE}/equity-funds/hdfc-elss-tax-saver-fund",
-    "hdfc_mnc": f"{_HDFC_BASE}/equity-funds/hdfc-mnc-fund",
-    "hdfc_business_cycle": f"{_HDFC_BASE}/equity-funds/hdfc-business-cycle-fund",
-    "hdfc_defence": f"{_HDFC_BASE}/equity-funds/hdfc-defence-fund",
-    "hdfc_consumption": f"{_HDFC_BASE}/equity-funds/hdfc-consumption-fund",
-    "hdfc_transportation_and_logistics": f"{_HDFC_BASE}/equity-funds/hdfc-transportation-and-logistics-fund",
-    "hdfc_technology": f"{_HDFC_BASE}/equity-funds/hdfc-technology-fund",
-    "hdfc_pharma_and_healthcare": f"{_HDFC_BASE}/equity-funds/hdfc-pharma-and-healthcare-fund",
-    "hdfc_manufacturing": f"{_HDFC_BASE}/equity-funds/hdfc-manufacturing-fund",
-    "hdfc_infrastructure": f"{_HDFC_BASE}/equity-funds/hdfc-infrastructure-fund",
-    "hdfc_innovation": f"{_HDFC_BASE}/equity-funds/hdfc-innovation-fund",
-    "hdfc_childrens": f"{_HDFC_BASE}/equity-funds/hdfc-childrens-gift-fund",
-    "hdfc_balanced_advantage": f"{_HDFC_BASE}/hybrid-funds/hdfc-balanced-advantage-fund",
-    "hdfc_multi_asset_allocation": f"{_HDFC_BASE}/hybrid-funds/hdfc-multi-asset-allocation-fund",
-    "hdfc_gold_etf_fof": f"{_HDFC_BASE}/other-funds/hdfc-gold-exchange-traded-fund-fund-of-fund",
-    "hdfc_nifty_50_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-50-index-fund",
-    "hdfc_nifty_next_50_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-next-50-index-fund",
-    "hdfc_nifty_100_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-100-index-fund",
-    "hdfc_nifty_100_equal_weight_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-100-equal-weight-index-fund",
-    "hdfc_nifty50_equal_weight_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-50-equal-weight-index-fund",
-    "hdfc_nifty_midcap_150_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-midcap-150-index-fund",
-    "hdfc_nifty_smallcap_250_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-smallcap-250-index-fund",
-    "hdfc_nifty_largemidcap_250_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-largemidcap-250-index-fund",
-    "hdfc_nifty200_momentum_30_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty200-momentum-30-index-fund",
-    "hdfc_nifty100_low_volatility_30_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty100-low-volatility-30-index-fund",
-    "hdfc_nifty100_quality_30_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty100-quality-30-index-fund",
-    "hdfc_nifty_top_20_equal_weight_index": f"{_HDFC_BASE}/index-funds/hdfc-nifty-top-20-equal-weight-index-fund",
-    "sbi_small_cap": "https://www.sbimf.com/en-us/schemes/equity-funds/sbi-small-cap-fund",
-    "sbi_equity_hybrid": "https://www.sbimf.com/en-us/schemes/hybrid-funds/sbi-equity-hybrid-fund",
-    "sbi_bluechip": "https://www.sbimf.com/en-us/schemes/equity-funds/sbi-bluechip-fund",
-}
-_HDFC_FALLBACK_URL = "https://www.hdfcfund.com/our-funds"
+_FALLBACK_URL = "https://groww.in/"
 
 
 def _normalise_fact_type(raw: str) -> str:
@@ -141,13 +99,12 @@ def load_corpus_from_processed(processed_dir: str) -> List[Dict[str, Any]]:
         doc_title: str = doc.get("document_title", scheme_id)
         full_text: str = doc.get("full_text", "")
 
-        # Use official HDFC AMC URL instead of the Groww canonical_url.
-        # The system prompt prohibits citing Groww as a factual source.
-        official_url: str = SCHEME_OFFICIAL_URL_MAP.get(scheme_id, _HDFC_FALLBACK_URL)
+        # Use canonical_url from JSON (which is now Groww)
+        official_url: str = doc.get("canonical_url", _FALLBACK_URL)
 
         # Extract structured metadata from JSON
-        source_org: str = doc.get("source_org", "HDFC AMC")
-        source_domain: str = doc.get("source_domain", "hdfcfund.com")
+        source_org: str = doc.get("source_org", "Groww" if "groww" in official_url else "HDFC AMC")
+        source_domain: str = doc.get("source_domain", "groww.in" if "groww" in official_url else "hdfcfund.com")
         source_type: str = doc.get("source_type", "scheme_page")
         pub_date = doc.get("publication_date", None)
         eff_date = doc.get("effective_date", None)
