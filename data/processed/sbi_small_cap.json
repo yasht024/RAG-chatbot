@@ -2,11 +2,11 @@
   "scheme_id": "sbi_small_cap",
   "canonical_url": "https://groww.in/mutual-funds/sbi-small-cap-fund-direct-growth",
   "document_title": "SBI Small Cap Fund - Direct Growth | Groww",
-  "full_text": "SBI Small Cap Fund - Direct Growth | Groww\nSBI Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Small Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+  "full_text": "SBI Small Cap Fund - Direct Growth | Groww\nSBI Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Small Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2013\n1-Year Returns: 10.00%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "SBI Small Cap Fund - Direct Growth | Groww\nSBI Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Small Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+      "content": "SBI Small Cap Fund - Direct Growth | Groww\nSBI Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Small Cap portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2013\n1-Year Returns: 10.00%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
@@ -18,12 +18,12 @@
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% for redemption within 365 days",
+      "value_display": "1% within 1 year; Nil thereafter",
       "unit": "%"
     },
     {
       "fact_type": "MINIMUM_SIP",
-      "value_display": "500",
+      "value_display": "100",
       "unit": "INR"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "fact_type": "BENCHMARK",
-      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "value_display": "Index: NIFTY 500 TRI",
       "unit": null
     },
     {
@@ -53,12 +53,12 @@
     },
     {
       "fact_type": "INCEPTION_DATE",
-      "value_display": "1 January 2010",
+      "value_display": "1 January 2013",
       "unit": null
     },
     {
       "fact_type": "PERFORMANCE_VALUE",
-      "value_display": "12.50%",
+      "value_display": "10.00%",
       "unit": "%"
     },
     {

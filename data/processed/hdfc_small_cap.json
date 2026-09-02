@@ -2,11 +2,11 @@
   "scheme_id": "hdfc_small_cap",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-small-cap-fund-direct-growth",
   "document_title": "HDFC Small Cap Fund - Direct Growth | Groww",
-  "full_text": "HDFC Small Cap Fund - Direct Growth | Groww\nHDFC Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+  "full_text": "HDFC Small Cap Fund - Direct Growth | Groww\nHDFC Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nTo provide long-term capital appreciation / income by investing predominantly in Small-Cap companies.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: BSE 250 SmallCap TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 3 April 2008\n1-Year Returns: 14.50%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Small Cap Fund - Direct Growth | Groww\nHDFC Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+      "content": "HDFC Small Cap Fund - Direct Growth | Groww\nHDFC Small Cap Fund - Direct Growth\nFund Overview & Investment Objective\nTo provide long-term capital appreciation / income by investing predominantly in Small-Cap companies.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: BSE 250 SmallCap TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Chirag Setalvad\nInception Date: 3 April 2008\n1-Year Returns: 14.50%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
@@ -18,12 +18,12 @@
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% for redemption within 365 days",
+      "value_display": "1% within 1 year; Nil thereafter",
       "unit": "%"
     },
     {
       "fact_type": "MINIMUM_SIP",
-      "value_display": "500",
+      "value_display": "100",
       "unit": "INR"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "fact_type": "BENCHMARK",
-      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "value_display": "Index: BSE 250 SmallCap TRI",
       "unit": null
     },
     {
@@ -53,12 +53,12 @@
     },
     {
       "fact_type": "INCEPTION_DATE",
-      "value_display": "1 January 2010",
+      "value_display": "3 April 2008",
       "unit": null
     },
     {
       "fact_type": "PERFORMANCE_VALUE",
-      "value_display": "12.50%",
+      "value_display": "14.50%",
       "unit": "%"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "fact_type": "INVESTMENT_OBJECTIVE",
-      "value_display": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.",
+      "value_display": "To provide long-term capital appreciation / income by investing predominantly in Small-Cap companies.",
       "unit": null
     }
   ],

@@ -2,11 +2,11 @@
   "scheme_id": "hdfc_business_cycle",
   "canonical_url": "https://groww.in/nfo/hdfc-business-cycle-fund-direct-growth",
   "document_title": "HDFC Business Cycle Fund - Direct Growth | Groww",
-  "full_text": "HDFC Business Cycle Fund - Direct Growth | Groww\nHDFC Business Cycle Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+  "full_text": "HDFC Business Cycle Fund - Direct Growth | Groww\nHDFC Business Cycle Fund - Direct Growth\nFund Overview & Investment Objective\nTo provide long-term capital appreciation by investing in equity and equity related instruments with a focus on riding business cycles.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: NA\nFund Manager: Rahul Baijal\nInception Date: 30 November 2022\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Business Cycle Fund - Direct Growth | Groww\nHDFC Business Cycle Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+      "content": "HDFC Business Cycle Fund - Direct Growth | Groww\nHDFC Business Cycle Fund - Direct Growth\nFund Overview & Investment Objective\nTo provide long-term capital appreciation by investing in equity and equity related instruments with a focus on riding business cycles.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: NA\nFund Manager: Rahul Baijal\nInception Date: 30 November 2022\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
@@ -18,7 +18,7 @@
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% for redemption within 365 days",
+      "value_display": "1% within 1 year; Nil thereafter",
       "unit": "%"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "fact_type": "BENCHMARK",
-      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "value_display": "Index: NIFTY 500 TRI",
       "unit": null
     },
     {
@@ -43,17 +43,17 @@
     },
     {
       "fact_type": "FUND_MANAGER",
-      "value_display": "Nirman Morakhia",
+      "value_display": "Rahul Baijal",
       "unit": null
     },
     {
       "fact_type": "LOCK_IN",
-      "value_display": "None",
+      "value_display": "NA",
       "unit": null
     },
     {
       "fact_type": "INCEPTION_DATE",
-      "value_display": "1 January 2010",
+      "value_display": "30 November 2022",
       "unit": null
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "fact_type": "INVESTMENT_OBJECTIVE",
-      "value_display": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Thematic / Sectoral Equity portfolio.",
+      "value_display": "To provide long-term capital appreciation by investing in equity and equity related instruments with a focus on riding business cycles.",
       "unit": null
     }
   ],

@@ -2,28 +2,28 @@
   "scheme_id": "hdfc_large_cap",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-large-cap-fund-direct-growth",
   "document_title": "HDFC Large Cap Fund - Direct Growth | Groww",
-  "full_text": "HDFC Large Cap Fund - Direct Growth | Groww\nHDFC Large Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+  "full_text": "HDFC Large Cap Fund - Direct Growth | Groww\nHDFC Large Cap Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income from a portfolio, predominantly invested in equity and equity related instruments.\nKey Scheme Facts\nExpense Ratio: 0.80%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 100 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Gopal Agrawal\nInception Date: 1 January 2013\n1-Year Returns: 10.50%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Large Cap Fund - Direct Growth | Groww\nHDFC Large Cap Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: 1% for redemption within 365 days\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+      "content": "HDFC Large Cap Fund - Direct Growth | Groww\nHDFC Large Cap Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income from a portfolio, predominantly invested in equity and equity related instruments.\nKey Scheme Facts\nExpense Ratio: 0.80%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 100 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Gopal Agrawal\nInception Date: 1 January 2013\n1-Year Returns: 10.50%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
   "extracted_facts": [
     {
       "fact_type": "EXPENSE_RATIO",
-      "value_display": "1.10%",
+      "value_display": "0.80%",
       "unit": "%"
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% for redemption within 365 days",
+      "value_display": "1% within 1 year; Nil thereafter",
       "unit": "%"
     },
     {
       "fact_type": "MINIMUM_SIP",
-      "value_display": "500",
+      "value_display": "100",
       "unit": "INR"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "fact_type": "BENCHMARK",
-      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "value_display": "Index: NIFTY 100 TRI",
       "unit": null
     },
     {
@@ -43,7 +43,7 @@
     },
     {
       "fact_type": "FUND_MANAGER",
-      "value_display": "Nirman Morakhia",
+      "value_display": "Gopal Agrawal",
       "unit": null
     },
     {
@@ -53,12 +53,12 @@
     },
     {
       "fact_type": "INCEPTION_DATE",
-      "value_display": "1 January 2010",
+      "value_display": "1 January 2013",
       "unit": null
     },
     {
       "fact_type": "PERFORMANCE_VALUE",
-      "value_display": "12.50%",
+      "value_display": "10.50%",
       "unit": "%"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "fact_type": "INVESTMENT_OBJECTIVE",
-      "value_display": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.",
+      "value_display": "To generate long term capital appreciation/income from a portfolio, predominantly invested in equity and equity related instruments.",
       "unit": null
     }
   ],

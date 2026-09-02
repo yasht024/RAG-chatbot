@@ -2,18 +2,18 @@
   "scheme_id": "hdfc_elss_tax_saver",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-elss-tax-saver-fund-direct-plan-growth",
   "document_title": "HDFC ELSS Tax Saver Fund - Direct Growth | Groww",
-  "full_text": "HDFC ELSS Tax Saver Fund - Direct Growth | Groww\nHDFC ELSS Tax Saver Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: Nil\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: 3 Years\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+  "full_text": "HDFC ELSS Tax Saver Fund - Direct Growth | Groww\nHDFC ELSS Tax Saver Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate capital appreciation / income from a portfolio, comprising predominantly of equity & equity related instruments. Lock-in period of 3 years.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: Nil\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: 3 Years\nFund Manager: Roshi Jain\nInception Date: 31 March 1996\n1-Year Returns: 12.80%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC ELSS Tax Saver Fund - Direct Growth | Groww\nHDFC ELSS Tax Saver Fund - Direct Growth\nFund Overview & Investment Objective\nThe investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.\nKey Scheme Facts\nExpense Ratio: 1.10%\nExit Load: Nil\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY Smallcap 250 TRI\nRiskometer: Very High\nLock-in Period: 3 Years\nFund Manager: Nirman Morakhia\nInception Date: 1 January 2010\n1-Year Returns: 12.50%\nPlans & Options: Growth, IDCW",
+      "content": "HDFC ELSS Tax Saver Fund - Direct Growth | Groww\nHDFC ELSS Tax Saver Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate capital appreciation / income from a portfolio, comprising predominantly of equity & equity related instruments. Lock-in period of 3 years.\nKey Scheme Facts\nExpense Ratio: 0.75%\nExit Load: Nil\nMin SIP amount: \u20b9 500\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: 3 Years\nFund Manager: Roshi Jain\nInception Date: 31 March 1996\n1-Year Returns: 12.80%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
   "extracted_facts": [
     {
       "fact_type": "EXPENSE_RATIO",
-      "value_display": "1.10%",
+      "value_display": "0.75%",
       "unit": "%"
     },
     {
@@ -33,7 +33,7 @@
     },
     {
       "fact_type": "BENCHMARK",
-      "value_display": "Index: NIFTY Smallcap 250 TRI",
+      "value_display": "Index: NIFTY 500 TRI",
       "unit": null
     },
     {
@@ -43,22 +43,22 @@
     },
     {
       "fact_type": "FUND_MANAGER",
-      "value_display": "Nirman Morakhia",
+      "value_display": "Roshi Jain",
       "unit": null
     },
     {
       "fact_type": "LOCK_IN",
-      "value_display": "3 Years",
+      "value_display": "of 3 years.",
       "unit": null
     },
     {
       "fact_type": "INCEPTION_DATE",
-      "value_display": "1 January 2010",
+      "value_display": "31 March 1996",
       "unit": null
     },
     {
       "fact_type": "PERFORMANCE_VALUE",
-      "value_display": "12.50%",
+      "value_display": "12.80%",
       "unit": "%"
     },
     {
@@ -68,7 +68,7 @@
     },
     {
       "fact_type": "INVESTMENT_OBJECTIVE",
-      "value_display": "The investment objective of the scheme is to provide long-term capital appreciation by investing in Equity - Diversified portfolio.",
+      "value_display": "To generate capital appreciation / income from a portfolio, comprising predominantly of equity & equity related instruments. Lock-in period of 3 years.",
       "unit": null
     }
   ],

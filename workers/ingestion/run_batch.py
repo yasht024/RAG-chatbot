@@ -7,57 +7,26 @@ sys.path.insert(0, str(Path(__file__).parents[2]))
 from workers.ingestion.pipeline import IngestionPipeline
 
 
-def generate_mock_groww_html(scheme_info: dict) -> str:
+def generate_mock_groww_html(scheme_info: dict, scheme_facts: dict) -> str:
     """
-    Generates realistic Groww scheme HTML for offline reliable fixture ingestion.
+    Generates realistic Groww scheme HTML for offline reliable fixture ingestion,
+    using real facts from scheme_facts.json.
     """
     name = scheme_info["canonical_name"]
-    category = scheme_info["category"]
-
-    # Specific scheme defaults
-    if "NIFTY200 Momentum 30" in name:
-        expense_ratio = "0.93%"
-        benchmark = "NIFTY200 Momentum 30 Total Returns Index (TRI)"
-        lock_in = "None / NA"
-        exit_load = "Nil / Not Applicable"
-        min_sip = "₹ 100"
-        fund_manager = "Nandita Menezes; Arun Agarwal"
-        inception_date = "28 February 2024"
-        performance_1yr = "1.05%, as of 31 July 2026"
-        objective = "Track/generate returns commensurate with NIFTY200 Momentum 30 TRI, subject to tracking error."
-        plans_and_options = "Regular Plan and Direct Plan; Growth Option only"
-    else:
-        expense_ratio = (
-            "0.74%"
-            if "Mid Cap" in name
-            else ("0.75%" if "Small Cap" in name else ("0.20%" if "Index" in name or "NIFTY" in name else "1.10%"))
-        )
-        benchmark = (
-            "NIFTY Midcap 150 TRI"
-            if "Mid Cap" in name
-            else (
-                "NIFTY 50 TRI"
-                if "NIFTY 50" in name
-                else ("BSE 500 TRI" if "Flexi" in name else "NIFTY Smallcap 250 TRI")
-            )
-        )
-        lock_in = "3 Years" if "ELSS" in name or "Tax Saver" in name else "None"
-        exit_load = "1% for redemption within 365 days" if lock_in == "None" else "Nil"
-        min_sip = "₹ 100" if "Index" in name or "Mid Cap" in name else "₹ 500"
-        fund_manager = (
-            "Chirag Setalvad"
-            if "Mid Cap" in name or "Small Cap" in name
-            else ("Roshi Jain" if "Flexi" in name else "Nirman Morakhia")
-        )
-
-        inception_date = "25 June 2007" if "Mid Cap" in name else "1 January 2010"
-        performance_1yr = "9.34%" if "Mid Cap" in name else "12.50%"
-        objective = (
-            "To provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies."
-            if "Mid Cap" in name
-            else f"The investment objective of the scheme is to provide long-term capital appreciation by investing in {category} portfolio."
-        )
-        plans_and_options = "Growth, IDCW"
+    scheme_id = scheme_info["scheme_id"]
+    
+    facts = scheme_facts.get(scheme_id, {})
+    
+    expense_ratio = facts.get("expense_ratio", "N/A")
+    benchmark = facts.get("benchmark", "N/A")
+    lock_in = facts.get("lock_in", "N/A")
+    exit_load = facts.get("exit_load", "N/A")
+    min_sip = facts.get("min_sip", "N/A")
+    fund_manager = facts.get("fund_manager", "N/A")
+    inception_date = facts.get("inception_date", "N/A")
+    performance_1yr = facts.get("performance_1yr", "N/A")
+    objective = facts.get("objective", "N/A")
+    plans_and_options = facts.get("plans_and_options", "N/A")
 
     return f"""<!DOCTYPE html>
 <html>
@@ -89,10 +58,14 @@ def generate_mock_groww_html(scheme_info: dict) -> str:
 def run_batch_ingestion():
     root_dir = Path(__file__).parents[2]
     schemes_path = root_dir / "data" / "catalog" / "schemes.json"
+    facts_path = root_dir / "data" / "catalog" / "scheme_facts.json"
     processed_dir = root_dir / "data" / "processed"
 
     with open(schemes_path, "r", encoding="utf-8") as f:
         schemes = json.load(f)
+        
+    with open(facts_path, "r", encoding="utf-8") as f:
+        scheme_facts = json.load(f)
 
     pipeline = IngestionPipeline(processed_dir=processed_dir)
     print(f"--- Starting Batch Ingestion for {len(schemes)} Groww Schemes ---")
@@ -106,7 +79,7 @@ def run_batch_ingestion():
         raw_html = None
         try:
             # Generate clean Groww HTML fixture with full facts
-            raw_html = generate_mock_groww_html(s)
+            raw_html = generate_mock_groww_html(s, scheme_facts)
             res = pipeline.process_scheme_url(db=None, scheme_id=scheme_id, url=url, raw_html=raw_html)
             print(
                 f"[{idx}/{len(schemes)}] INGESTED: {scheme_id} -> {res['facts_count']} facts extracted, {res['passages_count']} passages chunked."
