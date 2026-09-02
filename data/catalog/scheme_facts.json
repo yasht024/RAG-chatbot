@@ -3,7 +3,7 @@
         "expense_ratio": "0.74%",
         "benchmark": "NIFTY Midcap 150 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Chirag Setalvad",
         "inception_date": "25 June 2007",
@@ -15,7 +15,7 @@
         "expense_ratio": "0.77%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Amit Ganatra",
         "inception_date": "1 January 2013",
@@ -27,7 +27,7 @@
         "expense_ratio": "0.75%",
         "benchmark": "BSE 250 SmallCap TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Chirag Setalvad",
         "inception_date": "3 April 2008",
@@ -39,7 +39,7 @@
         "expense_ratio": "0.90%",
         "benchmark": "NIFTY LargeMidcap 250 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Gopal Agrawal",
         "inception_date": "18 February 1994",
@@ -48,10 +48,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_large_cap": {
-        "expense_ratio": "0.80%",
+        "expense_ratio": "1.02%",
         "benchmark": "NIFTY 100 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Gopal Agrawal",
         "inception_date": "1 January 2013",
@@ -60,10 +60,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_multi_cap": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.93%",
         "benchmark": "NIFTY 500 Multicap 50:25:25 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Gopal Agrawal",
         "inception_date": "10 December 2021",
@@ -72,10 +72,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_focused": {
-        "expense_ratio": "0.79%",
+        "expense_ratio": "0.80%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Roshi Jain",
         "inception_date": "17 September 2004",
@@ -84,10 +84,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_value": {
-        "expense_ratio": "0.81%",
+        "expense_ratio": "1.11%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Anil Bamboli",
         "inception_date": "1 January 2013",
@@ -96,10 +96,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_elss_tax_saver": {
-        "expense_ratio": "0.75%",
+        "expense_ratio": "1.19%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "3 Years",
-        "exit_load": "Nil",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 500",
         "fund_manager": "Roshi Jain",
         "inception_date": "31 March 1996",
@@ -108,10 +108,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_mnc": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "1.92%",
         "benchmark": "NIFTY MNC TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Rahul Baijal",
         "inception_date": "10 March 2023",
@@ -120,10 +120,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_business_cycle": {
-        "expense_ratio": "1.10%",
+        "expense_ratio": "1.16%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "NA",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 500",
         "fund_manager": "Rahul Baijal",
         "inception_date": "30 November 2022",
@@ -132,10 +132,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_defence": {
-        "expense_ratio": "0.83%",
+        "expense_ratio": "0.89%",
         "benchmark": "NIFTY India Defence TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Abhishek Poddar",
         "inception_date": "2 June 2023",
@@ -144,10 +144,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_consumption": {
-        "expense_ratio": "0.88%",
+        "expense_ratio": "1.28%",
         "benchmark": "NIFTY India Consumption TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Amit Ganatra",
         "inception_date": "1 January 2013",
@@ -156,10 +156,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_transportation_and_logistics": {
-        "expense_ratio": "0.87%",
+        "expense_ratio": "1.07%",
         "benchmark": "NIFTY Transportation and Logistics TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Priya Ranjan",
         "inception_date": "16 August 2023",
@@ -168,10 +168,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_technology": {
-        "expense_ratio": "0.91%",
+        "expense_ratio": "1.07%",
         "benchmark": "NIFTY IT TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Balakumar B",
         "inception_date": "1 January 2013",
@@ -180,10 +180,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_pharma_and_healthcare": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "1.08%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -192,10 +192,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_manufacturing": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.93%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -204,10 +204,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_infrastructure": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "1.34%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -216,10 +216,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_innovation": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.97%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -228,10 +228,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_childrens": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "1.02%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -240,10 +240,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_50_index": {
-        "expense_ratio": "0.20%",
+        "expense_ratio": "0.29%",
         "benchmark": "NIFTY 50 TRI",
         "lock_in": "None",
-        "exit_load": "Nil",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Nirman Morakhia",
         "inception_date": "1 January 2013",
@@ -252,10 +252,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_next_50_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.36%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -264,10 +264,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_100_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.36%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -276,10 +276,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_100_equal_weight_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.55%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -288,10 +288,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty50_equal_weight_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.46%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -300,10 +300,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_midcap_150_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.34%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -312,10 +312,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_smallcap_250_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.34%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -324,10 +324,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty_largemidcap_250_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.25%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -339,7 +339,7 @@
         "expense_ratio": "0.93%",
         "benchmark": "NIFTY200 Momentum 30 Total Returns Index (TRI)",
         "lock_in": "None / NA",
-        "exit_load": "Nil / Not Applicable",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Nandita Menezes; Arun Agarwal",
         "inception_date": "28 February 2024",
@@ -348,10 +348,10 @@
         "plans_and_options": "Regular Plan and Direct Plan; Growth Option only"
     },
     "hdfc_nifty100_low_volatility_30_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.50%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -360,10 +360,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_nifty100_quality_30_index": {
-        "expense_ratio": "0.30%",
+        "expense_ratio": "0.44%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -375,7 +375,7 @@
         "expense_ratio": "0.37%",
         "benchmark": "Nifty Top 20 Equal Weight Index (TRI)",
         "lock_in": "NA",
-        "exit_load": "1% for redemption within 365 days",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Nandita Menezes and Arun Agarwal",
         "inception_date": "25 March 2025",
@@ -384,10 +384,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_balanced_advantage": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.77%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -396,10 +396,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_multi_asset_allocation": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "1.01%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -408,10 +408,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "hdfc_gold_etf_fof": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.20%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",
@@ -432,10 +432,10 @@
         "plans_and_options": "Growth, IDCW"
     },
     "sbi_equity_hybrid": {
-        "expense_ratio": "0.85%",
+        "expense_ratio": "0.73%",
         "benchmark": "NIFTY 500 TRI",
         "lock_in": "None",
-        "exit_load": "1% within 1 year; Nil thereafter",
+        "exit_load": ", stamp duty and tax",
         "min_sip": "\u20b9 100",
         "fund_manager": "Navneet Munot",
         "inception_date": "1 January 2013",

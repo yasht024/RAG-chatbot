@@ -56,7 +56,7 @@
     "category": "Equity - Diversified",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/nfo/hdfc-multi-cap-fund-direct-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-multi-cap-fund-direct-growth",
     "coverage_status": "ACTIVE"
   },
   {
@@ -76,7 +76,7 @@
     "category": "Equity - Diversified",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/hdfc-value-fund-direct-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-value-fund-direct-plan-growth",
     "coverage_status": "ACTIVE"
   },
   {
@@ -106,7 +106,7 @@
     "category": "Thematic / Sectoral Equity",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/nfo/hdfc-business-cycle-fund-direct-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-business-cycle-fund-direct-growth",
     "coverage_status": "ACTIVE"
   },
   {
@@ -116,7 +116,7 @@
     "category": "Thematic / Sectoral Equity",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/nfo/hdfc-defence-fund-direct-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-defence-fund-direct-growth",
     "coverage_status": "ACTIVE"
   },
   {
@@ -196,7 +196,7 @@
     "category": "Thematic / Sectoral Equity",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/hdfc-childrens-fund-direct-plan-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-children%27s-fund-direct-plan",
     "coverage_status": "ACTIVE"
   },
   {
@@ -246,7 +246,7 @@
     "category": "Index / Passive Funds",
     "default_plan": "Direct",
     "default_option": "Growth",
-    "groww_url": "https://groww.in/mutual-funds/hdfc-nifty-50-equal-weight-index-fund-direct-growth",
+    "groww_url": "https://groww.in/mutual-funds/hdfc-nifty50-equal-weight-index-fund-direct-growth",
     "coverage_status": "ACTIVE"
   },
   {

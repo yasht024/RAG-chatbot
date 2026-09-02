@@ -2,24 +2,24 @@
   "scheme_id": "hdfc_focused",
   "canonical_url": "https://groww.in/mutual-funds/hdfc-focused-fund-direct-growth",
   "document_title": "HDFC Focused Fund - Direct Growth | Groww",
-  "full_text": "HDFC Focused Fund - Direct Growth | Groww\nHDFC Focused Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income by investing in equity & equity related instruments of up to 30 companies.\nKey Scheme Facts\nExpense Ratio: 0.79%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Roshi Jain\nInception Date: 17 September 2004\n1-Year Returns: 13.10%\nPlans & Options: Growth, IDCW",
+  "full_text": "HDFC Focused Fund - Direct Growth | Groww\nHDFC Focused Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income by investing in equity & equity related instruments of up to 30 companies.\nKey Scheme Facts\nExpense Ratio: 0.80%\nExit Load: , stamp duty and tax\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Roshi Jain\nInception Date: 17 September 2004\n1-Year Returns: 13.10%\nPlans & Options: Growth, IDCW",
   "sections": [
     {
       "heading": "Scheme Details",
-      "content": "HDFC Focused Fund - Direct Growth | Groww\nHDFC Focused Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income by investing in equity & equity related instruments of up to 30 companies.\nKey Scheme Facts\nExpense Ratio: 0.79%\nExit Load: 1% within 1 year; Nil thereafter\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Roshi Jain\nInception Date: 17 September 2004\n1-Year Returns: 13.10%\nPlans & Options: Growth, IDCW",
+      "content": "HDFC Focused Fund - Direct Growth | Groww\nHDFC Focused Fund - Direct Growth\nFund Overview & Investment Objective\nTo generate long term capital appreciation/income by investing in equity & equity related instruments of up to 30 companies.\nKey Scheme Facts\nExpense Ratio: 0.80%\nExit Load: , stamp duty and tax\nMin SIP amount: \u20b9 100\nMin Lumpsum: \u20b9 100\nBenchmark Index: NIFTY 500 TRI\nRiskometer: Very High\nLock-in Period: None\nFund Manager: Roshi Jain\nInception Date: 17 September 2004\n1-Year Returns: 13.10%\nPlans & Options: Growth, IDCW",
       "is_table": false
     }
   ],
   "extracted_facts": [
     {
       "fact_type": "EXPENSE_RATIO",
-      "value_display": "0.79%",
+      "value_display": "0.80%",
       "unit": "%"
     },
     {
       "fact_type": "EXIT_LOAD",
-      "value_display": "1% within 1 year; Nil thereafter",
-      "unit": "%"
+      "value_display": ", stamp duty and tax",
+      "unit": null
     },
     {
       "fact_type": "MINIMUM_SIP",
